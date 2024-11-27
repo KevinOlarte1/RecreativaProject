@@ -19,18 +19,20 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
+import com.sak.myrecreativa.interfaces.OnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
+import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialFragment;
 import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialModeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
-        IOnClickListenner{
+        IOnClickListenner, OnGameModeSelectedListener {
     private DrawerLayout drawer;
     private List<GameName> gameNames;
     @Override
@@ -150,4 +152,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @Override
+    public void onGameModeSelected(String mode, GameName name) {
+        Fragment f;
+        if (name.getName().equals("trivial")){
+            f = new TrivialFragment();
+            Bundle arg = new Bundle();
+            arg.putString("TRIVIAL_MODE", mode);
+            f.setArguments(arg);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fcvMain, f)
+                    .commit();
+            setTitle("Trivial");
+        }
+    }
 }

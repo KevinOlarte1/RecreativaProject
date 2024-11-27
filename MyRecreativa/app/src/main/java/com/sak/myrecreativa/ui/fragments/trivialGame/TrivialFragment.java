@@ -56,23 +56,24 @@ public class TrivialFragment extends Fragment {
 
         Bundle args = getArguments();
 
-        if (args != null && args.containsKey("TRIVIA_MODE")) {
-            triviaMode = args.getString("TRIVIA_MODE");
+        if (args != null && args.containsKey("TRIVIAL_MODE")) {
+            triviaMode = args.getString("TRIVIAL_MODE");
         }
 
         int jsonResource = -1;
-        switch (triviaMode) {
-            case "movies":
-                jsonResource = R.raw.movie_questions;
-                break;
-            case "series":
-                //jsonResource = R.raw.series_questions;
-                break;
-            case "anime":
-                // jsonResource = R.raw.anime_questions;
-                break;
+        if (triviaMode != null){
+            switch (triviaMode) {
+                case "movies":
+                    jsonResource = R.raw.movie_questions;
+                    break;
+                case "series":
+                    //jsonResource = R.raw.series_questions;
+                    break;
+                case "anime":
+                    // jsonResource = R.raw.anime_questions;
+                    break;
+            }
         }
-
         List<Question> questions = TrivialParser.loadQuestions(context, jsonResource);
         game = new TrivialGame(questions);
     }
