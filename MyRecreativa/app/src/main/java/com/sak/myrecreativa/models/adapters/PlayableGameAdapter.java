@@ -11,11 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.models.GameName;
+import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialModeFragment;
 
 import java.util.List;
 
@@ -29,13 +31,13 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
     }
     @NonNull
     @Override
-    public PlayableGameAdapter.GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_game, parent, false);
         return new GameViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlayableGameAdapter.GameViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         GameName game =games.get(position);
         holder.bindGames(game);
     }
@@ -79,12 +81,25 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         if (game != null){
             tvGameName.setText(game.getName());
             tvMaxScore.setText(String.valueOf(game.getMaxScore()));
+            btPlay.setOnClickListener(listenner);
+            /**
             btPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Cambiar de fragment del content_main.xml",Toast.LENGTH_LONG).show();
+                   if (game.getName().equals("trivial")){
+                       /**
+                       TrivialModeFragment trivialModeFragment = new TrivialModeFragment();
+                       FragmentManager manager;
+                       manager.getParentFragmentManager()
+                               .beginTransaction()
+                               .replace(R.id.fcvMain, triviaFragment)
+                               .addToBackStack(null)
+                               .commit(); *
+
+
+                   }
                 }
-            });
+            }); */
         }
         }
 
