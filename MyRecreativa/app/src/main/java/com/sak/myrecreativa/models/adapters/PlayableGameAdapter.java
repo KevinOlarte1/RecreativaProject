@@ -2,6 +2,7 @@ package com.sak.myrecreativa.models.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,16 +57,18 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         private ImageView imgBackGround;
         private TextView tvGameName;
         private TextView tvMaxScore;
-        private Button btPlay;
+
         private ImageView imgFavorito;
 
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
             imgBackGround = itemView.findViewById(R.id.imgBackground);
             tvGameName = itemView.findViewById(R.id.tvGameName);
-            tvMaxScore = itemView.findViewById(R.id.btnPlay);
-            btPlay = itemView.findViewById(R.id.btnPlay);
+            tvMaxScore = itemView.findViewById(R.id.tvMaxScore);
+
             imgFavorito = itemView.findViewById(R.id.ivFavorite);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bindGames(GameName game){
@@ -81,31 +84,16 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         if (game != null){
             tvGameName.setText(game.getName());
             tvMaxScore.setText(String.valueOf(game.getMaxScore()));
-            btPlay.setOnClickListener(listenner);
-            /**
-            btPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   if (game.getName().equals("trivial")){
-                       /**
-                       TrivialModeFragment trivialModeFragment = new TrivialModeFragment();
-                       FragmentManager manager;
-                       manager.getParentFragmentManager()
-                               .beginTransaction()
-                               .replace(R.id.fcvMain, triviaFragment)
-                               .addToBackStack(null)
-                               .commit(); *
+            //btPlay.setOnClickListener(listenner);
 
-
-                   }
-                }
-            }); */
         }
         }
 
         @Override
         public void onClick(View v) {
-
+            if(listenner != null){
+                listenner.onClick(getAdapterPosition());
+            }
         }
     }
 }

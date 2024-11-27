@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -23,6 +24,7 @@ import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
+import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialModeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
         IOnClickListenner{
     private DrawerLayout drawer;
+    private List<GameName> gameNames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,19 +127,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public List<GameName> getGames() {
         //TODO:
-        List<GameName> games = new ArrayList<>();
-        games.add(new GameName("conectaCuatro"));
-        games.add(new GameName("Trivial"));
-        return games;
+        gameNames = new ArrayList<>();
+        gameNames.add(new GameName("conectaCuatro"));
+        gameNames.add(new GameName("Trivial"));
+        return gameNames;
     }
 
     @Override
     public void onClick(int position) {
         //TODO: PASAR TAMBIEN EL ARRAY POR PARAMETRO
+        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_LONG).show();
+        GameName game = gameNames.get(position);
+        Fragment f;
+        if (game.getName().equalsIgnoreCase("trivial")){
+            f = new TrivialModeFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fcvMain, f)
+                    .commit();
+            setTitle("Trivial");
+        }
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }
