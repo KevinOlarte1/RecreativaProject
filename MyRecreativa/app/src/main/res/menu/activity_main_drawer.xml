@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_favoritos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/favoritos"/>
+
+
+        <item
+            android:id="@+id/nav_allGame"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/allGame"/>
+
+        <item
+            android:id="@+id/nav_game_blocked"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/blocked"/>
+
+
+        <item
+            android:id="@+id/nav_misiones"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/misiones"/>
+
+    </group>
+
+    <item android:title="@string/social">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_ajustes"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="@string/ajustes"/>
+
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

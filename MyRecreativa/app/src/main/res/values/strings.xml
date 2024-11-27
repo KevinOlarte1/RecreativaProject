@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MyRecreativa</string>
+    <string name="nav_header_title">User</string>
+    <string name="nav_header_subtitle">user@gmail.com</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="misiones">Misiones</string>
+    <string name="social">Otras opciones</string>
+    <string name="blocked">Juegos bloqueados</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="favoritos">Juego Favoritos</string>
+    <string name="allGame">Juegos desbloqueados</string>
 </resources>
