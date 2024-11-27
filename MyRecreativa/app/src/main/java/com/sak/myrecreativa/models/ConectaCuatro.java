@@ -1,6 +1,8 @@
 package com.sak.myrecreativa.models;
 
-public class ConectaCuatro extends Game{
+import com.sak.myrecreativa.models.abstracts.Game;
+
+public class ConectaCuatro extends Game {
 
 
     public ConectaCuatro(String name) {

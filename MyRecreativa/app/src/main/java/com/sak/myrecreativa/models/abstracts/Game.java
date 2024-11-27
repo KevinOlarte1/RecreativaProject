@@ -1,4 +1,4 @@
-package com.sak.myrecreativa.models;
+package com.sak.myrecreativa.models.abstracts;
 
 import com.sak.myrecreativa.interfaces.IOnGamePlayListenner;
 

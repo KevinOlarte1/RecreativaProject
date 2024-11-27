@@ -2,7 +2,6 @@ package com.sak.myrecreativa.ui.fragments.menu;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
-import com.sak.myrecreativa.models.Game;
+import com.sak.myrecreativa.models.abstracts.Game;
 import com.sak.myrecreativa.models.adapters.PlayableGameAdapter;
 
 import java.util.List;

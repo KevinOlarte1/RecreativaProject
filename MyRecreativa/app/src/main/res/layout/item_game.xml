@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Imagen de fondo -->
+        <ImageView
+            android:id="@+id/imgBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/ajustes"
+            android:scaleType="centerCrop"
+            android:src="@drawable/side_nav_bar" />
+
+        <!-- Superposición para oscurecer la imagen -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80000000" />
+
+        <!-- Título del juego -->
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_background"
+            android:padding="4dp"
+            android:text="BUSCAMINAS"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Texto de puntuación máxima -->
+        <TextView
+            android:id="@+id/tvMaxScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvGameName"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:paddingTop="4dp"
+            android:text="Max score: 4"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Botón de Play -->
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:paddingHorizontal="16dp"
+            android:text="PLAY"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <!-- Corazón para favoritos -->
+        <ImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toStartOf="@id/btnPlay"
+            android:contentDescription="@string/favoritos"
+            android:src="@drawable/ic_menu_camera" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
