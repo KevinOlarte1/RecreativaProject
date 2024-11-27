@@ -126,11 +126,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //TODO:
         List<GameName> games = new ArrayList<>();
         games.add(new GameName("conectaCuatro"));
+        games.add(new GameName("Trivial"));
         return games;
     }
 
     @Override
     public void onClick(int position) {
         //TODO: PASAR TAMBIEN EL ARRAY POR PARAMETRO
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

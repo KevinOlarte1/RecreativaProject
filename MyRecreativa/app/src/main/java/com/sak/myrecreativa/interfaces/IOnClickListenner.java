@@ -1,5 +1,7 @@
 package com.sak.myrecreativa.interfaces;
 
-public interface IOnClickListenner {
+import android.view.View;
+
+public interface IOnClickListenner extends View.OnClickListener {
     void onClick (int position);
 }
