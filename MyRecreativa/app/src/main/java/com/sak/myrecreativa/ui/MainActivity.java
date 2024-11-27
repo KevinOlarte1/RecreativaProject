@@ -18,15 +18,13 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
-import com.sak.myrecreativa.models.ConectaCuatro;
-import com.sak.myrecreativa.models.abstracts.Game;
+import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
@@ -124,10 +122,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public List<Game> getGames() {
+    public List<GameName> getGames() {
         //TODO:
-        List<Game> games = new ArrayList<>();
-        games.add(new ConectaCuatro("conectaCuatro"));
+        List<GameName> games = new ArrayList<>();
+        games.add(new GameName("conectaCuatro"));
         return games;
     }
 

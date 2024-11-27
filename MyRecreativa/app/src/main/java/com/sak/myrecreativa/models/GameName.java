@@ -1,14 +1,12 @@
-package com.sak.myrecreativa.models.abstracts;
+package com.sak.myrecreativa.models;
 
-import com.sak.myrecreativa.interfaces.IOnGamePlayListenner;
-
-public abstract class Game implements IOnGamePlayListenner {
+public class GameName {
     private final String name;
     private long maxScore;
 
     private boolean blocked;
 
-    public Game(String name){
+    public GameName(String name){
         this.name = name;
         this.maxScore = 0;
         this.blocked = true;

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
-import com.sak.myrecreativa.models.abstracts.Game;
+import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.adapters.PlayableGameAdapter;
 
 import java.util.List;
@@ -20,10 +20,10 @@ import java.util.List;
 public class ListadoJuegosFragment extends Fragment {
 
     public interface IOnAttachListenner{
-        List<Game> getGames();
+        List<GameName> getGames();
     }
 
-    private List<Game> games;
+    private List<GameName> games;
     private IOnClickListenner clickListenner;
 
     public ListadoJuegosFragment(){super(R.layout.fragment_list_games);}

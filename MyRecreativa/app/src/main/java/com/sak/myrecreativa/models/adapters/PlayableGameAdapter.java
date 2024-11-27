@@ -15,16 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
-import com.sak.myrecreativa.models.abstracts.Game;
+import com.sak.myrecreativa.models.GameName;
 
 import java.util.List;
 
 public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapter.GameViewHolder> {
 
-    private List<Game> games;
+    private List<GameName> games;
     private IOnClickListenner listenner;
 
-    public PlayableGameAdapter(List<Game> games){
+    public PlayableGameAdapter(List<GameName> games){
         this.games = games;
     }
     @NonNull
@@ -36,7 +36,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
 
     @Override
     public void onBindViewHolder(@NonNull PlayableGameAdapter.GameViewHolder holder, int position) {
-        Game game =games.get(position);
+        GameName game =games.get(position);
         holder.bindGames(game);
     }
 
@@ -66,7 +66,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
             imgFavorito = itemView.findViewById(R.id.ivFavorite);
         }
 
-        public void bindGames(Game game){
+        public void bindGames(GameName game){
         try{
             Context context = itemView.getContext();
             Resources res =context.getResources();
