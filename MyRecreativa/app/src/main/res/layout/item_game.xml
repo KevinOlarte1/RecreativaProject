@@ -1,80 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_margin="8dp"
-    android:background="@drawable/rounded_background"
+    android:layout_height="120dp"
+    android:layout_margin="0dp"
     android:elevation="4dp"
     android:orientation="vertical">
 
-    <!-- Imagen de fondo con superposición -->
-    <FrameLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
-        <!-- Imagen de fondo -->
-        <ImageView
-            android:id="@+id/imgBackground"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/ajustes"
-            android:scaleType="centerCrop"
-            android:src="@drawable/side_nav_bar" />
+            android:layout_height="match_parent">
 
-        <!-- Superposición para oscurecer la imagen -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#80000000" />
-    </FrameLayout>
-
-    <!-- Contenedor horizontal para elementos principales -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
-
-        <!-- Contenedor vertical para texto -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!-- Título del juego -->
             <TextView
                 android:id="@+id/tvGameName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_background"
-                android:padding="4dp"
-                android:text="BUSCAMINAS"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="5dp"
+                android:background="#6A6A6A"
+                android:fontFamily="@font/bakbak_one"
+                android:gravity="center"
+                android:paddingRight="15dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
+        </TableRow>
 
-            <!-- Texto de puntuación máxima -->
+        <TableRow
+            android:layout_width="239dp"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/favButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_menu_camera" />
+
+                <Button
+                    android:id="@+id/playButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/tvMaxScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="Max score: 4"
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:text="Max Score: 5"
+                android:textColor="#FF0000"
+                android:textSize="20sp" />
+        </TableRow>
 
-
-        <!-- Corazón para favoritos -->
-        <ImageView
-            android:id="@+id/ivFavorite"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@string/favoritos"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_menu_camera" />
-    </LinearLayout>
-</LinearLayout>
+    </TableLayout>
+</FrameLayout>

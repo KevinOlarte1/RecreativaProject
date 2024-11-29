@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public List<GameName> getGames() {
         //TODO:
         gameNames = new ArrayList<>();
-        gameNames.add(new GameName("conectaCuatro"));
+        gameNames.add(new GameName("Buscaminas"));
         gameNames.add(new GameName("Trivial"));
         return gameNames;
     }

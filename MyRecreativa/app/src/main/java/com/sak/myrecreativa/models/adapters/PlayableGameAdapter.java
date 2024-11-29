@@ -2,23 +2,21 @@ package com.sak.myrecreativa.models.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.models.GameName;
-import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialModeFragment;
 
 import java.util.List;
 
@@ -54,19 +52,18 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
 
     public class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private ImageView imgBackGround;
         private TextView tvGameName;
         private TextView tvMaxScore;
+        private FrameLayout mainLayout;
 
-        private ImageView imgFavorito;
+        private ImageButton favButton;
 
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgBackGround = itemView.findViewById(R.id.imgBackground);
             tvGameName = itemView.findViewById(R.id.tvGameName);
             tvMaxScore = itemView.findViewById(R.id.tvMaxScore);
-
-            imgFavorito = itemView.findViewById(R.id.ivFavorite);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
+            favButton = itemView.findViewById(R.id.favButton);
 
             itemView.setOnClickListener(this);
         }
@@ -75,10 +72,15 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         try{
             Context context = itemView.getContext();
             Resources res =context.getResources();
-            int resId = res.getIdentifier(game.getName(), "drawable", context.getPackageName());
-            imgBackGround.setImageResource(resId);
+            int resId = res.getIdentifier(game.getName().toLowerCase(), "drawable", context.getPackageName());
+
+            if (resId != 0) {
+                mainLayout.setBackgroundResource(resId);
+            } else {
+                mainLayout.setBackgroundResource(R.drawable.side_nav_bar);
+            }
         }catch (Exception e){
-            imgBackGround.setImageResource(R.drawable.side_nav_bar);
+            mainLayout.setBackgroundResource(R.drawable.side_nav_bar);
         }
 
         if (game != null){

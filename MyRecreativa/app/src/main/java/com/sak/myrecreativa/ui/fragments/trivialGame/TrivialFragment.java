@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,9 @@ public class TrivialFragment extends Fragment {
     private Button option2;
     private Button option3;
     private String triviaMode;
+    private TextView time;
+    private ProgressBar timeBar;
+    private Thread timerThread;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,8 +43,8 @@ public class TrivialFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageView countDownBar = view.findViewById(R.id.countdownBar);
-        countDownBar.setBackgroundColor(Color.BLUE);
+        time = view.findViewById(R.id.time);
+        timeBar = view.findViewById(R.id.timerBar);
 
         tvQuestion = view.findViewById(R.id.question);
         option1 = view.findViewById(R.id.option1);
@@ -89,6 +93,8 @@ public class TrivialFragment extends Fragment {
             option3.setText(question.getOptions().get(2));
             option3.setBackgroundColor(Color.DKGRAY);
 
+            timer(15);
+
             option1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,18 +117,49 @@ public class TrivialFragment extends Fragment {
     }
     private void checkAnswer(String answer, Button button){
         boolean isCorrect = game.checkAnswer(answer);
-        if (isCorrect) {
+        if (isCorrect && !time.getText().equals("0")) {
             button.setBackgroundColor(Color.GREEN);
             Toast.makeText(getContext(), "¡Correcto!", Toast.LENGTH_SHORT).show();
             loadNextQuestion();
-        } else {
-            button.setBackgroundColor(Color.RED);
+        } else{
             endGame();
         }
+    }
+    public void timer(int segundos){
+        if (timerThread != null && timerThread.isAlive()) {
+            timerThread.interrupt();
+        }
+
+        timeBar.setProgress(0);
+        timerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = segundos; i >= 0; i--){
+                    try {
+                        Thread.sleep(1000);
+                        timeBar.incrementProgressBy(100 / segundos);
+                        int finalI = i;
+                        time.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                time.setText(String.valueOf(finalI));
+                                if (time.getText().equals("0"))
+                                    endGame();
+                            }
+                        });
+
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                }
+            }
+        });
+        timerThread.start();
     }
 
     private void endGame() {
         Toast.makeText(getContext(), "Juego terminado. Puntuación: " + game.getScore(), Toast.LENGTH_LONG).show();
+        timerThread.interrupt();
     }
 }
 
