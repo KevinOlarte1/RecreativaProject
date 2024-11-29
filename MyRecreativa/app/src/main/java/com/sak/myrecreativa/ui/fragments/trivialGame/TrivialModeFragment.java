@@ -1,18 +1,22 @@
 package com.sak.myrecreativa.ui.fragments.trivialGame;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
+import com.sak.myrecreativa.interfaces.OnGameModeSelectedListener;
+import com.sak.myrecreativa.models.GameName;
 
 public class TrivialModeFragment extends Fragment {
     private TextView title;
@@ -21,6 +25,8 @@ public class TrivialModeFragment extends Fragment {
     private Button mode3;
     private Button play;
     private String selectedMode;
+    private OnGameModeSelectedListener listener;
+    private GameName name;
 
     @Nullable
     @Override
@@ -41,6 +47,7 @@ public class TrivialModeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 selectedMode = "movies";
+                Toast.makeText(getContext(), "Movies", Toast.LENGTH_LONG).show();
             }
         });
         mode2.setOnClickListener(new View.OnClickListener() {
@@ -58,18 +65,16 @@ public class TrivialModeFragment extends Fragment {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TrivialFragment triviaFragment = new TrivialFragment();
-                Bundle args = new Bundle();
-                args.putString("TRIVIA_MODE", selectedMode);
-                triviaFragment.setArguments(args);
-
-                getParentFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fcvMain, triviaFragment)
-                        .addToBackStack(null)
-                        .commit();
+                listener.onGameModeSelected(selectedMode, name);
             }
         });
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        name = new GameName("trivial");
+        listener = (OnGameModeSelectedListener) context;
     }
 }
 

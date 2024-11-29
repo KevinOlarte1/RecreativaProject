@@ -1,6 +1,8 @@
 package com.sak.myrecreativa.models.games.trivialGame;
 
 
+import android.widget.ProgressBar;
+
 import java.util.List;
 
 import java.util.ArrayList;
