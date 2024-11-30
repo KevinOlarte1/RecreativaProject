@@ -53,7 +53,12 @@ public class TrivialGame {
     }
 
     public boolean hasQuestions() {
-        return !unansweredQuestions.isEmpty();
+        if (unansweredQuestions.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
+
 }
 
