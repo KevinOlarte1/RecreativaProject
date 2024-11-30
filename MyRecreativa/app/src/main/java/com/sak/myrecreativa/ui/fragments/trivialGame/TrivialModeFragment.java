@@ -39,8 +39,11 @@ public class TrivialModeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.game_title);
         mode1 = view.findViewById(R.id.mode1);
+        mode1.setText("Movies");
         mode2 = view.findViewById(R.id.mode2);
+        mode2.setText("Series");
         mode3 = view.findViewById(R.id.mode3);
+        mode3.setText("Anime");
         play = view.findViewById(R.id.play);
 
         mode1.setOnClickListener(new View.OnClickListener() {

@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
+import com.sak.myrecreativa.interfaces.OnGameEndListener;
+import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.parsers.TrivialParser;
 import com.sak.myrecreativa.models.games.trivialGame.Question;
 import com.sak.myrecreativa.models.games.trivialGame.TrivialGame;
@@ -33,6 +35,8 @@ public class TrivialFragment extends Fragment {
     private TextView time;
     private ProgressBar timeBar;
     private Thread timerThread;
+    private OnGameEndListener gameEndListener;
+    private GameName name;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,6 +84,8 @@ public class TrivialFragment extends Fragment {
         }
         List<Question> questions = TrivialParser.loadQuestions(context, jsonResource);
         game = new TrivialGame(questions);
+        gameEndListener = (OnGameEndListener)  context;
+        name = new GameName("trivial");
     }
 
     private void loadNextQuestion(){
@@ -158,8 +164,10 @@ public class TrivialFragment extends Fragment {
     }
 
     private void endGame() {
-        Toast.makeText(getContext(), "Juego terminado. Puntuación: " + game.getScore(), Toast.LENGTH_LONG).show();
+        boolean isWin;
+        isWin = !game.hasQuestions();
         timerThread.interrupt();
+        gameEndListener.onGameEnd(game.getScore(), name, isWin);
     }
 }
 

@@ -19,12 +19,14 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
+import com.sak.myrecreativa.interfaces.OnGameEndListener;
 import com.sak.myrecreativa.interfaces.OnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
+import com.sak.myrecreativa.ui.fragments.ScoreFragment;
 import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialFragment;
 import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialModeFragment;
 
@@ -32,9 +34,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
-        IOnClickListenner, OnGameModeSelectedListener {
+        IOnClickListenner, OnGameModeSelectedListener, OnGameEndListener {
     private DrawerLayout drawer;
     private List<GameName> gameNames;
+    private GameName currentGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,20 +137,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Trivial"));
         return gameNames;
     }
+    private GameName getCurrentGame(){
+        return currentGame;
+    }
 
     @Override
     public void onClick(int position) {
         //TODO: PASAR TAMBIEN EL ARRAY POR PARAMETRO
-        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_LONG).show();
-        GameName game = gameNames.get(position);
-        Fragment f;
-        if (game.getName().equalsIgnoreCase("trivial")){
-            f = new TrivialModeFragment();
+        Fragment f = null;
+        if (position == -1) {
+            if (currentGame.getName().equalsIgnoreCase("trivial")) {
+                f = new TrivialModeFragment();
+                setTitle("Trivial");
+            }
+        } else if(position == -2){
+            f = new ListadoJuegosFragment();
+            setTitle("MyRecreativa");
+
+        }else{
+            Toast.makeText(this, String.valueOf(position), Toast.LENGTH_LONG).show();
+            currentGame = gameNames.get(position);
+            if (currentGame.getName().equalsIgnoreCase("trivial")) {
+                f = new TrivialModeFragment();
+                setTitle("Trivial");
+            }
+        }
+
+        if(f != null){
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fcvMain, f)
                     .commit();
-            setTitle("Trivial");
         }
     }
 
@@ -167,4 +187,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             setTitle("Trivial");
         }
     }
+
+    @Override
+    public void onGameEnd(int score, GameName name, boolean isWin) {
+        Fragment f;
+        f = new ScoreFragment();
+        Bundle arg = new Bundle();
+        arg.putString("SCORE", String.valueOf(score));
+        arg.putString("GAME_NAME", name.getName());
+        arg.putBoolean("IS_WIN", isWin);
+        f.setArguments(arg);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fcvMain, f)
+                .addToBackStack(null)
+                .commit();
+    }
+
 }
