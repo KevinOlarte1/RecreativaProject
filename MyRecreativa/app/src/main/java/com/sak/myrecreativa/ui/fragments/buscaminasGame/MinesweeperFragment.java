@@ -1,8 +1,10 @@
 package com.sak.myrecreativa.ui.fragments.buscaminasGame;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,18 +20,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
-import com.sak.myrecreativa.models.games.buscaminas.Game;
+import com.sak.myrecreativa.interfaces.IOnGameEndListener;
+import com.sak.myrecreativa.models.GameName;
+import com.sak.myrecreativa.models.games.minesweeper.MinesweeperGame;
 
-public class BuscaminasFragment extends Fragment {
-    private Game game;
+public class MinesweeperFragment extends Fragment {
+    private MinesweeperGame minesweeperGame;
     private TableLayout tableLayout;
     private ImageButton selectionButton;
     private ImageButton selectBombButton;
     private boolean isMarkMode = false; // Modo inicial: seleccionar casilla
+    private String mode;
+    private GameName gameName;
+    private int boardSize;
+    private int numberOfBombs;
+    private IOnGameEndListener gameEndListener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.buscaminas_fragment, container, false);
+        return inflater.inflate(R.layout.minesweeper_fragment, container, false);
     }
 
     @Override
@@ -57,9 +66,39 @@ public class BuscaminasFragment extends Fragment {
             }
         });
 
-        game = new Game(10, 10);
+        minesweeperGame = new MinesweeperGame(boardSize, numberOfBombs);
         tableLayout = view.findViewById(R.id.table);
-        createGameBoard(tableLayout, 10);
+        createGameBoard(tableLayout, boardSize);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Bundle args = getArguments();
+
+        if (args != null && args.containsKey("MODE")) {
+            mode = args.getString("MODE");
+        }
+        if (args != null && args.containsKey("GAME")){
+            gameName = args.getParcelable("GAME");
+        }
+        if (mode != null){
+            switch (mode.toLowerCase()){
+                case "easy":
+                    boardSize = 6;
+                    numberOfBombs = 6;
+                    break;
+                case "medium":
+                    boardSize = 8;
+                    numberOfBombs = 8;
+                    break;
+                case "hard":
+                    boardSize = 10;
+                    numberOfBombs = 10;
+                    break;
+            }
+        }
+        gameEndListener = (IOnGameEndListener)  context;
     }
 
     private void createGameBoard(TableLayout tableLayout, int boardSize) {
@@ -107,43 +146,53 @@ public class BuscaminasFragment extends Fragment {
     }
 
     private void handleCellClick(int i, int j, ImageButton button) {
+        if (minesweeperGame.isRevealed(i, j)) {
+            return; // No permitir interacción adicional
+        }
+
         if (isMarkMode) {
-            // Marcar/desmarcar casilla
-            game.toggleMark(i, j);
-            if (game.isMarked(i, j)) {
+            // Marcar/desmarcar casilla con bandera
+            minesweeperGame.toggleMark(i, j);
+            if (minesweeperGame.isMarked(i, j)) {
                 button.setImageResource(R.drawable.flag);
                 scaleImage(button);
             } else {
                 button.setImageResource(0);
+                button.setBackgroundColor(Color.GREEN);
             }
         } else {
             // Revelar casilla
-            if (game.isBomb(i, j)) {
+            if (minesweeperGame.isBomb(i, j)) {
                 button.setImageResource(R.drawable.bomb);
                 scaleImage(button);
-                Toast.makeText(getContext(), "¡Game Over! Tocaste una bomba.", Toast.LENGTH_SHORT).show();
                 revealAllBombs();
+
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(this::endGame, 4000);
+
+
             } else {
                 revealArea(i, j);
-                if (game.isWin()) {
-                    Toast.makeText(getContext(), "¡Felicidades! Ganaste el juego.", Toast.LENGTH_SHORT).show();
+                if (minesweeperGame.isWin()) {
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.postDelayed(this::endGame, 4000);
                 }
             }
         }
     }
 
     private void revealArea(int x, int y) {
-        if (!game.isValidCell(x, y) || game.isRevealed(x, y) || game.isMarked(x, y)) {
+        if (!minesweeperGame.isValidCell(x, y) || minesweeperGame.isRevealed(x, y) || minesweeperGame.isMarked(x, y)) {
             return;
         }
 
-        game.revealCell(x, y);
+        minesweeperGame.revealCell(x, y);
 
         TableRow row = (TableRow) tableLayout.getChildAt(x);
         ImageButton button = (ImageButton) row.getChildAt(y);
 
 
-        int bombs = game.getAdjacentBombs(x, y);
+        int bombs = minesweeperGame.getAdjacentBombs(x, y);
         if (bombs > 0) {
             button.setImageResource(getNumberDrawable(bombs));
             scaleImage(button);
@@ -151,16 +200,16 @@ public class BuscaminasFragment extends Fragment {
             button.setBackgroundColor(Color.LTGRAY);
 
             // Llama recursivamente para revelar las celdas vecinas
-            for (int[] neighbor : game.getNeighbors(x, y)) {
+            for (int[] neighbor : minesweeperGame.getNeighbors(x, y)) {
                 revealArea(neighbor[0], neighbor[1]);
             }
         }
     }
 
     private void revealAllBombs() {
-        for (int i = 0; i < game.getBoardSize(); i++) {
-            for (int j = 0; j < game.getBoardSize(); j++) {
-                if (game.isBomb(i, j)) {
+        for (int i = 0; i < minesweeperGame.getBoardSize(); i++) {
+            for (int j = 0; j < minesweeperGame.getBoardSize(); j++) {
+                if (minesweeperGame.isBomb(i, j)) {
                     TableRow row = (TableRow) tableLayout.getChildAt(i);
                     ImageButton button = (ImageButton) row.getChildAt(j);
                     button.setImageResource(R.drawable.bomb);
@@ -188,5 +237,8 @@ public class BuscaminasFragment extends Fragment {
             case 8: return R.drawable.ic_number_8;
             default: return 0;
         }
+    }
+    private void endGame() {
+        gameEndListener.onGameEnd(0, gameName, minesweeperGame.isWin());
     }
 }

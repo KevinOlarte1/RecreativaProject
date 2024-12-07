@@ -1,17 +1,17 @@
-package com.sak.myrecreativa.models.games.buscaminas;
+package com.sak.myrecreativa.models.games.minesweeper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Game {
+public class MinesweeperGame {
     private final int[][] board;
     private final boolean[][] revealed;
     private final boolean[][] marked;
     private final int boardSize;
     private final int bombCount;
 
-    public Game(int boardSize, int bombCount) {
+    public MinesweeperGame(int boardSize, int bombCount) {
         this.boardSize = boardSize;
         this.bombCount = bombCount;
         this.board = new int[boardSize][boardSize];
