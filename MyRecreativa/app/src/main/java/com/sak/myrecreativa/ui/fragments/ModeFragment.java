@@ -1,5 +1,4 @@
-package com.sak.myrecreativa.ui.fragments.trivialGame;
-
+package com.sak.myrecreativa.ui.fragments;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +16,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
-import com.sak.myrecreativa.interfaces.OnGameModeSelectedListener;
+import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 
-public class TrivialModeFragment extends Fragment {
+public class ModeFragment extends Fragment {
     private ConstraintLayout layout;
     private TextView title;
     private Button mode1;
@@ -30,8 +27,9 @@ public class TrivialModeFragment extends Fragment {
     private Button mode3;
     private Button play;
     private String selectedMode;
-    private OnGameModeSelectedListener listener;
+    private IOnGameModeSelectedListener listener;
     private GameName gameName;
+    private String[] modes;
 
     @Nullable
     @Override
@@ -46,13 +44,13 @@ public class TrivialModeFragment extends Fragment {
         title = view.findViewById(R.id.game_title);
         title.setText(gameName.getName());
         mode1 = view.findViewById(R.id.mode1);
-        mode1.setText("Movies");
+        mode1.setText(modes[0]);
         mode1.setBackgroundColor(Color.BLUE);
         mode2 = view.findViewById(R.id.mode2);
-        mode2.setText("Series");
+        mode2.setText(modes[1]);
         mode2.setBackgroundColor(Color.BLUE);
         mode3 = view.findViewById(R.id.mode3);
-        mode3.setText("Anime");
+        mode3.setText(modes[2]);
         mode3.setBackgroundColor(Color.BLUE);
         play = view.findViewById(R.id.play);
 
@@ -66,21 +64,21 @@ public class TrivialModeFragment extends Fragment {
         mode1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedMode = "movies";
+                selectedMode = modes[0];
                 selectMode(selectedMode);
             }
         });
         mode2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedMode = "series";
+                selectedMode = modes[1];
                 selectMode(selectedMode);
             }
         });
         mode3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedMode = "anime";
+                selectedMode = modes[2];
                 selectMode(selectedMode);
             }
         });
@@ -99,21 +97,23 @@ public class TrivialModeFragment extends Fragment {
         if (args != null && args.containsKey("GAME")) {
             gameName = args.getParcelable("GAME");
         }
-        listener = (OnGameModeSelectedListener) context;
+        if (args != null && args.containsKey("MODES")) {
+            modes = args.getStringArray("MODES");
+        }
+        listener = (IOnGameModeSelectedListener) context;
     }
     private void selectMode(String mode){
         mode1.setBackgroundColor(Color.BLUE);
         mode2.setBackgroundColor(Color.BLUE);
         mode3.setBackgroundColor(Color.BLUE);
-        if (mode.equalsIgnoreCase("movies")){
+        if (mode.equalsIgnoreCase(modes[0])){
             mode1.setBackgroundColor(Color.GREEN);
         }
-        if (mode.equalsIgnoreCase("series")){
+        if (mode.equalsIgnoreCase(modes[1])){
             mode2.setBackgroundColor(Color.GREEN);
         }
-        if (mode.equalsIgnoreCase("anime")){
+        if (mode.equalsIgnoreCase(modes[2])){
             mode3.setBackgroundColor(Color.GREEN);
         }
     }
 }
-

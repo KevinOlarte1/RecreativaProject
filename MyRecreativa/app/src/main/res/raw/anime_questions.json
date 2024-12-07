@@ -1,0 +1,487 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "code": "NARUTO",
+      "question": "¿Cómo se llama el mejor amigo y rival de Naruto?",
+      "options": ["Sasuke", "Kakashi", "Gaara"],
+      "correct_answer": "Sasuke"
+    },
+    {
+      "id": 2,
+      "code": "NARUTO",
+      "question": "¿Qué animal representa a Naruto?",
+      "options": ["Zorro", "Serpiente", "Dragón"],
+      "correct_answer": "Zorro"
+    },
+    {
+      "id": 3,
+      "code": "NARUTO",
+      "question": "¿Qué técnica usa Naruto para crear clones?",
+      "options": ["Kage Bunshin", "Chidori", "Amaterasu"],
+      "correct_answer": "Kage Bunshin"
+    },
+    {
+      "id": 4,
+      "code": "ONE_PIECE",
+      "question": "¿Qué quiere encontrar Luffy?",
+      "options": ["El One Piece", "Un barco", "La espada legendaria"],
+      "correct_answer": "El One Piece"
+    },
+    {
+      "id": 5,
+      "code": "ONE_PIECE",
+      "question": "¿Cómo se llama el barco de los Sombrero de Paja?",
+      "options": ["Going Merry", "Sunny", "Red Force"],
+      "correct_answer": "Going Merry"
+    },
+    {
+      "id": 6,
+      "code": "ONE_PIECE",
+      "question": "¿Quién es el espadachín del equipo de Luffy?",
+      "options": ["Zoro", "Sanji", "Usopp"],
+      "correct_answer": "Zoro"
+    },
+    {
+      "id": 7,
+      "code": "DRAGON_BALL",
+      "question": "¿Cuántas Esferas del Dragón existen?",
+      "options": ["7", "6", "9"],
+      "correct_answer": "7"
+    },
+    {
+      "id": 8,
+      "code": "DRAGON_BALL",
+      "question": "¿Qué transformación alcanza Goku durante su pelea con Freezer?",
+      "options": ["Super Saiyajin", "Ultra Instinto", "Kaioken"],
+      "correct_answer": "Super Saiyajin"
+    },
+    {
+      "id": 9,
+      "code": "DRAGON_BALL",
+      "question": "¿Cómo se llama el maestro que entrena a Goku?",
+      "options": ["Roshi", "Kami", "Kaiosama"],
+      "correct_answer": "Roshi"
+    },
+    {
+      "id": 10,
+      "code": "ATTACK_ON_TITAN",
+      "question": "¿Qué protege el muro de los titanes?",
+      "options": ["La humanidad", "El castillo", "Los prisioneros"],
+      "correct_answer": "La humanidad"
+    },
+    {
+      "id": 11,
+      "code": "ATTACK_ON_TITAN",
+      "question": "¿Cómo se llama el protagonista de Attack on Titan?",
+      "options": ["Eren", "Armin", "Levi"],
+      "correct_answer": "Eren"
+    },
+    {
+      "id": 12,
+      "code": "ATTACK_ON_TITAN",
+      "question": "¿Qué tipo de titán puede transformarse Eren?",
+      "options": ["Titán de Ataque", "Titán Colosal", "Titán Bestia"],
+      "correct_answer": "Titán de Ataque"
+    },
+    {
+      "id": 13,
+      "code": "DEMON_SLAYER",
+      "question": "¿Qué intenta salvar Tanjiro?",
+      "options": ["A su hermana", "A su madre", "A su pueblo"],
+      "correct_answer": "A su hermana"
+    },
+    {
+      "id": 14,
+      "code": "DEMON_SLAYER",
+      "question": "¿Cómo se llama la espada que usan los cazadores de demonios?",
+      "options": ["Nichirin", "Katana", "Espada solar"],
+      "correct_answer": "Nichirin"
+    },
+    {
+      "id": 15,
+      "code": "DEMON_SLAYER",
+      "question": "¿Qué habilidad especial tiene Nezuko?",
+      "options": ["Regeneración", "Control del fuego", "Teletransportación"],
+      "correct_answer": "Regeneración"
+    },
+    {
+      "id": 16,
+      "code": "MY_HERO_ACADEMIA",
+      "question": "¿Cómo se llama el poder especial que tienen los héroes?",
+      "options": ["Quirks", "Habilidades", "Peculiaridades"],
+      "correct_answer": "Quirks"
+    },
+    {
+      "id": 17,
+      "code": "MY_HERO_ACADEMIA",
+      "question": "¿Qué héroe es conocido como el Símbolo de la Paz?",
+      "options": ["All Might", "Endeavor", "Aizawa"],
+      "correct_answer": "All Might"
+    },
+    {
+      "id": 18,
+      "code": "MY_HERO_ACADEMIA",
+      "question": "¿Cómo se llama el protagonista?",
+      "options": ["Izuku Midoriya", "Katsuki Bakugo", "Shoto Todoroki"],
+      "correct_answer": "Izuku Midoriya"
+    },
+    {
+      "id": 19,
+      "code": "FULLMETAL_ALCHEMIST",
+      "question": "¿Cuál es la Ley de Intercambio Equivalente?",
+      "options": ["No se puede obtener algo sin dar algo a cambio", "Se pueden crear cosas de la nada", "Todo es posible con alquimia"],
+      "correct_answer": "No se puede obtener algo sin dar algo a cambio"
+    },
+    {
+      "id": 20,
+      "code": "FULLMETAL_ALCHEMIST",
+      "question": "¿Cómo se llaman los hermanos protagonistas?",
+      "options": ["Edward y Alphonse", "Roy y Maes", "Winry y Ling"],
+      "correct_answer": "Edward y Alphonse"
+    },
+    {
+      "id": 21,
+      "code": "FULLMETAL_ALCHEMIST",
+      "question": "¿Qué buscan los hermanos Elric?",
+      "options": ["La Piedra Filosofal", "El Elixir de Vida", "El Grial"],
+      "correct_answer": "La Piedra Filosofal"
+    },
+    {
+      "id": 22,
+      "code": "DEATH_NOTE",
+      "question": "¿Cómo se llama el shinigami que acompaña a Light?",
+      "options": ["Ryuk", "Rem", "Gelus"],
+      "correct_answer": "Ryuk"
+    },
+    {
+      "id": 23,
+      "code": "DEATH_NOTE",
+      "question": "¿Qué ocurre cuando se escribe un nombre en la Death Note?",
+      "options": ["La persona muere", "La persona desaparece", "La persona pierde sus recuerdos"],
+      "correct_answer": "La persona muere"
+    },
+    {
+      "id": 24,
+      "code": "DEATH_NOTE",
+      "question": "¿Cómo se llama el detective que persigue a Kira?",
+      "options": ["L", "Near", "Mello"],
+      "correct_answer": "L"
+    },
+    {
+      "id": 25,
+      "code": "TOKYO_GHOUL",
+      "question": "¿Qué se convierte Kaneki después de ser atacado?",
+      "options": ["Ghoul", "Vampiro", "Cazador"],
+      "correct_answer": "Ghoul"
+    },
+    {
+      "id": 26,
+      "code": "TOKYO_GHOUL",
+      "question": "¿Qué comen los ghouls?",
+      "options": ["Carne humana", "Almas", "Sangre"],
+      "correct_answer": "Carne humana"
+    },
+    {
+      "id": 27,
+      "code": "TOKYO_GHOUL",
+      "question": "¿Cómo se llama el café donde trabaja Kaneki?",
+      "options": ["Anteiku", "Café Gato", "Cafe Rouge"],
+      "correct_answer": "Anteiku"
+    },
+    {
+      "id": 28,
+      "code": "BLEACH",
+      "question": "¿Cómo se llama el protagonista de Bleach?",
+      "options": ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai"],
+      "correct_answer": "Ichigo Kurosaki"
+    },
+    {
+      "id": 29,
+      "code": "BLEACH",
+      "question": "¿Qué arma usa Ichigo?",
+      "options": ["Zanpakutō", "Espada sagrada", "Lanza divina"],
+      "correct_answer": "Zanpakutō"
+    },
+    {
+      "id": 30,
+      "code": "BLEACH",
+      "question": "¿Qué organización protege el mundo espiritual?",
+      "options": ["Sociedad de Almas", "Clan Kuchiki", "Guardias Espirituales"],
+      "correct_answer": "Sociedad de Almas"
+    },
+    {
+      "id": 31,
+      "code": "SAILOR_MOON",
+      "question": "¿Cómo se llama la identidad real de Sailor Moon?",
+      "options": ["Usagi Tsukino", "Ami Mizuno", "Rei Hino"],
+      "correct_answer": "Usagi Tsukino"
+    },
+    {
+      "id": 32,
+      "code": "SAILOR_MOON",
+      "question": "¿Qué objeto permite a Usagi transformarse en Sailor Moon?",
+      "options": ["Broche lunar", "Cetro mágico", "Colgante estelar"],
+      "correct_answer": "Broche lunar"
+    },
+    {
+      "id": 33,
+      "code": "SAILOR_MOON",
+      "question": "¿Qué planeta representa Sailor Mercury?",
+      "options": ["Mercurio", "Venus", "Saturno"],
+      "correct_answer": "Mercurio"
+    },
+    {
+      "id": 34,
+      "code": "HUNTER_X_HUNTER",
+      "question": "¿Qué busca Gon Freecss?",
+      "options": ["A su padre", "Una reliquia", "El tesoro de los cazadores"],
+      "correct_answer": "A su padre"
+    },
+    {
+      "id": 35,
+      "code": "HUNTER_X_HUNTER",
+      "question": "¿Qué examen deben pasar para ser cazadores?",
+      "options": ["El Examen de Cazadores", "El Torneo de Cazadores", "El Prueba del Nen"],
+      "correct_answer": "El Examen de Cazadores"
+    },
+    {
+      "id": 36,
+      "code": "HUNTER_X_HUNTER",
+      "question": "¿Qué poder usa Gon?",
+      "options": ["Nen", "Haki", "Ki"],
+      "correct_answer": "Nen"
+    },
+    {
+      "id": 37,
+      "code": "ONE_PUNCH_MAN",
+      "question": "¿Cuál es el nombre del protagonista que derrota a sus enemigos de un solo golpe?",
+      "options": ["Saitama", "Genos", "King"],
+      "correct_answer": "Saitama"
+    },
+    {
+      "id": 38,
+      "code": "ONE_PUNCH_MAN",
+      "question": "¿Qué ocupa Saitama como entrenamiento?",
+      "options": ["100 flexiones, sentadillas y 10 km diarios", "Combate contra monstruos", "Entrenamiento en gravedad elevada"],
+      "correct_answer": "100 flexiones, sentadillas y 10 km diarios"
+    },
+    {
+      "id": 39,
+      "code": "ONE_PUNCH_MAN",
+      "question": "¿Quién es el discípulo cyborg de Saitama?",
+      "options": ["Genos", "Metal Bat", "Mumen Rider"],
+      "correct_answer": "Genos"
+    },
+    {
+      "id": 40,
+      "code": "BLACK_CLOVER",
+      "question": "¿Cuál es el sueño de Asta?",
+      "options": ["Convertirse en el Rey Mago", "Ser el mago más rico", "Encontrar su familia"],
+      "correct_answer": "Convertirse en el Rey Mago"
+    },
+    {
+      "id": 41,
+      "code": "BLACK_CLOVER",
+      "question": "¿Qué tipo de magia usa Asta?",
+      "options": ["Antimagia", "Fuego", "Viento"],
+      "correct_answer": "Antimagia"
+    },
+    {
+      "id": 42,
+      "code": "BLACK_CLOVER",
+      "question": "¿Quién es el amigo y rival de Asta?",
+      "options": ["Yuno", "Noelle", "Yami"],
+      "correct_answer": "Yuno"
+    },
+    {
+      "id": 43,
+      "code": "INUYASHA",
+      "question": "¿Qué busca Inuyasha junto a Kagome?",
+      "options": ["La Perla de Shikon", "La Espada Tessaiga", "El Árbol Sagrado"],
+      "correct_answer": "La Perla de Shikon"
+    },
+    {
+      "id": 44,
+      "code": "INUYASHA",
+      "question": "¿Qué tipo de criatura es Inuyasha?",
+      "options": ["Medio demonio", "Ángel", "Humano"],
+      "correct_answer": "Medio demonio"
+    },
+    {
+      "id": 45,
+      "code": "INUYASHA",
+      "question": "¿Quién es el medio hermano de Inuyasha?",
+      "options": ["Sesshomaru", "Naraku", "Shippo"],
+      "correct_answer": "Sesshomaru"
+    },
+    {
+      "id": 46,
+      "code": "CLANNAD",
+      "question": "¿Cómo se llama la protagonista femenina de Clannad?",
+      "options": ["Nagisa", "Kotomi", "Kyou"],
+      "correct_answer": "Nagisa"
+    },
+    {
+      "id": 47,
+      "code": "CLANNAD",
+      "question": "¿Qué actividad quiere revivir Nagisa en la escuela?",
+      "options": ["El club de teatro", "El club de música", "El equipo de béisbol"],
+      "correct_answer": "El club de teatro"
+    },
+    {
+      "id": 48,
+      "code": "CLANNAD",
+      "question": "¿Cuál es el tema principal de Clannad?",
+      "options": ["Familia", "Superación personal", "Amistad"],
+      "correct_answer": "Familia"
+    },
+    {
+      "id": 49,
+      "code": "NORAGAMI",
+      "question": "¿Qué tipo de dios es Yato?",
+      "options": ["Un dios menor", "El dios del sol", "Un dios de la guerra"],
+      "correct_answer": "Un dios menor"
+    },
+    {
+      "id": 50,
+      "code": "NORAGAMI",
+      "question": "¿Qué desea Yato más que nada?",
+      "options": ["Tener un templo propio", "Ser inmortal", "Dominar a otros dioses"],
+      "correct_answer": "Tener un templo propio"
+    },
+    {
+      "id": 51,
+      "code": "NORAGAMI",
+      "question": "¿Cómo se llama el arma de Yato?",
+      "options": ["Yukine", "Hiyori", "Kazuma"],
+      "correct_answer": "Yukine"
+    },
+    {
+      "id": 52,
+      "code": "STEINS_GATE",
+      "question": "¿Qué invento accidentalmente Rintaro Okabe?",
+      "options": ["Una máquina del tiempo", "Un acelerador de partículas", "Un dispositivo de invisibilidad"],
+      "correct_answer": "Una máquina del tiempo"
+    },
+    {
+      "id": 53,
+      "code": "STEINS_GATE",
+      "question": "¿Cómo se llama el laboratorio donde trabaja Okabe?",
+      "options": ["Future Gadget Lab", "Steins Gate Lab", "Akihabara Tech Lab"],
+      "correct_answer": "Future Gadget Lab"
+    },
+    {
+      "id": 54,
+      "code": "STEINS_GATE",
+      "question": "¿Qué frase icónica dice Okabe frecuentemente?",
+      "options": ["El Psy Congroo", "Hasta el infinito y más allá", "La verdad está ahí fuera"],
+      "correct_answer": "El Psy Congroo"
+    },
+    {
+      "id": 55,
+      "code": "DAN_DA_DAN",
+      "question": "¿Qué busca Momo Ayase junto a Okarun?",
+      "options": ["Criaturas sobrenaturales", "Aliens", "Demonios"],
+      "correct_answer": "Criaturas sobrenaturales"
+    },
+    {
+      "id": 56,
+      "code": "DAN_DA_DAN",
+      "question": "¿Qué poder obtiene Okarun después de su encuentro con los aliens?",
+      "options": ["Velocidad sobrehumana", "Fuerza descomunal", "Visión nocturna"],
+      "correct_answer": "Velocidad sobrehumana"
+    },
+    {
+      "id": 57,
+      "code": "DAN_DA_DAN",
+      "question": "¿Qué objeto sobrenatural es clave en la historia?",
+      "options": ["La perla dorada", "El colgante mágico", "El huevo del espíritu"],
+      "correct_answer": "El huevo del espíritu"
+    },
+    {
+      "id": 58,
+      "code": "COWBOY_BEBOP",
+      "question": "¿Cómo se llama el protagonista principal de Cowboy Bebop?",
+      "options": ["Spike Spiegel", "Jet Black", "Faye Valentine"],
+      "correct_answer": "Spike Spiegel"
+    },
+    {
+      "id": 59,
+      "code": "COWBOY_BEBOP",
+      "question": "¿Qué es la Bebop?",
+      "options": ["Una nave espacial", "Una organización", "Un arma"],
+      "correct_answer": "Una nave espacial"
+    },
+    {
+      "id": 60,
+      "code": "COWBOY_BEBOP",
+      "question": "¿Qué género musical influye en la serie?",
+      "options": ["Jazz", "Rock", "Blues"],
+      "correct_answer": "Jazz"
+    },
+    {
+      "id": 61,
+      "code": "ERASED",
+      "question": "¿Qué habilidad tiene Satoru Fujinuma?",
+      "options": ["Retroceder en el tiempo", "Leer mentes", "Ser invisible"],
+      "correct_answer": "Retroceder en el tiempo"
+    },
+    {
+      "id": 62,
+      "code": "ERASED",
+      "question": "¿Qué evento quiere evitar Satoru en el pasado?",
+      "options": ["Un asesinato", "Un incendio", "Un robo"],
+      "correct_answer": "Un asesinato"
+    },
+    {
+      "id": 63,
+      "code": "ERASED",
+      "question": "¿Qué relación tiene Satoru con la niña que intenta salvar?",
+      "options": ["Es su compañera de clase", "Es su hermana", "Es su vecina"],
+      "correct_answer": "Es su compañera de clase"
+    },
+    {
+      "id": 64,
+      "code": "PARASYTE",
+      "question": "¿Cómo se llama el parásito que vive en la mano de Shinichi?",
+      "options": ["Migi", "Kuro", "Hana"],
+      "correct_answer": "Migi"
+    },
+    {
+      "id": 65,
+      "code": "PARASYTE",
+      "question": "¿Qué buscan los parásitos en los humanos?",
+      "options": ["Controlar sus cuerpos", "Alimentarse de su energía", "Protegerlos"],
+      "correct_answer": "Controlar sus cuerpos"
+    },
+    {
+      "id": 66,
+      "code": "PARASYTE",
+      "question": "¿Qué habilidad especial obtiene Shinichi tras su unión con Migi?",
+      "options": ["Fuerza y reflejos sobrehumanos", "Invisibilidad", "Telepatía"],
+      "correct_answer": "Fuerza y reflejos sobrehumanos"
+    },
+    {
+      "id": 67,
+      "code": "AKIRA",
+      "question": "¿En qué ciudad se desarrolla Akira?",
+      "options": ["Neo-Tokyo", "Tokyo-3", "Osaka"],
+      "correct_answer": "Neo-Tokyo"
+    },
+    {
+      "id": 68,
+      "code": "AKIRA",
+      "question": "¿Qué tipo de poderes tiene Tetsuo?",
+      "options": ["Telequinesis", "Invisibilidad", "Control del tiempo"],
+      "correct_answer": "Telequinesis"
+    },
+    {
+      "id": 69,
+      "code": "AKIRA",
+      "question": "¿Qué evento inicia la trama de Akira?",
+      "options": ["Un accidente en motocicleta", "Una invasión alienígena", "La explosión de un reactor"],
+      "correct_answer": "Un accidente en motocicleta"
+    }
+  ]
+}
