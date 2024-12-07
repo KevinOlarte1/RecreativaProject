@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/questionImg"
         android:layout_width="232dp"
         android:layout_height="223dp"
         android:layout_marginTop="30dp"
@@ -22,9 +22,9 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/questionImg"
+        app:layout_constraintStart_toStartOf="@+id/questionImg"
+        app:layout_constraintTop_toBottomOf="@+id/questionImg" />
 
     <Button
         android:id="@+id/option1"

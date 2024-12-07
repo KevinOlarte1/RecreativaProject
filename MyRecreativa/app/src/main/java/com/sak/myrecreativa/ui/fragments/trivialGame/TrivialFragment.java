@@ -1,6 +1,7 @@
 package com.sak.myrecreativa.ui.fragments.trivialGame;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class TrivialFragment extends Fragment {
     private TrivialGame game;
+    private ImageView img;
     private TextView tvQuestion;
     private Button option1;
     private Button option2;
@@ -36,7 +38,7 @@ public class TrivialFragment extends Fragment {
     private ProgressBar timeBar;
     private Thread timerThread;
     private OnGameEndListener gameEndListener;
-    private GameName name;
+    private GameName gameName;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class TrivialFragment extends Fragment {
 
         time = view.findViewById(R.id.time);
         timeBar = view.findViewById(R.id.timerBar);
-
+        img = view.findViewById(R.id.questionImg);
         tvQuestion = view.findViewById(R.id.question);
         option1 = view.findViewById(R.id.option1);
         option2 = view.findViewById(R.id.option2);
@@ -66,6 +68,9 @@ public class TrivialFragment extends Fragment {
 
         if (args != null && args.containsKey("TRIVIAL_MODE")) {
             triviaMode = args.getString("TRIVIAL_MODE");
+        }
+        if (args != null && args.containsKey("GAME")){
+            gameName = args.getParcelable("GAME");
         }
 
         int jsonResource = -1;
@@ -85,7 +90,6 @@ public class TrivialFragment extends Fragment {
         List<Question> questions = TrivialParser.loadQuestions(context, jsonResource);
         game = new TrivialGame(questions);
         gameEndListener = (OnGameEndListener)  context;
-        name = new GameName("trivial");
     }
 
     private void loadNextQuestion(){
@@ -100,6 +104,12 @@ public class TrivialFragment extends Fragment {
             option3.setBackgroundColor(Color.DKGRAY);
 
             timer(15);
+            Context context = getContext();
+            if(context != null){
+                Resources res =context.getResources();
+                int resId = res.getIdentifier(gameName.getName().toLowerCase() + "_background", "drawable", context.getPackageName());
+                img.setBackgroundResource(resId);
+            }
 
             option1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -167,7 +177,8 @@ public class TrivialFragment extends Fragment {
         boolean isWin;
         isWin = !game.hasQuestions();
         timerThread.interrupt();
-        gameEndListener.onGameEnd(game.getScore(), name, isWin);
+        gameName.setMaxScore(game.getScore());
+        gameEndListener.onGameEnd(game.getScore(), gameName, isWin);
     }
 }
 
