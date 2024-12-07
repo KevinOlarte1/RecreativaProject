@@ -18,10 +18,11 @@ import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
 import com.sak.myrecreativa.interfaces.IOnClickListenner;
+import com.sak.myrecreativa.models.GameName;
 
 public class ScoreFragment extends Fragment {
     private String score;
-    private String name;
+    private GameName name;
     private ImageView img;
     private TextView tvGameName;
     private TextView tvGameStatus;
@@ -49,7 +50,7 @@ public class ScoreFragment extends Fragment {
         playAgainButton = view.findViewById(R.id.playAgainButton);
         exitButton = view.findViewById(R.id.exitButton);
 
-        tvGameName.setText(name);
+        tvGameName.setText(name.getName());
         if (isWin){
             tvGameStatus.setText("YOU WIN");
         }else{
@@ -61,7 +62,7 @@ public class ScoreFragment extends Fragment {
 
         Context context = view.getContext();
         Resources res =context.getResources();
-        int resId = res.getIdentifier(name + "_background", "drawable", context.getPackageName());
+        int resId = res.getIdentifier(name.getName().toLowerCase() + "_background", "drawable", context.getPackageName());
         layout.setBackgroundResource(resId);
 
         playAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -87,10 +88,10 @@ public class ScoreFragment extends Fragment {
         Bundle args = getArguments();
         if(args != null){
             if (args.containsKey("SCORE")) {
-                score = args.getString("SCORE");
+                score = String.valueOf(args.getInt("SCORE"));
             }
-            if (args.containsKey("GAME_NAME")){
-                name = args.getString("GAME_NAME");
+            if (args.containsKey("GAME")){
+                name = args.getParcelable("GAME");
             }
             if (args.containsKey("IS_WIN")){
                 isWin = args.getBoolean("IS_WIN");

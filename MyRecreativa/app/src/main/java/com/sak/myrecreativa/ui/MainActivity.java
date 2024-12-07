@@ -22,6 +22,7 @@ import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.interfaces.OnGameEndListener;
 import com.sak.myrecreativa.interfaces.OnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
+import com.sak.myrecreativa.ui.fragments.buscaminasGame.BuscaminasFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
@@ -146,8 +147,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //TODO: PASAR TAMBIEN EL ARRAY POR PARAMETRO
         Fragment f = null;
         if (position == -1) {
-            if (currentGame.getName().equalsIgnoreCase("trivial")) {
+            if (currentGame.getName().equalsIgnoreCase("Trivial")) {
+                Bundle args = new Bundle();
+                args.putParcelable("GAME", currentGame);
                 f = new TrivialModeFragment();
+                f.setArguments(args);
                 setTitle("Trivial");
             }
         } else if(position == -2){
@@ -157,8 +161,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else{
             Toast.makeText(this, String.valueOf(position), Toast.LENGTH_LONG).show();
             currentGame = gameNames.get(position);
-            if (currentGame.getName().equalsIgnoreCase("trivial")) {
+            if (currentGame.getName().equalsIgnoreCase("Buscaminas")){
+                f = new BuscaminasFragment();
+                setTitle("Buscaminas");
+            }
+            if (currentGame.getName().equalsIgnoreCase("Trivial")) {
+                Bundle args = new Bundle();
+                args.putParcelable("GAME", currentGame);
                 f = new TrivialModeFragment();
+                f.setArguments(args);
                 setTitle("Trivial");
             }
         }
@@ -175,10 +186,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onGameModeSelected(String mode, GameName name) {
         Fragment f;
-        if (name.getName().equals("trivial")){
+        if (name.getName().equalsIgnoreCase("Trivial")){
             f = new TrivialFragment();
             Bundle arg = new Bundle();
             arg.putString("TRIVIAL_MODE", mode);
+            arg.putParcelable("GAME", name);
             f.setArguments(arg);
             getSupportFragmentManager()
                     .beginTransaction()
@@ -193,8 +205,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment f;
         f = new ScoreFragment();
         Bundle arg = new Bundle();
-        arg.putString("SCORE", String.valueOf(score));
-        arg.putString("GAME_NAME", name.getName());
+        arg.putInt("SCORE", score);
+        arg.putParcelable("GAME", name);
         arg.putBoolean("IS_WIN", isWin);
         f.setArguments(arg);
         getSupportFragmentManager()

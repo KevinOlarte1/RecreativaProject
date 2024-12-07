@@ -1,6 +1,11 @@
 package com.sak.myrecreativa.models;
 
-public class GameName {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class GameName implements Parcelable {
     private final String name;
     private long maxScore;
 
@@ -30,5 +35,15 @@ public class GameName {
 
     public boolean isBlocked() {
         return blocked;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+
     }
 }
