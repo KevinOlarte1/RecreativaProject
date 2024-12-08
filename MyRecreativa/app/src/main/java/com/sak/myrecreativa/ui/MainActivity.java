@@ -24,6 +24,7 @@ import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
+import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames = new ArrayList<>();
         gameNames.add(new GameName("Minesweeper"));
         gameNames.add(new GameName("Trivial"));
+        gameNames.add(new GameName("CardMemory"));
         return gameNames;
     }
     private GameName getCurrentGame(){
@@ -169,6 +171,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Minesweeper")) {
                 f = modeFragment(currentGame);
             }
+            if (currentGame.getName().equalsIgnoreCase("CardMemory")) {
+                f = modeFragment(currentGame);
+            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -179,6 +184,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Trivial")) {
+                f = modeFragment(currentGame);
+            }
+            if (currentGame.getName().equalsIgnoreCase("CardMemory")){
                 f = modeFragment(currentGame);
             }
         }
@@ -209,6 +217,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f = new MinesweeperFragment();
             f.setArguments(arg);
             setTitle("Minesweeper");
+        }
+        if (gameName.getName().equalsIgnoreCase("CardMemory")){
+            f = new MemoryGameFragment();
+            f.setArguments(arg);
+            setTitle("Card Memory");
         }
         if (f != null){
             getSupportFragmentManager()
