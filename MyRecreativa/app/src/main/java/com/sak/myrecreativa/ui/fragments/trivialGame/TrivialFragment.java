@@ -18,12 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sak.myrecreativa.R;
-import com.sak.myrecreativa.interfaces.OnGameEndListener;
+import com.sak.myrecreativa.interfaces.IOnGameEndListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.parsers.TrivialParser;
 import com.sak.myrecreativa.models.games.trivialGame.Question;
 import com.sak.myrecreativa.models.games.trivialGame.TrivialGame;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TrivialFragment extends Fragment {
@@ -37,7 +39,7 @@ public class TrivialFragment extends Fragment {
     private TextView time;
     private ProgressBar timeBar;
     private Thread timerThread;
-    private OnGameEndListener gameEndListener;
+    private IOnGameEndListener gameEndListener;
     private GameName gameName;
 
     @Override
@@ -66,8 +68,8 @@ public class TrivialFragment extends Fragment {
 
         Bundle args = getArguments();
 
-        if (args != null && args.containsKey("TRIVIAL_MODE")) {
-            triviaMode = args.getString("TRIVIAL_MODE");
+        if (args != null && args.containsKey("MODE")) {
+            triviaMode = args.getString("MODE");
         }
         if (args != null && args.containsKey("GAME")){
             gameName = args.getParcelable("GAME");
@@ -75,32 +77,36 @@ public class TrivialFragment extends Fragment {
 
         int jsonResource = -1;
         if (triviaMode != null){
-            switch (triviaMode) {
+            switch (triviaMode.toLowerCase()) {
                 case "movies":
                     jsonResource = R.raw.movie_questions;
                     break;
                 case "series":
-                    //jsonResource = R.raw.series_questions;
+                    jsonResource = R.raw.series_questions;
                     break;
                 case "anime":
-                    // jsonResource = R.raw.anime_questions;
+                    jsonResource = R.raw.anime_questions;
                     break;
             }
         }
         List<Question> questions = TrivialParser.loadQuestions(context, jsonResource);
         game = new TrivialGame(questions);
-        gameEndListener = (OnGameEndListener)  context;
+        gameEndListener = (IOnGameEndListener)  context;
     }
 
     private void loadNextQuestion(){
         if(game.hasQuestions()){
             Question question = game.getNextQuestion();
             tvQuestion.setText(question.getQuestion());
-            option1.setText(question.getOptions().get(0));
+
+            List<String> shuffledOptions = new ArrayList<>(question.getOptions());
+            Collections.shuffle(shuffledOptions);
+
+            option1.setText(shuffledOptions.get(0));
             option1.setBackgroundColor(Color.DKGRAY);
-            option2.setText(question.getOptions().get(1));
+            option2.setText(shuffledOptions.get(1));
             option2.setBackgroundColor(Color.DKGRAY);
-            option3.setText(question.getOptions().get(2));
+            option3.setText(shuffledOptions.get(2));
             option3.setBackgroundColor(Color.DKGRAY);
 
             timer(15);
@@ -114,19 +120,19 @@ public class TrivialFragment extends Fragment {
             option1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    checkAnswer(question.getOptions().get(0), option1);
+                    checkAnswer(option1.getText().toString(), option1);
                 }
             });
             option2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    checkAnswer(question.getOptions().get(1), option2);
+                    checkAnswer(option2.getText().toString(), option2);
                 }
             });
             option3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    checkAnswer(question.getOptions().get(2), option3);
+                    checkAnswer(option3.getText().toString(), option3);
                 }
             });
         }
