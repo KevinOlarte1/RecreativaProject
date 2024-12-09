@@ -1,6 +1,7 @@
 package com.sak.myrecreativa.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        createGames();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -132,9 +134,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * Obtener un listado de los juegos que tenemos.
+     * @return listado de GameName
+    */
     @Override
     public List<GameName> getGames() {
-        //TODO:
+        return gameNames;
+    }
+    public List<GameName> createGames() {
+        //! indica el orden de los juegos.
         gameNames = new ArrayList<>();
         gameNames.add(new GameName("Minesweeper"));
         gameNames.add(new GameName("Trivial"));
@@ -142,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Sudoku"));
         return gameNames;
     }
+
+
     private GameName getCurrentGame(){
         return currentGame;
     }

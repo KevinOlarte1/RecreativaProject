@@ -65,5 +65,13 @@ public class GameName implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "GameName{" +
+                "name='" + name + '\'' +
+                ", maxScore=" + maxScore +
+                '}';
+    }
 }
 
