@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,8 +24,13 @@ import com.sak.myrecreativa.models.games.memoryGame.MemoryGame;
 public class MemoryGameFragment extends Fragment {
 
     private MemoryGame gameLogic;
+    private GridLayout gridLayout;
     private Button[] buttons;
+    private TextView timer;
+    private int finalTime;
     private int numberOfPairs;
+    private boolean isProcessing = false;
+    private Thread timerThread;
     private String mode;
     private Handler handler = new Handler();
     private IOnGameEndListener gameEndListener;
@@ -38,18 +44,31 @@ public class MemoryGameFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        GridLayout gridLayout = view.findViewById(R.id.gridLayout_memoryGame);
+        gridLayout = view.findViewById(R.id.gridLayout_memoryGame);
+        timer = view.findViewById(R.id.timer_memory_game);
+        finalTime = 0;
         int totalCards = numberOfPairs * 2;
         buttons = new Button[totalCards];
-        gridLayout.setColumnCount((int) Math.sqrt(totalCards));
+
+        int columnCount = (int) Math.sqrt(totalCards);
+        gridLayout.setColumnCount(columnCount);
 
         for (int i = 0; i < totalCards; i++) {
             Button button = new Button(getContext());
             button.setId(i);
             button.setOnClickListener(this::onCardClicked);
-            buttons[i] = button;
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.width = 0;
+            params.height = 0;
+            params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            button.setLayoutParams(params);
+
             gridLayout.addView(button);
+            buttons[i] = button;
         }
+        timer();
     }
 
     @Override
@@ -67,6 +86,7 @@ public class MemoryGameFragment extends Fragment {
         switch (mode.toLowerCase()) {
             case "easy":
                 numberOfPairs = 4;
+                break;
             case "medium":
                 numberOfPairs = 8;
                 break;
@@ -76,12 +96,12 @@ public class MemoryGameFragment extends Fragment {
         }
 
         gameLogic = new MemoryGame(numberOfPairs);
-
         gameEndListener = (IOnGameEndListener)  context;
-
     }
 
     private void onCardClicked(View view) {
+        if (isProcessing) return;
+
         int position = view.getId();
 
         if (gameLogic.isMatched(position)) return;
@@ -90,14 +110,21 @@ public class MemoryGameFragment extends Fragment {
         int cardValue = gameLogic.getCardAt(position);
         button.setText(String.valueOf(cardValue));
 
-        if (gameLogic.selectCard(position)) {
-            // Si las cartas coinciden
+        boolean isPair = gameLogic.selectCard(position);
+
+        if (gameLogic.getFirstSelected() != -1 && gameLogic.getSecondSelected() == -1) {
+            // Primera carta seleccionada, permitir continuar
+            return;
+        }
+
+        if (isPair) {
             Toast.makeText(getContext(), "¡Par encontrado!", Toast.LENGTH_SHORT).show();
+            gameLogic.resetSelection();
             if (gameLogic.isGameOver()) {
                 endGame();
             }
         } else {
-            // Si no coinciden, espera un momento y oculta las cartas
+            isProcessing = true;
             handler.postDelayed(() -> {
                 gameLogic.resetSelection();
                 for (Button btn : buttons) {
@@ -105,10 +132,45 @@ public class MemoryGameFragment extends Fragment {
                         btn.setText("");
                     }
                 }
+                isProcessing = false; // Permitir interacción nuevamente
             }, 1000);
         }
     }
+    private void timer(){
+        if (timerThread != null && timerThread.isAlive()) {
+            timerThread.interrupt();
+        }
+
+        timerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 1000000; i++){
+                    try {
+                        Thread.sleep(1000);
+                        int finalI = i;
+                        timer.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                timer.setText(String.valueOf(finalI));
+                                if (timer.getText().toString().equals("1000000"))
+                                    endGame();
+                            }
+                        });
+
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                }
+            }
+        });
+        timerThread.start();
+
+    }
+
+
     private void endGame(){
-        gameEndListener.onGameEnd(0, gameName, gameLogic.isGameOver());
+        finalTime = Integer.valueOf(timer.getText().toString());
+        timerThread.interrupt();
+        gameEndListener.onGameEnd(gameLogic.calculateScore(mode, finalTime), gameName, gameLogic.isGameOver());
     }
 }

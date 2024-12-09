@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames = new ArrayList<>();
         gameNames.add(new GameName("Minesweeper"));
         gameNames.add(new GameName("Trivial"));
-        gameNames.add(new GameName("CardMemory"));
+        gameNames.add(new GameName("Memory"));
         gameNames.add(new GameName("Sudoku"));
         return gameNames;
     }
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Minesweeper")) {
                 f = modeFragment(currentGame);
             }
-            if (currentGame.getName().equalsIgnoreCase("CardMemory")) {
+            if (currentGame.getName().equalsIgnoreCase("Memory")) {
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Sudoku")) {
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Trivial")) {
                 f = modeFragment(currentGame);
             }
-            if (currentGame.getName().equalsIgnoreCase("CardMemory")){
+            if (currentGame.getName().equalsIgnoreCase("Memory")){
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Sudoku")){
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f.setArguments(arg);
             setTitle("Minesweeper");
         }
-        if (gameName.getName().equalsIgnoreCase("CardMemory")){
+        if (gameName.getName().equalsIgnoreCase("Memory")){
             f = new MemoryGameFragment();
             f.setArguments(arg);
             setTitle("Card Memory");
