@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -58,14 +59,17 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
 
         private ImageButton favButton;
 
+        private Button playButton;
+
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
             tvGameName = itemView.findViewById(R.id.tvGameName);
             tvMaxScore = itemView.findViewById(R.id.tvMaxScore);
             mainLayout = itemView.findViewById(R.id.mainLayout);
             favButton = itemView.findViewById(R.id.favButton);
-
-            itemView.setOnClickListener(this);
+            playButton = itemView.findViewById(R.id.playButton);
+            playButton.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
         }
 
         public void bindGames(GameName game){
