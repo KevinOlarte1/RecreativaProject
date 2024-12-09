@@ -9,6 +9,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -35,6 +36,7 @@ public class MinesweeperFragment extends Fragment {
     private int boardSize;
     private int numberOfBombs;
     private IOnGameEndListener gameEndListener;
+    private Handler handler = new Handler();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class MinesweeperFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         selectionButton = view.findViewById(R.id.selectButton);
-        selectionButton.setImageResource(R.drawable.flag);
+        selectionButton.setImageResource(R.drawable.shovel);
         selectBombButton = view.findViewById(R.id.selectBombButton);
         selectBombButton.setImageResource(R.drawable.flag);
         scaleImage(selectBombButton);
@@ -167,15 +169,15 @@ public class MinesweeperFragment extends Fragment {
                 scaleImage(button);
                 revealAllBombs();
 
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(this::endGame, 4000);
-
-
+                handler.postDelayed(() -> {
+                    endGame();
+                }, 4000);
             } else {
                 revealArea(i, j);
                 if (minesweeperGame.isWin()) {
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.postDelayed(this::endGame, 4000);
+                    handler.postDelayed(() -> {
+                        endGame();
+                    }, 4000);
                 }
             }
         }
