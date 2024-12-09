@@ -30,6 +30,7 @@ import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
 import com.sak.myrecreativa.ui.fragments.ScoreFragment;
+import com.sak.myrecreativa.ui.fragments.sudoku.SudokuGameFragment;
 import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialFragment;
 
 import java.util.ArrayList;
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Minesweeper"));
         gameNames.add(new GameName("Trivial"));
         gameNames.add(new GameName("CardMemory"));
+        gameNames.add(new GameName("Sudoku"));
         return gameNames;
     }
     private GameName getCurrentGame(){
@@ -174,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("CardMemory")) {
                 f = modeFragment(currentGame);
             }
+            if (currentGame.getName().equalsIgnoreCase("Sudoku")) {
+                f = modeFragment(currentGame);
+            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -187,6 +192,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("CardMemory")){
+                f = modeFragment(currentGame);
+            }
+            if (currentGame.getName().equalsIgnoreCase("Sudoku")){
                 f = modeFragment(currentGame);
             }
         }
@@ -222,6 +230,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f = new MemoryGameFragment();
             f.setArguments(arg);
             setTitle("Card Memory");
+        }
+        if (gameName.getName().equalsIgnoreCase("Sudoku")){
+            f = new SudokuGameFragment(); // cambiar el fragment
+            f.setArguments(arg);
+            setTitle("Sudoku");
         }
         if (f != null){
             getSupportFragmentManager()
