@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.fragments.battleship.BattleshipFragment">
+
+    <!-- Título del juego -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Battleship Game"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Indicador del turno -->
+
+    <!-- Tablero del jugador -->
+
+    <!-- Tablero de la CPU -->
+
+    <TableLayout
+        android:id="@+id/playerBoard"
+        android:layout_width="275dp"
+        android:layout_height="245dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/border"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/tvCPUBoard"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayerBoard" />
+
+    <TextView
+        android:id="@+id/tvPlayerBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player's Board"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTurnIndicator" />
+
+    <TextView
+        android:id="@+id/tvTurnIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Player's Turn"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvCPUBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Enemy's Board"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playerBoard" />
+
+    <TableLayout
+        android:id="@+id/cpuBoard"
+        android:layout_width="275dp"
+        android:layout_height="245dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/border"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/fireButton"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCPUBoard" />
+
+    <!-- Botón para disparar -->
+    <Button
+        android:id="@+id/fireButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fire"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cpuBoard" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
