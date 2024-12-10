@@ -61,6 +61,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         private ImageButton favButton;
 
         private Button playButton;
+        private GameName gameName;
 
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +92,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
 
 
         if (game != null){
+            this.gameName = game;
             tvGameName.setText(game.getName());
             tvMaxScore.setText(String.valueOf(game.getMaxScore()));
             if(game.isFavorite())
@@ -118,7 +120,8 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
         @Override
         public void onClick(View v) {
             if(listenner != null){
-                listenner.onClick(getAdapterPosition());
+                Log.i(gameName.getName(), gameName.getName());
+                listenner.onClick(getAdapterPosition(),gameName);
             }
         }
     }
