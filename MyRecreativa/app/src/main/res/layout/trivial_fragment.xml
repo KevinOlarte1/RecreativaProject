@@ -33,7 +33,7 @@
         android:id="@+id/option1"
         android:layout_width="356dp"
         android:layout_height="57dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bakbak_one"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="@+id/question"

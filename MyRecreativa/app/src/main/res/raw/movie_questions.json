@@ -2,28 +2,28 @@
   "questions": [
     {
       "id": 1,
-      "code": "TOY_STORY",
+      "code": "TOY_STORY_1",
       "question": "¿Cuál es el nombre del vaquero en Toy Story?",
       "options": ["Buzz Lightyear", "Woody", "Jessie"],
       "correct_answer": "Woody"
     },
     {
       "id": 2,
-      "code": "TOY_STORY",
+      "code": "TOY_STORY_2",
       "question": "¿Qué juguete es el principal rival de Woody en la primera película?",
       "options": ["Buzz Lightyear", "Slinky", "Sr. Cara de Papa"],
       "correct_answer": "Buzz Lightyear"
     },
     {
       "id": 3,
-      "code": "TOY_STORY",
+      "code": "TOY_STORY_3",
       "question": "¿Quién canta la canción 'Yo soy tu amigo fiel'?",
       "options": ["Randy Newman", "Elton John", "Phil Collins"],
       "correct_answer": "Randy Newman"
     },
     {
       "id": 4,
-      "code": "FORREST_GUMP",
+      "code": "FORREST_GUMP_1",
       "question": "¿Cuál es el famoso lema de Forrest Gump sobre la vida?",
       "options": [
         "La vida es como un rompecabezas",
@@ -34,28 +34,28 @@
     },
     {
       "id": 5,
-      "code": "FORREST_GUMP",
+      "code": "FORREST_GUMP_2",
       "question": "¿Qué deporte practica Forrest y se vuelve un experto?",
       "options": ["Tenis de mesa", "Golf", "Fútbol americano"],
       "correct_answer": "Tenis de mesa"
     },
     {
       "id": 6,
-      "code": "FORREST_GUMP",
+      "code": "FORREST_GUMP_3",
       "question": "¿Quién es el amor de la vida de Forrest?",
       "options": ["Sally", "Jenny", "Mary"],
       "correct_answer": "Jenny"
     },
     {
       "id": 7,
-      "code": "THE_DARK_KNIGHT",
+      "code": "THE_DARK_KNIGHT_1",
       "question": "¿Quién interpreta al Joker en The Dark Knight?",
       "options": ["Heath Ledger", "Joaquin Phoenix", "Jack Nicholson"],
       "correct_answer": "Heath Ledger"
     },
     {
       "id": 8,
-      "code": "THE_DARK_KNIGHT",
+      "code": "THE_DARK_KNIGHT_2",
       "question": "¿Cuál es el lema del Joker en la película?",
       "options": [
         "¿Por qué tan serio?",
@@ -66,154 +66,154 @@
     },
     {
       "id": 9,
-      "code": "THE_DARK_KNIGHT",
+      "code": "THE_DARK_KNIGHT_3",
       "question": "¿Qué ciudad protege Batman?",
       "options": ["Gotham", "Metropolis", "Central City"],
       "correct_answer": "Gotham"
     },
     {
       "id": 10,
-      "code": "INCEPTION",
+      "code": "INCEPTION_1",
       "question": "¿Qué objeto usa Cobb para distinguir entre sueños y realidad?",
       "options": ["Un dado", "Un trompo", "Una peonza"],
       "correct_answer": "Un trompo"
     },
     {
       "id": 11,
-      "code": "INCEPTION",
+      "code": "INCEPTION_2",
       "question": "¿Quién dirigió la película Inception?",
       "options": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino"],
       "correct_answer": "Christopher Nolan"
     },
     {
       "id": 12,
-      "code": "INCEPTION",
+      "code": "INCEPTION_3",
       "question": "¿Cómo se llama el personaje interpretado por Leonardo DiCaprio?",
       "options": ["Cobb", "Arthur", "Eames"],
       "correct_answer": "Cobb"
     },
     {
       "id": 13,
-      "code": "THE_LION_KING",
+      "code": "THE_LION_KING_1",
       "question": "¿Cómo se llama el padre de Simba?",
       "options": ["Scar", "Mufasa", "Rafiki"],
       "correct_answer": "Mufasa"
     },
     {
       "id": 14,
-      "code": "THE_LION_KING",
+      "code": "THE_LION_KING_2",
       "question": "¿Qué significan las palabras 'Hakuna Matata'?",
       "options": ["No te preocupes", "Vive la vida", "Sin problemas"],
       "correct_answer": "No te preocupes"
     },
     {
       "id": 15,
-      "code": "THE_LION_KING",
+      "code": "THE_LION_KING_3",
       "question": "¿Quién canta la canción 'El ciclo sin fin' en la película?",
       "options": ["Elton John", "Hans Zimmer", "Rafiki"],
       "correct_answer": "Elton John"
     },
     {
       "id": 16,
-      "code": "AVATAR",
+      "code": "AVATAR_1",
       "question": "¿Cómo se llaman los habitantes de Pandora?",
       "options": ["Na'vi", "Ewoks", "Klingons"],
       "correct_answer": "Na'vi"
     },
     {
       "id": 17,
-      "code": "AVATAR",
+      "code": "AVATAR_2",
       "question": "¿Quién dirigió la película Avatar?",
       "options": ["James Cameron", "George Lucas", "Ridley Scott"],
       "correct_answer": "James Cameron"
     },
     {
       "id": 18,
-      "code": "AVATAR",
+      "code": "AVATAR_3",
       "question": "¿Cómo se llama el mineral que buscan los humanos en Pandora?",
       "options": ["Vibranium", "Unobtainium", "Adamantium"],
       "correct_answer": "Unobtainium"
     },
     {
       "id": 19,
-      "code": "TITANIC",
+      "code": "TITANIC_1",
       "question": "¿Cómo se llama el personaje de Leonardo DiCaprio?",
       "options": ["Jack Dawson", "Cal Hockley", "Jake Sully"],
       "correct_answer": "Jack Dawson"
     },
     {
       "id": 20,
-      "code": "TITANIC",
+      "code": "TITANIC_2",
       "question": "¿Qué objeto usa Rose para recordar a Jack?",
       "options": ["Un collar", "Un retrato", "Un anillo"],
       "correct_answer": "Un retrato"
     },
     {
       "id": 21,
-      "code": "TITANIC",
+      "code": "TITANIC_3",
       "question": "¿Cómo se llama el barco que aparece en Titanic?",
       "options": ["Lusitania", "Titanic", "Olympic"],
       "correct_answer": "Titanic"
     },
     {
       "id": 22,
-      "code": "STAR_WARS",
+      "code": "STAR_WARS_1",
       "question": "¿Quién es el padre de Luke Skywalker?",
       "options": ["Obi-Wan Kenobi", "Anakin Skywalker", "Yoda"],
       "correct_answer": "Anakin Skywalker"
     },
     {
       "id": 23,
-      "code": "STAR_WARS",
+      "code": "STAR_WARS_2",
       "question": "¿Cómo se llama la princesa que ayuda a los rebeldes?",
       "options": ["Leia", "Padmé", "Ahsoka"],
       "correct_answer": "Leia"
     },
     {
       "id": 24,
-      "code": "STAR_WARS",
+      "code": "STAR_WARS_3",
       "question": "¿Cuál es el nombre del cazarrecompensas que captura a Han Solo?",
       "options": ["Boba Fett", "Jango Fett", "Dengar"],
       "correct_answer": "Boba Fett"
     },
     {
       "id": 25,
-      "code": "HARRY_POTTER",
+      "code": "HARRY_POTTER_1",
       "question": "¿Cómo se llama la escuela de magia a la que asiste Harry?",
       "options": ["Durmstrang", "Beauxbatons", "Hogwarts"],
       "correct_answer": "Hogwarts"
     },
     {
       "id": 26,
-      "code": "HARRY_POTTER",
+      "code": "HARRY_POTTER_2",
       "question": "¿Qué objeto escoge a los magos para su casa en Hogwarts?",
       "options": ["La Varita", "El Sombrero Seleccionador", "El Mapa del Merodeador"],
       "correct_answer": "El Sombrero Seleccionador"
     },
     {
       "id": 27,
-      "code": "HARRY_POTTER",
+      "code": "HARRY_POTTER_3",
       "question": "¿Cómo se llama el hechizo para desarmar a alguien?",
       "options": ["Expelliarmus", "Alohomora", "Wingardium Leviosa"],
       "correct_answer": "Expelliarmus"
     },
     {
       "id": 28,
-      "code": "THE_MATRIX",
+      "code": "MATRIX_1",
       "question": "¿Qué pastilla toma Neo para descubrir la verdad?",
       "options": ["La roja", "La azul", "La verde"],
       "correct_answer": "La roja"
     },
     {
       "id": 29,
-      "code": "THE_MATRIX",
+      "code": "MATRIX_2",
       "question": "¿Cómo se llama el mentor de Neo?",
       "options": ["Morpheus", "Trinity", "Cypher"],
       "correct_answer": "Morpheus"
     },
     {
       "id": 30,
-      "code": "THE_MATRIX",
+      "code": "MATRIX_3",
       "question": "¿Qué es la Matrix?",
       "options": [
         "Un mundo virtual controlado por máquinas",
@@ -224,42 +224,42 @@
     },
     {
       "id": 31,
-      "code": "GLADIATOR",
+      "code": "GLADIATOR_1",
       "question": "¿Cómo se llama el personaje principal de Gladiator?",
       "options": ["Maximus", "Commodus", "Spartacus"],
       "correct_answer": "Maximus"
     },
     {
       "id": 32,
-      "code": "GLADIATOR",
+      "code": "GLADIATOR_2",
       "question": "¿Qué cargo tenía Maximus antes de ser esclavizado?",
       "options": ["General", "Senador", "Emperador"],
       "correct_answer": "General"
     },
     {
       "id": 33,
-      "code": "GLADIATOR",
+      "code": "GLADIATOR_3",
       "question": "¿Quién dirige Gladiator?",
       "options": ["Ridley Scott", "Steven Spielberg", "James Cameron"],
       "correct_answer": "Ridley Scott"
     },
     {
       "id": 34,
-      "code": "PULP_FICTION",
+      "code": "PULP_FICTION_1",
       "question": "¿Quién dirigió Pulp Fiction?",
       "options": ["Quentin Tarantino", "Martin Scorsese", "Guy Ritchie"],
       "correct_answer": "Quentin Tarantino"
     },
     {
       "id": 35,
-      "code": "PULP_FICTION",
+      "code": "PULP_FICTION_2",
       "question": "¿Cómo se llama el personaje interpretado por Uma Thurman?",
       "options": ["Mia Wallace", "Beatrix Kiddo", "Jules"],
       "correct_answer": "Mia Wallace"
     },
     {
       "id": 36,
-      "code": "PULP_FICTION",
+      "code": "PULP_FICTION_3",
       "question": "¿Qué contiene el maletín en Pulp Fiction?",
       "options": [
         "Se desconoce",
@@ -270,70 +270,70 @@
     },
     {
       "id": 37,
-      "code": "AVENGERS_ENDGAME",
+      "code": "AVENGERS_ENDGAME_1",
       "question": "¿Quién usa el guantelete para deshacer el chasquido?",
       "options": ["Hulk", "Iron Man", "Thor"],
       "correct_answer": "Hulk"
     },
     {
       "id": 38,
-      "code": "AVENGERS_ENDGAME",
+      "code": "AVENGERS_ENDGAME_2",
       "question": "¿Cómo se llama el villano principal de Avengers: Endgame?",
       "options": ["Thanos", "Ultron", "Loki"],
       "correct_answer": "Thanos"
     },
     {
       "id": 39,
-      "code": "AVENGERS_ENDGAME",
+      "code": "AVENGERS_ENDGAME_3",
       "question": "¿Quién dice la frase 'Te quiero 3000'?",
       "options": ["Tony Stark", "Pepper Potts", "Morgan Stark"],
       "correct_answer": "Morgan Stark"
     },
     {
       "id": 40,
-      "code": "FROZEN",
+      "code": "FROZEN_1",
       "question": "¿Qué poder tiene Elsa en Frozen?",
       "options": ["Controlar el hielo", "Volar", "Hablar con animales"],
       "correct_answer": "Controlar el hielo"
     },
     {
       "id": 41,
-      "code": "FROZEN",
+      "code": "FROZEN_2",
       "question": "¿Cómo se llama la hermana de Elsa?",
       "options": ["Anna", "Kristoff", "Olaf"],
       "correct_answer": "Anna"
     },
     {
       "id": 42,
-      "code": "FROZEN",
+      "code": "FROZEN_3",
       "question": "¿Cuál es la famosa canción de Frozen?",
       "options": ["Let It Go", "Do You Want to Build a Snowman?", "Into the Unknown"],
       "correct_answer": "Let It Go"
     },
     {
       "id": 43,
-      "code": "JURASSIC_PARK",
+      "code": "JURASSIC_PARK_1",
       "question": "¿Qué dinosaurio es el principal antagonista en Jurassic Park?",
       "options": ["Tyrannosaurus Rex", "Velociraptor", "Triceratops"],
       "correct_answer": "Velociraptor"
     },
     {
       "id": 44,
-      "code": "JURASSIC_PARK",
+      "code": "JURASSIC_PARK_2",
       "question": "¿Quién dirige Jurassic Park?",
       "options": ["Steven Spielberg", "James Cameron", "Michael Bay"],
       "correct_answer": "Steven Spielberg"
     },
     {
       "id": 45,
-      "code": "JURASSIC_PARK",
+      "code": "JURASSIC_PARK_3",
       "question": "¿Qué empresa crea los dinosaurios en Jurassic Park?",
       "options": ["Ingen", "Biosyn", "Umbrella Corporation"],
       "correct_answer": "Ingen"
     },
     {
       "id": 46,
-      "code": "FIGHT_CLUB",
+      "code": "FIGHT_CLUB_1",
       "question": "¿Cuál es la primera regla del club de la pelea?",
       "options": [
         "No hablar del club de la pelea",
@@ -344,35 +344,35 @@
     },
     {
       "id": 47,
-      "code": "FIGHT_CLUB",
+      "code": "FIGHT_CLUB_2",
       "question": "¿Quién dirige Fight Club?",
       "options": ["David Fincher", "Christopher Nolan", "Quentin Tarantino"],
       "correct_answer": "David Fincher"
     },
     {
       "id": 48,
-      "code": "FIGHT_CLUB",
+      "code": "FIGHT_CLUB_3",
       "question": "¿Cómo se llama el personaje de Brad Pitt?",
       "options": ["Tyler Durden", "Jack", "Edward Norton"],
       "correct_answer": "Tyler Durden"
     },
     {
       "id": 49,
-      "code": "PIRATES_OF_THE_CARIBBEAN",
+      "code": "PIRATES_OF_THE_CARIBBEAN_1",
       "question": "¿Cuál es el nombre del barco de Jack Sparrow?",
       "options": ["La Perla Negra", "El Holandés Errante", "El Interceptor"],
       "correct_answer": "La Perla Negra"
     },
     {
       "id": 50,
-      "code": "PIRATES_OF_THE_CARIBBEAN",
+      "code": "PIRATES_OF_THE_CARIBBEAN_2",
       "question": "¿Cómo se llama el villano en la primera película?",
       "options": ["Barbossa", "Davy Jones", "Blackbeard"],
       "correct_answer": "Barbossa"
     },
     {
       "id": 51,
-      "code": "PIRATES_OF_THE_CARIBBEAN",
+      "code": "PIRATES_OF_THE_CARIBBEAN_3",
       "question": "¿Qué busca Jack Sparrow en la saga?",
       "options": [
         "La inmortalidad",
@@ -383,28 +383,28 @@
     },
     {
       "id": 52,
-      "code": "SHREK",
+      "code": "SHREK_1",
       "question": "¿Cómo se llama la princesa que Shrek rescata?",
       "options": ["Fiona", "Rapunzel", "Blancanieves"],
       "correct_answer": "Fiona"
     },
     {
       "id": 53,
-      "code": "SHREK",
+      "code": "SHREK_2",
       "question": "¿Qué animal acompaña a Shrek como su mejor amigo?",
       "options": ["Un burro", "Un gato", "Un lobo"],
       "correct_answer": "Un burro"
     },
     {
       "id": 54,
-      "code": "SHREK",
+      "code": "SHREK_3",
       "question": "¿Qué canción famosa se escucha al final de la primera película?",
       "options": ["I'm a Believer", "All Star", "Hallelujah"],
       "correct_answer": "I'm a Believer"
     },
     {
       "id": 55,
-      "code": "SPIDER_MAN",
+      "code": "SPIDER_MAN_1",
       "question": "¿Qué le dice el tío Ben a Peter Parker antes de morir?",
       "options": [
         "Un gran poder conlleva una gran responsabilidad",
@@ -415,98 +415,98 @@
     },
     {
       "id": 56,
-      "code": "SPIDER_MAN",
+      "code": "SPIDER_MAN_2",
       "question": "¿Cómo se llama el villano en Spider-Man 2?",
       "options": ["Doctor Octopus", "Duende Verde", "Venom"],
       "correct_answer": "Doctor Octopus"
     },
     {
       "id": 57,
-      "code": "SPIDER_MAN",
+      "code": "SPIDER_MAN_3",
       "question": "¿Quién interpreta a Spider-Man en la trilogía de Sam Raimi?",
       "options": ["Tobey Maguire", "Andrew Garfield", "Tom Holland"],
       "correct_answer": "Tobey Maguire"
     },
     {
       "id": 58,
-      "code": "FINDING_NEMO",
+      "code": "FINDING_NEMO_1",
       "question": "¿Cómo se llama el pez payaso protagonista de Finding Nemo?",
       "options": ["Nemo", "Marlin", "Dory"],
       "correct_answer": "Nemo"
     },
     {
       "id": 59,
-      "code": "FINDING_NEMO",
+      "code": "FINDING_NEMO_2",
       "question": "¿Qué tipo de pez es Dory?",
       "options": ["Cirujano azul", "Pez payaso", "Pez ángel"],
       "correct_answer": "Cirujano azul"
     },
     {
       "id": 60,
-      "code": "FINDING_NEMO",
+      "code": "FINDING_NEMO_3",
       "question": "¿Cuál es el lema de las tortugas en la película?",
       "options": ["¡Sigue nadando!", "¡Relájate, colega!", "¡Atrévete a surfear!"],
       "correct_answer": "¡Relájate, colega!"
     },
     {
       "id": 61,
-      "code": "INTERSTELLAR",
+      "code": "INTERSTELLAR_1",
       "question": "¿Quién dirige Interstellar?",
       "options": ["Christopher Nolan", "Ridley Scott", "Denis Villeneuve"],
       "correct_answer": "Christopher Nolan"
     },
     {
       "id": 62,
-      "code": "INTERSTELLAR",
+      "code": "INTERSTELLAR_2",
       "question": "¿Qué fenómeno espacial exploran en la película?",
       "options": ["Un agujero negro", "Un cometa", "Una supernova"],
       "correct_answer": "Un agujero negro"
     },
     {
       "id": 63,
-      "code": "INTERSTELLAR",
+      "code": "INTERSTELLAR_3",
       "question": "¿Qué relación tiene Cooper con Murph?",
       "options": ["Padre e hija", "Hermanos", "Compañeros de trabajo"],
       "correct_answer": "Padre e hija"
     },
     {
       "id": 64,
-      "code": "COCO",
+      "code": "COCO_1",
       "question": "¿En qué tradición mexicana se basa Coco?",
       "options": ["Día de Muertos", "Navidad", "Semana Santa"],
       "correct_answer": "Día de Muertos"
     },
     {
       "id": 65,
-      "code": "COCO",
+      "code": "COCO_2",
       "question": "¿Qué instrumento toca Miguel?",
       "options": ["Guitarra", "Piano", "Trompeta"],
       "correct_answer": "Guitarra"
     },
     {
       "id": 66,
-      "code": "COCO",
+      "code": "COCO_3",
       "question": "¿Cómo se llama la canción principal de Coco?",
       "options": ["Recuérdame", "Un Poco Loco", "La Llorona"],
       "correct_answer": "Recuérdame"
     },
     {
       "id": 67,
-      "code": "UP",
+      "code": "UP_1",
       "question": "¿Qué objeto hace volar la casa en Up?",
       "options": ["Globos", "Helio", "Un cohete"],
       "correct_answer": "Globos"
     },
     {
       "id": 68,
-      "code": "UP",
+      "code": "UP_2",
       "question": "¿Cómo se llama el explorador que acompaña a Carl?",
       "options": ["Russell", "Kevin", "Dug"],
       "correct_answer": "Russell"
     },
     {
       "id": 69,
-      "code": "UP",
+      "code": "UP_3",
       "question": "¿Qué quiere cumplir Carl en la película?",
       "options": [
         "Ir a Cataratas del Paraíso",
