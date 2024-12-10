@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onClick(int position) {
+    public void onClick(int position,GameName gameName) {
         //TODO: PASAR TAMBIEN EL ARRAY POR PARAMETRO
         Fragment f = null;
         if (position == -1) {
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             setTitle("MyRecreativa");
 
         }else{
-            currentGame = gameNames.get(position);
+            currentGame = gameName;
             if (currentGame.getName().equalsIgnoreCase("Minesweeper")){
                 f = modeFragment(currentGame);
             }

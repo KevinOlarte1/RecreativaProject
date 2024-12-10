@@ -72,13 +72,13 @@ public class ScoreFragment extends Fragment {
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listenner.onClick(-1);
+                listenner.onClick(-1, name);
             }
         });
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listenner.onClick(-2);
+                listenner.onClick(-2, name);
             }
         });
 
