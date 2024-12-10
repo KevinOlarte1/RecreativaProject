@@ -30,6 +30,12 @@ public class SudokuGameFragment extends Fragment {
     private String mode;
     private int boardSize;
 
+    /**
+     * Método llamado al adjuntar el fragmento al contexto de la actividad.
+     * Configura el modo del juego y el tamaño del tablero basado en los argumentos proporcionados.
+     *
+     * @param context Contexto de la actividad.
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -37,7 +43,7 @@ public class SudokuGameFragment extends Fragment {
         if (args != null && args.containsKey("MODE")) {
             mode = args.getString("MODE");
         } else {
-            mode = "medium"; // Default mode
+            mode = "medium"; // Modo predeterminado
         }
 
         // Configura el tamaño del tablero basado en el modo
@@ -56,11 +62,25 @@ public class SudokuGameFragment extends Fragment {
         }
     }
 
+    /**
+     * Crea la vista del fragmento inflando el diseño del tablero de Sudoku.
+     *
+     * @param inflater Inflador para las vistas.
+     * @param container Contenedor del fragmento.
+     * @param savedInstanceState Estado previo del fragmento, si existe.
+     * @return Vista inflada del diseño del fragmento.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.sudoku_fragment, container, false);
     }
 
+    /**
+     * Configura las vistas y los botones después de que la vista ha sido creada.
+     *
+     * @param view Vista raíz del fragmento.
+     * @param savedInstanceState Estado previo del fragmento, si existe.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -70,50 +90,20 @@ public class SudokuGameFragment extends Fragment {
         ingresarButton = view.findViewById(R.id.ingresarButton);
         finishButton = view.findViewById(R.id.finishButton);
 
-        // Inicializar el juego con el tamaño del tablero determinado
+        // Inicializa el juego con el tamaño del tablero determinado
         sudokuGame = new SudokuGame(boardSize);
 
         createGameBoard();
 
+        // Configura el botón para ingresar números al tablero
         ingresarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String input = numberInput.getText().toString();
-                if (input.isEmpty()) {
-                    Toast.makeText(getContext(), "Por favor, ingresa un número", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                int number;
-                try {
-                    number = Integer.parseInt(input);
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Número inválido", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (number < 1 || number > boardSize) {
-                    Toast.makeText(getContext(), "El número debe estar entre 1 y " + boardSize, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (selectedRow == -1 || selectedCol == -1) {
-                    Toast.makeText(getContext(), "Selecciona una celda primero", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (sudokuGame.makeMove(selectedRow, selectedCol, number)) {
-                    updateCell(selectedRow, selectedCol, number);
-                    if (sudokuGame.isSolved()) {
-                        Toast.makeText(getContext(), "¡Felicidades! Has completado el Sudoku", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(getContext(), "Movimiento no permitido", Toast.LENGTH_SHORT).show();
-                }
+                handleNumberInput();
             }
         });
 
-        // Configurar el botón para finalizar el juego
+        // Configura el botón para finalizar el juego
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,6 +116,10 @@ public class SudokuGameFragment extends Fragment {
         });
     }
 
+    /**
+     * Maneja la entrada de números del usuario para colocarlos en el tablero.
+     * Verifica la validez del número y la celda seleccionada antes de realizar el movimiento.
+     */
     private void handleNumberInput() {
         String input = numberInput.getText().toString();
         if (input.isEmpty()) {
@@ -161,6 +155,10 @@ public class SudokuGameFragment extends Fragment {
         }
     }
 
+    /**
+     * Crea y muestra el tablero de Sudoku en la interfaz de usuario.
+     * Configura las celdas del tablero y las hace interactuables.
+     */
     private void createGameBoard() {
         tableLayout.removeAllViews(); // Limpia cualquier tablero previo
 
@@ -205,6 +203,13 @@ public class SudokuGameFragment extends Fragment {
         }
     }
 
+    /**
+     * Actualiza el contenido de una celda en el tablero después de un movimiento válido.
+     *
+     * @param row Fila de la celda.
+     * @param col Columna de la celda.
+     * @param number Número colocado en la celda.
+     */
     private void updateCell(int row, int col, int number) {
         TableRow tableRow = (TableRow) tableLayout.getChildAt(row);
         if (tableRow != null) {
