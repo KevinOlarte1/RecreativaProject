@@ -119,4 +119,38 @@ public class MinesweeperGame {
         }
         return count;
     }
+
+    public int calculateScore(String mode, int secondsTaken, boolean isWin) {
+        if (!isWin){
+            return 0;
+        }
+        int basePoints = 0;
+        int timePenalty = 0;
+
+        // Determinar los puntos base y penalización de tiempo según el modo
+        switch (mode.toLowerCase()) {
+            case "easy":
+                basePoints = 100;
+                timePenalty = 1;
+                break;
+            case "medium":
+                basePoints = 200;
+                timePenalty = 2;
+                break;
+            case "hard":
+                basePoints = 300;
+                timePenalty = 3;
+                break;
+        }
+
+        // Calcular puntaje final
+        int finalScore = basePoints - ((secondsTaken - 2) * timePenalty);
+        finalScore = Math.max(finalScore, 0); // Asegurarse de que no sea negativo
+
+        // Normalizar puntaje sobre 5
+        int normalizedScore = Math.round((finalScore / (float) basePoints) * 5);
+
+        return normalizedScore;
+    }
+
 }

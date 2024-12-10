@@ -73,6 +73,7 @@ public class MemoryGame {
         int basePoints = 0;
         int timePenalty = 0;
 
+        // Determinar los puntos base y penalización de tiempo según el modo
         switch (mode.toLowerCase()) {
             case "easy":
                 basePoints = 100;
@@ -88,10 +89,16 @@ public class MemoryGame {
                 break;
         }
 
-        int finalScore = basePoints - ((secondsTaken -2) * timePenalty);
+        // Calcular puntaje final
+        int finalScore = basePoints - ((secondsTaken - 2) * timePenalty);
+        finalScore = Math.max(finalScore, 0); // Asegurarse de que no sea negativo
 
-        return Math.max(finalScore, 0);
+        // Normalizar puntaje sobre 5
+        int normalizedScore = Math.round((finalScore / (float) basePoints) * 5);
+
+        return normalizedScore;
     }
+
 
     public int getFirstSelected() {
         return firstSelected;

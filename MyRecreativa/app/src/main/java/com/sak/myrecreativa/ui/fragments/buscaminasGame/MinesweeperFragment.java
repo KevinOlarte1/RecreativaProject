@@ -293,7 +293,8 @@ public class MinesweeperFragment extends Fragment {
         }
     }
     private void endGame() {
+        int finalTime = Integer.valueOf(timerText.getText().toString());
         timerThread.interrupt();
-        gameEndListener.onGameEnd(0, gameName, minesweeperGame.isWin());
+        gameEndListener.onGameEnd(minesweeperGame.calculateScore(mode, finalTime, minesweeperGame.isWin()), gameName, minesweeperGame.isWin());
     }
 }
