@@ -68,4 +68,37 @@ public class MemoryGame {
         }
         return true;
     }
+
+    public int calculateScore(String mode, int secondsTaken) {
+        int basePoints = 0;
+        int timePenalty = 0;
+
+        switch (mode.toLowerCase()) {
+            case "easy":
+                basePoints = 100;
+                timePenalty = 3;
+                break;
+            case "medium":
+                basePoints = 200;
+                timePenalty = 2;
+                break;
+            case "hard":
+                basePoints = 300;
+                timePenalty = 1;
+                break;
+        }
+
+        int finalScore = basePoints - ((secondsTaken -2) * timePenalty);
+
+        return Math.max(finalScore, 0);
+    }
+
+    public int getFirstSelected() {
+        return firstSelected;
+    }
+
+    public int getSecondSelected() {
+        return secondSelected;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.sak.myrecreativa.ui.fragments;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,10 +54,13 @@ public class ScoreFragment extends Fragment {
         tvGameName.setText(name.getName());
         if (isWin){
             tvGameStatus.setText("YOU WIN");
+            tvGameStatus.setTextColor(Color.GREEN);
         }else{
             tvGameStatus.setText("GAME OVER");
+            tvGameStatus.setTextColor(Color.RED);
         }
         tvScore.setText("Score: " + score);
+        tvScore.setTextColor(Color.BLUE);
         playAgainButton.setText("Play again");
         exitButton.setText("Exit");
 
@@ -90,10 +94,10 @@ public class ScoreFragment extends Fragment {
             if (args.containsKey("SCORE")) {
                 score = String.valueOf(args.getInt("SCORE"));
             }
-            if (args.containsKey("GAME")){
+            if (args.containsKey("GAME")) {
                 name = args.getParcelable("GAME");
             }
-            if (args.containsKey("IS_WIN")){
+            if (args.containsKey("IS_WIN")) {
                 isWin = args.getBoolean("IS_WIN");
             }
         }

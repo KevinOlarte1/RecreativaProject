@@ -56,8 +56,11 @@ public class TrivialFragment extends Fragment {
         img = view.findViewById(R.id.questionImg);
         tvQuestion = view.findViewById(R.id.question);
         option1 = view.findViewById(R.id.option1);
+        option1.setBackgroundColor(Color.BLUE);
         option2 = view.findViewById(R.id.option2);
+        option2.setBackgroundColor(Color.BLUE);
         option3 = view.findViewById(R.id.option3);
+        option3.setBackgroundColor(Color.BLUE);
 
         loadNextQuestion();
     }
