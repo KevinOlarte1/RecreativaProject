@@ -24,7 +24,8 @@ import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.games.minesweeper.MinesweeperGame;
 
 public class MinesweeperFragment extends Fragment {
-    private MinesweeperGame minesweeperGame;
+    private MinesweeperGame gameLogic;
+
     private TableLayout tableLayout;
     private ImageButton selectionButton;
     private ImageButton selectBombButton;
@@ -32,14 +33,18 @@ public class MinesweeperFragment extends Fragment {
     private ImageView bombCountImg;
     private TextView timerText;
     private ImageView timerImg;
-    private Thread timerThread;
-    private boolean isMarkMode = false; // Modo inicial: seleccionar casilla
+
     private String mode;
     private GameName gameName;
+
+    private Thread timerThread;
+    private boolean isMarkMode = false; // Modo inicial: seleccionar casilla
     private int boardSize;
     private int numberOfBombs;
+
     private IOnGameEndListener gameEndListener;
-    private Handler handler = new Handler();
+
+    private final Handler handler = new Handler();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,9 +83,8 @@ public class MinesweeperFragment extends Fragment {
             }
         });
 
-        minesweeperGame = new MinesweeperGame(boardSize, numberOfBombs);
         tableLayout = view.findViewById(R.id.table);
-        createGameBoard(tableLayout, boardSize);
+        createGameBoard();
         bombCountTextView.setText(String.valueOf(numberOfBombs));
         timer();
     }
@@ -88,6 +92,7 @@ public class MinesweeperFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+
         Bundle args = getArguments();
 
         if (args != null && args.containsKey("MODE")) {
@@ -112,10 +117,15 @@ public class MinesweeperFragment extends Fragment {
                     break;
             }
         }
+
+        gameLogic = new MinesweeperGame(boardSize, numberOfBombs);
         gameEndListener = (IOnGameEndListener)  context;
     }
 
-    private void createGameBoard(TableLayout tableLayout, int boardSize) {
+    /**
+     * Metodo para crear el tablero
+     */
+    private void createGameBoard() {
         tableLayout.post(() -> {
             int layoutWidthPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 375, getResources().getDisplayMetrics());
             int layoutHeightPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 400, getResources().getDisplayMetrics());
@@ -159,15 +169,21 @@ public class MinesweeperFragment extends Fragment {
         });
     }
 
+    /**
+     * Metodo para gestionar interfaz a la hora de seleccionar una celda en alguna de los dos modos.
+     * @param i posicion del boton.
+     * @param j poscion del boton.
+     * @param button boton seleccionado.
+     */
     private void handleCellClick(int i, int j, ImageButton button) {
-        if (minesweeperGame.isRevealed(i, j)) {
+        if (gameLogic.isRevealed(i, j)) {
             return; // No permitir interacción adicional
         }
 
         if (isMarkMode) {
             // Marcar/desmarcar casilla con bandera
-            minesweeperGame.toggleMark(i, j);
-            if (minesweeperGame.isMarked(i, j)) {
+            gameLogic.toggleMark(i, j);
+            if (gameLogic.isMarked(i, j)) {
                 button.setImageResource(R.drawable.flag);
                 scaleImage(button);
             } else {
@@ -179,7 +195,7 @@ public class MinesweeperFragment extends Fragment {
             updateBombCount();
         } else {
             // Revelar casilla
-            if (minesweeperGame.isBomb(i, j)) {
+            if (gameLogic.isBomb(i, j)) {
                 button.setImageResource(R.drawable.bomb);
                 scaleImage(button);
                 revealAllBombs();
@@ -189,7 +205,7 @@ public class MinesweeperFragment extends Fragment {
                 }, 4000);
             } else {
                 revealArea(i, j);
-                if (minesweeperGame.isWin()) {
+                if (gameLogic.isWin()) {
                     handler.postDelayed(() -> {
                         endGame();
                     }, 4000);
@@ -198,41 +214,50 @@ public class MinesweeperFragment extends Fragment {
         }
     }
 
+    /**
+     * Metodo para actualizar el contador
+     */
     private void updateBombCount() {
-        int remainingBombs = minesweeperGame.getBombCount() - minesweeperGame.getMarkedCount();
+        int remainingBombs = gameLogic.getBombCount() - gameLogic.getMarkedCount();
         bombCountTextView.setText(String.valueOf(remainingBombs));
     }
 
-
+    /**
+     * Metodo para revelar las celdas vecinas si no tiene bomba, lo hace de forma recursiva
+     * @param x
+     * @param y
+     */
     private void revealArea(int x, int y) {
-        if (!minesweeperGame.isValidCell(x, y) || minesweeperGame.isRevealed(x, y) || minesweeperGame.isMarked(x, y)) {
+        if (!gameLogic.isValidCell(x, y) || gameLogic.isRevealed(x, y) || gameLogic.isMarked(x, y)) {
             return;
         }
 
-        minesweeperGame.revealCell(x, y);
+        gameLogic.revealCell(x, y);
 
         TableRow row = (TableRow) tableLayout.getChildAt(x);
         ImageButton button = (ImageButton) row.getChildAt(y);
 
 
-        int bombs = minesweeperGame.getAdjacentBombs(x, y);
+        int bombs = gameLogic.getAdjacentBombs(x, y);
         if (bombs > 0) {
             button.setImageResource(getNumberDrawable(bombs));
             scaleImage(button);
         } else {
             button.setBackgroundColor(Color.LTGRAY);
 
-            // Llama recursivamente para revelar las celdas vecinas
-            for (int[] neighbor : minesweeperGame.getNeighbors(x, y)) {
+            for (int[] neighbor : gameLogic.getNeighbors(x, y)) {
                 revealArea(neighbor[0], neighbor[1]);
             }
         }
     }
 
+    /**
+     * Metodo para revelar todas las bombas.
+     */
     private void revealAllBombs() {
-        for (int i = 0; i < minesweeperGame.getBoardSize(); i++) {
-            for (int j = 0; j < minesweeperGame.getBoardSize(); j++) {
-                if (minesweeperGame.isBomb(i, j)) {
+        for (int i = 0; i < gameLogic.getBoardSize(); i++) {
+            for (int j = 0; j < gameLogic.getBoardSize(); j++) {
+                if (gameLogic.isBomb(i, j)) {
                     TableRow row = (TableRow) tableLayout.getChildAt(i);
                     ImageButton button = (ImageButton) row.getChildAt(j);
                     button.setImageResource(R.drawable.bomb);
@@ -242,6 +267,9 @@ public class MinesweeperFragment extends Fragment {
         }
     }
 
+    /**
+     * Hilo que cuenta los segundos que pasan de juego.
+     */
     private void timer(){
         if (timerThread != null && timerThread.isAlive()) {
             timerThread.interrupt();
@@ -273,12 +301,21 @@ public class MinesweeperFragment extends Fragment {
 
     }
 
+    /**
+     * Metodo para ajustar las imagenes a los botones.
+     * @param button boton donde ajustar imagen.
+     */
     private void scaleImage(ImageButton button){
         button.setScaleType(ImageView.ScaleType.FIT_XY);
         button.setBackground(null);
         button.setPadding(0, 0, 0, 0);
     }
 
+    /**
+     * Metodo para asignar imagen a boton dependiendo del numero de bombas que tenga cerca la celda.
+     * @param number numero de bombas cerca.
+     * @return la imagen.
+     */
     private int getNumberDrawable(int number) {
         switch (number) {
             case 1: return R.drawable.ic_number_1;
@@ -292,9 +329,13 @@ public class MinesweeperFragment extends Fragment {
             default: return 0;
         }
     }
+
+    /**
+     * Fin del juego.
+     */
     private void endGame() {
         int finalTime = Integer.valueOf(timerText.getText().toString());
         timerThread.interrupt();
-        gameEndListener.onGameEnd(minesweeperGame.calculateScore(mode, finalTime, minesweeperGame.isWin()), gameName, minesweeperGame.isWin());
+        gameEndListener.onGameEnd(gameLogic.calculateScore(mode, finalTime, gameLogic.isWin()), gameName, gameLogic.isWin());
     }
 }
