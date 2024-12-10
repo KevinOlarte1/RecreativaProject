@@ -2,483 +2,483 @@
   "questions": [
     {
       "id": 1,
-      "code": "FRIENDS",
+      "code": "FRIENDS_1",
       "question": "¿Cómo se llama el café donde se reúnen los personajes?",
       "options": ["Central Perk", "Coffee Bean", "Starbucks"],
       "correct_answer": "Central Perk"
     },
     {
       "id": 2,
-      "code": "FRIENDS",
+      "code": "FRIENDS_2",
       "question": "¿Qué animal tenía Ross como mascota?",
       "options": ["Mono", "Gato", "Perro"],
       "correct_answer": "Mono"
     },
     {
       "id": 3,
-      "code": "FRIENDS",
+      "code": "FRIENDS_3",
       "question": "¿Qué personaje dijo 'We were on a break'?",
       "options": ["Ross", "Rachel", "Chandler"],
       "correct_answer": "Ross"
     },
     {
       "id": 4,
-      "code": "BREAKING_BAD",
+      "code": "BREAKING_BAD_1",
       "question": "¿Cuál es el alias de Walter White?",
       "options": ["Heisenberg", "Walt", "Mr. Blue"],
       "correct_answer": "Heisenberg"
     },
     {
       "id": 5,
-      "code": "BREAKING_BAD",
+      "code": "BREAKING_BAD_2",
       "question": "¿Qué color de metanfetamina produce Walter?",
       "options": ["Azul", "Blanco", "Amarillo"],
       "correct_answer": "Azul"
     },
     {
       "id": 6,
-      "code": "BREAKING_BAD",
+      "code": "BREAKING_BAD_3",
       "question": "¿Cómo se llama el socio de Walter White?",
       "options": ["Jesse Pinkman", "Saul Goodman", "Mike Ehrmantraut"],
       "correct_answer": "Jesse Pinkman"
     },
     {
       "id": 7,
-      "code": "GAME_OF_THRONES",
+      "code": "GAME_OF_THRONES_1",
       "question": "¿Quién es conocido como la 'Madre de Dragones'?",
       "options": ["Daenerys Targaryen", "Cersei Lannister", "Sansa Stark"],
       "correct_answer": "Daenerys Targaryen"
     },
     {
       "id": 8,
-      "code": "GAME_OF_THRONES",
+      "code": "GAME_OF_THRONES_2",
       "question": "¿Cuál es el lema de la casa Stark?",
       "options": ["Se acerca el invierno", "El invierno es nuestro", "Norte y honor"],
       "correct_answer": "Se acerca el invierno"
     },
     {
       "id": 9,
-      "code": "GAME_OF_THRONES",
+      "code": "GAME_OF_THRONES_3",
       "question": "¿Qué material mata a los caminantes blancos?",
       "options": ["Vidriagón", "Acero Valyrio", "Ambos"],
       "correct_answer": "Ambos"
     },
     {
       "id": 10,
-      "code": "THE_OFFICE",
+      "code": "THE_OFFICE_1",
       "question": "¿Cómo se llama la compañía donde trabajan los personajes de The Office?",
       "options": ["Dunder Mifflin", "Paper Supply", "Staples"],
       "correct_answer": "Dunder Mifflin"
     },
     {
       "id": 11,
-      "code": "THE_OFFICE",
+      "code": "THE_OFFICE_2",
       "question": "¿Qué instrumento toca Andy Bernard?",
       "options": ["Banjó", "Guitarra", "Piano"],
       "correct_answer": "Banjó"
     },
     {
       "id": 12,
-      "code": "THE_OFFICE",
+      "code": "THE_OFFICE_3",
       "question": "¿Cómo se llama el jefe de la oficina?",
       "options": ["Michael Scott", "Jim Halpert", "Dwight Schrute"],
       "correct_answer": "Michael Scott"
     },
     {
       "id": 13,
-      "code": "STRANGER_THINGS",
+      "code": "STRANGER_THINGS_1",
       "question": "¿Cómo se llama el pueblo donde ocurre Stranger Things?",
       "options": ["Hawkins", "Sunnyvale", "Springfield"],
       "correct_answer": "Hawkins"
     },
     {
       "id": 14,
-      "code": "STRANGER_THINGS",
+      "code": "STRANGER_THINGS_2",
       "question": "¿Qué número tiene Eleven tatuado en su brazo?",
       "options": ["11", "10", "13"],
       "correct_answer": "11"
     },
     {
       "id": 15,
-      "code": "STRANGER_THINGS",
+      "code": "STRANGER_THINGS_3",
       "question": "¿Qué dimensión alterna aparece en la serie?",
       "options": ["Upside Down", "Mirror World", "The Flipside"],
       "correct_answer": "Upside Down"
     },
     {
       "id": 16,
-      "code": "SHERLOCK",
+      "code": "SHERLOCK_1",
       "question": "¿Quién interpreta a Sherlock Holmes en la serie Sherlock?",
       "options": ["Benedict Cumberbatch", "Robert Downey Jr.", "Jonny Lee Miller"],
       "correct_answer": "Benedict Cumberbatch"
     },
     {
       "id": 17,
-      "code": "SHERLOCK",
+      "code": "SHERLOCK_2",
       "question": "¿Cómo se llama el amigo y compañero de Sherlock?",
       "options": ["Dr. Watson", "Inspector Lestrade", "Mycroft"],
       "correct_answer": "Dr. Watson"
     },
     {
       "id": 18,
-      "code": "SHERLOCK",
+      "code": "SHERLOCK_3",
       "question": "¿Quién es el archienemigo de Sherlock Holmes?",
       "options": ["Moriarty", "Mycroft", "Irene Adler"],
       "correct_answer": "Moriarty"
     },
     {
       "id": 19,
-      "code": "HOUSE_OF_CARDS",
+      "code": "HOUSE_OF_CARDS_1",
       "question": "¿En qué ciudad se desarrolla principalmente House of Cards?",
       "options": ["Washington D.C.", "Nueva York", "Los Ángeles"],
       "correct_answer": "Washington D.C."
     },
     {
       "id": 20,
-      "code": "HOUSE_OF_CARDS",
+      "code": "HOUSE_OF_CARDS_2",
       "question": "¿Cómo se llama el personaje principal de la serie?",
       "options": ["Frank Underwood", "Doug Stamper", "Tom Hammerschmidt"],
       "correct_answer": "Frank Underwood"
     },
     {
       "id": 21,
-      "code": "HOUSE_OF_CARDS",
+      "code": "HOUSE_OF_CARDS_3",
       "question": "¿Cuál es la profesión de Frank Underwood?",
       "options": ["Político", "Periodista", "Abogado"],
       "correct_answer": "Político"
     },
     {
       "id": 22,
-      "code": "THE_CROWN",
+      "code": "THE_CROWN_1",
       "question": "¿En qué reina británica se basa la serie The Crown?",
       "options": ["Isabel II", "Victoria", "Isabel I"],
       "correct_answer": "Isabel II"
     },
     {
       "id": 23,
-      "code": "THE_CROWN",
+      "code": "THE_CROWN_2",
       "question": "¿Quién interpreta a la reina Isabel II en las primeras temporadas?",
       "options": ["Claire Foy", "Olivia Colman", "Imelda Staunton"],
       "correct_answer": "Claire Foy"
     },
     {
       "id": 24,
-      "code": "THE_CROWN",
+      "code": "THE_CROWN_3",
       "question": "¿Qué relación tiene Felipe con la reina Isabel II?",
       "options": ["Esposo", "Hermano", "Primo"],
       "correct_answer": "Esposo"
     },
     {
       "id": 25,
-      "code": "BLACK_MIRROR",
+      "code": "BLACK_MIRROR_1",
       "question": "¿De qué trata principalmente la serie Black Mirror?",
       "options": ["Impacto de la tecnología", "Futuro distópico", "Ambos"],
       "correct_answer": "Ambos"
     },
     {
       "id": 26,
-      "code": "BLACK_MIRROR",
+      "code": "BLACK_MIRROR_2",
       "question": "¿Qué episodio incluye la puntuación social de las personas?",
       "options": ["Nosedive", "White Bear", "Playtest"],
       "correct_answer": "Nosedive"
     },
     {
       "id": 27,
-      "code": "BLACK_MIRROR",
+      "code": "BLACK_MIRROR_3",
       "question": "¿En qué plataforma se estrenó originalmente Black Mirror?",
       "options": ["Channel 4", "Netflix", "BBC"],
       "correct_answer": "Channel 4"
     },
     {
       "id": 28,
-      "code": "LOST",
+      "code": "LOST_1",
       "question": "¿Dónde ocurre la mayor parte de la trama de Lost?",
       "options": ["Isla desierta", "Nave espacial", "Ciudad misteriosa"],
       "correct_answer": "Isla desierta"
     },
     {
       "id": 29,
-      "code": "LOST",
+      "code": "LOST_2",
       "question": "¿Cómo se llama el vuelo que se estrella en la isla?",
       "options": ["Oceanic 815", "Flight 404", "Pacific 777"],
       "correct_answer": "Oceanic 815"
     },
     {
       "id": 30,
-      "code": "LOST",
+      "code": "LOST_3",
       "question": "¿Qué objeto misterioso aparece en la isla?",
       "options": ["Una escotilla", "Un cofre", "Un faro"],
       "correct_answer": "Una escotilla"
     },
     {
       "id": 31,
-      "code": "HOW_I_MET_YOUR_MOTHER",
+      "code": "HOW_I_MET_YOUR_MOTHER_1",
       "question": "¿Cómo se llama el bar donde se reúnen los personajes?",
       "options": ["MacLaren's Pub", "Central Perk", "Paddy's Pub"],
       "correct_answer": "MacLaren's Pub"
     },
     {
       "id": 32,
-      "code": "HOW_I_MET_YOUR_MOTHER",
+      "code": "HOW_I_MET_YOUR_MOTHER_2",
       "question": "¿Quién es conocido por su frase 'Suit up!'?",
       "options": ["Barney", "Ted", "Marshall"],
       "correct_answer": "Barney"
     },
     {
       "id": 33,
-      "code": "HOW_I_MET_YOUR_MOTHER",
+      "code": "HOW_I_MET_YOUR_MOTHER_3",
       "question": "¿Qué instrumento musical guarda Ted en su apartamento?",
       "options": ["Corneta azul", "Guitarra", "Piano"],
       "correct_answer": "Corneta azul"
     },
     {
       "id": 34,
-      "code": "THE_BIG_BANG_THEORY",
+      "code": "THE_BIG_BANG_THEORY_1",
       "question": "¿Qué físico es el ídolo de Sheldon Cooper?",
       "options": ["Stephen Hawking", "Albert Einstein", "Richard Feynman"],
       "correct_answer": "Stephen Hawking"
     },
     {
       "id": 35,
-      "code": "THE_BIG_BANG_THEORY",
+      "code": "THE_BIG_BANG_THEORY_2",
       "question": "¿Qué tipo de comida piden los personajes en la mayoría de los episodios?",
       "options": ["Comida china", "Pizza", "Sushi"],
       "correct_answer": "Comida china"
     },
     {
       "id": 36,
-      "code": "THE_BIG_BANG_THEORY",
+      "code": "THE_BIG_BANG_THEORY_3",
       "question": "¿Cuál es el nombre del tema musical de apertura de la serie?",
       "options": ["The History of Everything", "The Big Bang Song", "Cosmic Life"],
       "correct_answer": "The History of Everything"
     },
     {
       "id": 37,
-      "code": "THE_MANDALORIAN",
+      "code": "THE_MANDALORIAN_1",
       "question": "¿Cómo se llama el personaje apodado 'Baby Yoda'?",
       "options": ["Grogu", "Yoda", "Mando"],
       "correct_answer": "Grogu"
     },
     {
       "id": 38,
-      "code": "THE_MANDALORIAN",
+      "code": "THE_MANDALORIAN_2",
       "question": "¿Qué arma usa principalmente el Mandaloriano?",
       "options": ["Rifle Amban", "Sable de luz", "Bláster"],
       "correct_answer": "Rifle Amban"
     },
     {
       "id": 39,
-      "code": "THE_MANDALORIAN",
+      "code": "THE_MANDALORIAN_3",
       "question": "¿Qué orden secreta persigue a Grogu?",
       "options": ["El Imperio", "Los Jedi", "La Primera Orden"],
       "correct_answer": "El Imperio"
     },
     {
       "id": 40,
-      "code": "VIKINGS",
+      "code": "VIKINGS_1",
       "question": "¿Quién es el protagonista principal de Vikings?",
       "options": ["Ragnar Lothbrok", "Bjorn Ironside", "Ivar el Deshuesado"],
       "correct_answer": "Ragnar Lothbrok"
     },
     {
       "id": 41,
-      "code": "VIKINGS",
+      "code": "VIKINGS_2",
       "question": "¿Qué diosa nórdica es venerada por Lagertha?",
       "options": ["Freya", "Odin", "Thor"],
       "correct_answer": "Freya"
     },
     {
       "id": 42,
-      "code": "VIKINGS",
+      "code": "VIKINGS_3",
       "question": "¿Qué instrumento musical suele tocar Floki?",
       "options": ["Arpa", "Lira", "Tambor"],
       "correct_answer": "Lira"
     },
     {
       "id": 43,
-      "code": "FARGO",
+      "code": "FARGO_1",
       "question": "¿En qué estado de EE.UU. se desarrolla la mayoría de Fargo?",
       "options": ["Minnesota", "Texas", "Montana"],
       "correct_answer": "Minnesota"
     },
     {
       "id": 44,
-      "code": "FARGO",
+      "code": "FARGO_2",
       "question": "¿Quién interpreta al agente Lester Nygaard en la primera temporada?",
       "options": ["Martin Freeman", "Ewan McGregor", "Billy Bob Thornton"],
       "correct_answer": "Martin Freeman"
     },
     {
       "id": 45,
-      "code": "FARGO",
+      "code": "FARGO_3",
       "question": "¿Qué objeto peculiar aparece en la serie como referencia recurrente?",
       "options": ["Raspador de hielo", "Maletín", "Sombrero"],
       "correct_answer": "Raspador de hielo"
     },
     {
       "id": 46,
-      "code": "PEAKY_BLINDERS",
+      "code": "PEAKY_BLINDERS_1",
       "question": "¿Quién lidera la familia Shelby en Peaky Blinders?",
       "options": ["Thomas Shelby", "Arthur Shelby", "John Shelby"],
       "correct_answer": "Thomas Shelby"
     },
     {
       "id": 47,
-      "code": "PEAKY_BLINDERS",
+      "code": "PEAKY_BLINDERS_2",
       "question": "¿Qué prenda caracteriza a los miembros de Peaky Blinders?",
       "options": ["Boina", "Abrigo largo", "Sombrero de copa"],
       "correct_answer": "Boina"
     },
     {
       "id": 48,
-      "code": "PEAKY_BLINDERS",
+      "code": "PEAKY_BLINDERS_3",
       "question": "¿En qué ciudad inglesa está ambientada la serie?",
       "options": ["Birmingham", "Manchester", "Liverpool"],
       "correct_answer": "Birmingham"
     },
     {
       "id": 49,
-      "code": "MONEY_HEIST",
+      "code": "MONEY_HEIST_1",
       "question": "¿Qué apodo tiene el líder del grupo en Money Heist?",
       "options": ["El Profesor", "El Jefe", "El Capitán"],
       "correct_answer": "El Profesor"
     },
     {
       "id": 50,
-      "code": "MONEY_HEIST",
+      "code": "MONEY_HEIST_2",
       "question": "¿Qué máscara usan los atracadores?",
       "options": ["Dalí", "Picasso", "Frida"],
       "correct_answer": "Dalí"
     },
     {
       "id": 51,
-      "code": "MONEY_HEIST",
+      "code": "MONEY_HEIST_3",
       "question": "¿En qué ciudad se desarrolla el primer atraco?",
       "options": ["Madrid", "Barcelona", "Sevilla"],
       "correct_answer": "Madrid"
     },
     {
       "id": 52,
-      "code": "PRISON_BREAK",
+      "code": "PRISON_BREAK_1",
       "question": "¿Cómo se llama el hermano que está en prisión?",
       "options": ["Lincoln Burrows", "Michael Scofield", "Paul Kellerman"],
       "correct_answer": "Lincoln Burrows"
     },
     {
       "id": 53,
-      "code": "PRISON_BREAK",
+      "code": "PRISON_BREAK_2",
       "question": "¿Qué profesión tenía Michael Scofield antes de planear la fuga?",
       "options": ["Ingeniero", "Abogado", "Médico"],
       "correct_answer": "Ingeniero"
     },
     {
       "id": 54,
-      "code": "PRISON_BREAK",
+      "code": "PRISON_BREAK_3",
       "question": "¿Qué tatuaje tiene Michael en su cuerpo?",
       "options": ["El plano de la prisión", "Un mapa del tesoro", "Un dragón"],
       "correct_answer": "El plano de la prisión"
     },
     {
       "id": 55,
-      "code": "THE_WITCHER",
+      "code": "THE_WITCHER_1",
       "question": "¿Quién interpreta a Geralt de Rivia en The Witcher?",
       "options": ["Henry Cavill", "Chris Hemsworth", "Liam Hemsworth"],
       "correct_answer": "Henry Cavill"
     },
     {
       "id": 56,
-      "code": "THE_WITCHER",
+      "code": "THE_WITCHER_2",
       "question": "¿Cómo se llama el caballo de Geralt?",
       "options": ["Roach", "Shadowfax", "Bucephalus"],
       "correct_answer": "Roach"
     },
     {
       "id": 57,
-      "code": "THE_WITCHER",
+      "code": "THE_WITCHER_3",
       "question": "¿Qué criatura caza Geralt en el primer episodio?",
       "options": ["Kikimora", "Dragón", "Grifo"],
       "correct_answer": "Kikimora"
     },
     {
       "id": 58,
-      "code": "THE_HANDMAIDS_TALE",
+      "code": "THE_HANDMAIDS_TALE_1",
       "question": "¿En qué país ficticio se desarrolla la serie?",
       "options": ["Gilead", "Panem", "Wakanda"],
       "correct_answer": "Gilead"
     },
     {
       "id": 59,
-      "code": "THE_HANDMAIDS_TALE",
+      "code": "THE_HANDMAIDS_TALE_2",
       "question": "¿Cómo se llama la protagonista principal?",
       "options": ["June", "Serena", "Emily"],
       "correct_answer": "June"
     },
     {
       "id": 60,
-      "code": "THE_HANDMAIDS_TALE",
+      "code": "THE_HANDMAIDS_TALE_3",
       "question": "¿Qué significa el color rojo en la vestimenta de las criadas?",
       "options": ["Fertilidad", "Amor", "Resistencia"],
       "correct_answer": "Fertilidad"
     },
     {
       "id": 61,
-      "code": "SUITS",
+      "code": "SUITS_1",
       "question": "¿Quién es el mentor de Mike Ross en Suits?",
       "options": ["Harvey Specter", "Louis Litt", "Jessica Pearson"],
       "correct_answer": "Harvey Specter"
     },
     {
       "id": 62,
-      "code": "SUITS",
+      "code": "SUITS_2",
       "question": "¿Qué título académico falso tiene Mike Ross?",
       "options": ["Abogado de Harvard", "Médico de Yale", "Ingeniero del MIT"],
       "correct_answer": "Abogado de Harvard"
     },
     {
       "id": 63,
-      "code": "SUITS",
+      "code": "SUITS_3",
       "question": "¿Cómo se llama la secretaria de Harvey Specter?",
       "options": ["Donna", "Rachel", "Jessica"],
       "correct_answer": "Donna"
     },
     {
       "id": 64,
-      "code": "MAD_MEN",
+      "code": "MAD_MEN_1",
       "question": "¿En qué década está ambientada Mad Men?",
       "options": ["1960", "1950", "1970"],
       "correct_answer": "1960"
     },
     {
       "id": 65,
-      "code": "MAD_MEN",
+      "code": "MAD_MEN_2",
       "question": "¿Cuál es la profesión de Don Draper?",
       "options": ["Publicista", "Abogado", "Periodista"],
       "correct_answer": "Publicista"
     },
     {
       "id": 66,
-      "code": "MAD_MEN",
+      "code": "MAD_MEN_3",
       "question": "¿Qué bebida es característica en la oficina de Don Draper?",
       "options": ["Whisky", "Vino", "Cerveza"],
       "correct_answer": "Whisky"
     },
     {
       "id": 67,
-      "code": "TRUE_DETECTIVE",
+      "code": "TRUE_DETECTIVE_1",
       "question": "¿En qué estado ocurre la primera temporada de True Detective?",
       "options": ["Louisiana", "Texas", "Georgia"],
       "correct_answer": "Louisiana"
     },
     {
       "id": 68,
-      "code": "TRUE_DETECTIVE",
+      "code": "TRUE_DETECTIVE_2",
       "question": "¿Quién interpreta al detective Rust Cohle?",
       "options": ["Matthew McConaughey", "Woody Harrelson", "Colin Farrell"],
       "correct_answer": "Matthew McConaughey"
     },
     {
       "id": 69,
-      "code": "TRUE_DETECTIVE",
+      "code": "TRUE_DETECTIVE_3",
       "question": "¿Qué tema central explora la primera temporada?",
       "options": ["El tiempo y la moralidad", "La corrupción", "La justicia social"],
       "correct_answer": "El tiempo y la moralidad"
