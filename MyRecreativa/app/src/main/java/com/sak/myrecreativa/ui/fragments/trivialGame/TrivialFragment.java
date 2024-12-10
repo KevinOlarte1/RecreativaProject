@@ -116,7 +116,7 @@ public class TrivialFragment extends Fragment {
             Context context = getContext();
             if(context != null){
                 Resources res =context.getResources();
-                int resId = res.getIdentifier(gameName.getName().toLowerCase() + "_background", "drawable", context.getPackageName());
+                int resId = res.getIdentifier(game.getCurrentQuestion().getCode(), "drawable", context.getPackageName());
                 img.setBackgroundResource(resId);
             }
 
