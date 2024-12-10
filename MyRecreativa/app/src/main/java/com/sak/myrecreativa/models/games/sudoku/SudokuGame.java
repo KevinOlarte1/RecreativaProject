@@ -1,12 +1,14 @@
 package com.sak.myrecreativa.models.games.sudoku;
 
 import java.util.Random;
+
 public class SudokuGame {
 
-    private final int[][] board; // Tablero con valores iniciales
-    private final int[][] solution; // Solución del Sudoku
-    private final int boardSize; // Tamaño del tablero (e.g., 9x9)
-    private final int subGridSize; // Tamaño de las subcuadrículas (e.g., 3x3)
+    private final int[][] board;
+    private final int[][] solution;
+    private final int boardSize;
+    private final int subGridSize;
+    private final String difficulty;
 
     /**
      * Constructor de la clase SudokuGame.
@@ -14,11 +16,15 @@ public class SudokuGame {
      *
      * @param boardSize Tamaño del tablero de Sudoku (debe ser un cuadrado perfecto, e.g., 9).
      */
-    public SudokuGame(int boardSize) {
+    public SudokuGame(int boardSize, String difficulty) {
+        if (Math.sqrt(boardSize) % 1 != 0) {
+            throw new IllegalArgumentException("El tamaño del tablero debe ser un cuadrado perfecto.");
+        }
         this.boardSize = boardSize;
         this.subGridSize = (int) Math.sqrt(boardSize);
         this.board = new int[boardSize][boardSize];
         this.solution = new int[boardSize][boardSize];
+        this.difficulty = difficulty;
         generateBoard();
     }
 
@@ -31,6 +37,41 @@ public class SudokuGame {
         fillRemaining(0, subGridSize);
         copySolution();
         removeNumbers();
+    }
+
+    /**
+     * Elimina números del tablero de Sudoku según la dificultad seleccionada.
+     * El número de celdas a eliminar depende del nivel de dificultad:
+     * - Fácil: 25% de las celdas.
+     * - Media: 50% de las celdas.
+     * - Difícil: 75% de las celdas.
+     */
+    private void removeNumbers() {
+        Random random = new Random();
+
+        int cellsToRemove;
+        switch (difficulty.toLowerCase()) {
+            case "easy":
+                cellsToRemove = boardSize * boardSize / 4;
+                break;
+            case "medium":
+                cellsToRemove = boardSize * boardSize / 2;
+                break;
+            case "hard":
+                cellsToRemove = boardSize * boardSize / 2; // Reduce la cantidad para evitar problemas
+                break;
+            default:
+                cellsToRemove = boardSize * boardSize / 2;
+        }
+
+        while (cellsToRemove > 0) {
+            int row = random.nextInt(boardSize);
+            int col = random.nextInt(boardSize);
+            if (board[row][col] != 0) {
+                board[row][col] = 0;
+                cellsToRemove--;
+            }
+        }
     }
 
     /**
@@ -77,22 +118,13 @@ public class SudokuGame {
             return true;
         }
 
-        if (row < subGridSize) {
-            if (col < subGridSize) {
-                col = subGridSize;
-            }
-        } else if (row < boardSize - subGridSize) {
-            if (col == (row / subGridSize) * subGridSize) {
-                col += subGridSize;
-            }
-        } else {
-            if (col == boardSize - subGridSize) {
-                row++;
-                col = 0;
-                if (row >= boardSize) {
-                    return true;
-                }
-            }
+        if (row < subGridSize && col < subGridSize) {
+            col = subGridSize;
+        } else if (row < boardSize - subGridSize && col == (row / subGridSize) * subGridSize) {
+            col += subGridSize;
+        } else if (row >= boardSize - subGridSize && col == boardSize - subGridSize) {
+            row++;
+            col = 0;
         }
 
         for (int num = 1; num <= boardSize; num++) {
@@ -113,22 +145,6 @@ public class SudokuGame {
     private void copySolution() {
         for (int i = 0; i < boardSize; i++) {
             System.arraycopy(board[i], 0, solution[i], 0, boardSize);
-        }
-    }
-
-    /**
-     * Elimina números del tablero para crear el puzzle.
-     */
-    private void removeNumbers() {
-        Random random = new Random();
-        int cellsToRemove = boardSize * boardSize / 2;
-        while (cellsToRemove > 0) {
-            int row = random.nextInt(boardSize);
-            int col = random.nextInt(boardSize);
-            if (board[row][col] != 0) {
-                board[row][col] = 0;
-                cellsToRemove--;
-            }
         }
     }
 
@@ -181,7 +197,7 @@ public class SudokuGame {
      *
      * @param startRow Fila de inicio de la subcuadrícula.
      * @param startCol Columna de inicio de la subcuadrícula.
-     * @param num Número a buscar.
+     * @param num      Número a buscar.
      * @return true si el número está en la subcuadrícula, false en caso contrario.
      */
     private boolean isInSubGrid(int startRow, int startCol, int num) {

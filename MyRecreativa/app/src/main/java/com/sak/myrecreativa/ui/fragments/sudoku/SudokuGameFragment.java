@@ -1,14 +1,18 @@
 package com.sak.myrecreativa.ui.fragments.sudoku;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,31 +44,37 @@ public class SudokuGameFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         Bundle args = getArguments();
+
         if (args != null && args.containsKey("MODE")) {
-            mode = args.getString("MODE");
+            mode = args.getString("MODE", "medium");
         } else {
-            mode = "medium"; // Modo predeterminado
+            mode = "medium";
         }
 
-        // Configura el tamaño del tablero basado en el modo
         switch (mode.toLowerCase()) {
             case "easy":
-                boardSize = 6; // Tamaño 6x6 para fácil
+                boardSize = 6;
                 break;
             case "medium":
-                boardSize = 9; // Tamaño 9x9 para medio
+                boardSize = 9;
                 break;
             case "hard":
-                boardSize = 12; // Tamaño 12x12 para difícil
+                boardSize = 12; // Valida que el tamaño sea soportado
                 break;
             default:
-                boardSize = 9; // Por defecto, 9x9
+                boardSize = 9;
+        }
+
+        try {
+            sudokuGame = new SudokuGame(boardSize, mode.toLowerCase());
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(context, "El tamaño del tablero no es válido.", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
         }
     }
 
     /**
      * Crea la vista del fragmento inflando el diseño del tablero de Sudoku.
-     *
      * @param inflater Inflador para las vistas.
      * @param container Contenedor del fragmento.
      * @param savedInstanceState Estado previo del fragmento, si existe.
@@ -77,7 +87,6 @@ public class SudokuGameFragment extends Fragment {
 
     /**
      * Configura las vistas y los botones después de que la vista ha sido creada.
-     *
      * @param view Vista raíz del fragmento.
      * @param savedInstanceState Estado previo del fragmento, si existe.
      */
@@ -86,44 +95,40 @@ public class SudokuGameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tableLayout = view.findViewById(R.id.sudokuTable);
+        finishButton = view.findViewById(R.id.btn_finalizar);
+        ingresarButton = view.findViewById(R.id.btn_ingresar);
         numberInput = view.findViewById(R.id.numberInput);
-        ingresarButton = view.findViewById(R.id.ingresarButton);
-        finishButton = view.findViewById(R.id.finishButton);
 
-        // Inicializa el juego con el tamaño del tablero determinado
-        sudokuGame = new SudokuGame(boardSize);
+        if (tableLayout == null || finishButton == null || ingresarButton == null || numberInput == null) {
+            throw new IllegalStateException("Algunos elementos del layout no se pudieron inicializar.");
+        }
 
+        // Inicializa el juego
+        sudokuGame = new SudokuGame(boardSize, mode.toLowerCase());
         createGameBoard();
 
-        // Configura el botón para ingresar números al tablero
-        ingresarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleNumberInput();
-            }
-        });
+        // Configura el botón para ingresar el número
+        ingresarButton.setOnClickListener(v -> handleNumberInput());
 
         // Configura el botón para finalizar el juego
-        finishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sudokuGame.isSolved()) {
-                    Toast.makeText(getContext(), "¡Juego completado exitosamente!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "El juego no está completo. ¡Sigue intentándolo!", Toast.LENGTH_SHORT).show();
-                }
+        finishButton.setOnClickListener(v -> {
+            if (sudokuGame.isSolved()) {
+                Toast.makeText(getContext(), "¡Juego completado exitosamente!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "El juego no está completo. ¡Sigue intentándolo!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    /**
-     * Maneja la entrada de números del usuario para colocarlos en el tablero.
-     * Verifica la validez del número y la celda seleccionada antes de realizar el movimiento.
-     */
     private void handleNumberInput() {
+        if (selectedRow == -1 || selectedCol == -1) {
+            Toast.makeText(getContext(), "Selecciona una celda primero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String input = numberInput.getText().toString();
         if (input.isEmpty()) {
-            Toast.makeText(getContext(), "Por favor, ingresa un número", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Ingresa un número válido", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -131,25 +136,13 @@ public class SudokuGameFragment extends Fragment {
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            Toast.makeText(getContext(), "Número inválido", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (number < 1 || number > boardSize) {
-            Toast.makeText(getContext(), "El número debe estar entre 1 y " + boardSize, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (selectedRow == -1 || selectedCol == -1) {
-            Toast.makeText(getContext(), "Selecciona una celda primero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "El número ingresado no es válido", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (sudokuGame.makeMove(selectedRow, selectedCol, number)) {
             updateCell(selectedRow, selectedCol, number);
-            if (sudokuGame.isSolved()) {
-                Toast.makeText(getContext(), "¡Felicidades! Has completado el Sudoku", Toast.LENGTH_LONG).show();
-            }
+            numberInput.setText(""); // Limpia el campo de entrada
         } else {
             Toast.makeText(getContext(), "Movimiento no permitido", Toast.LENGTH_SHORT).show();
         }
@@ -160,7 +153,7 @@ public class SudokuGameFragment extends Fragment {
      * Configura las celdas del tablero y las hace interactuables.
      */
     private void createGameBoard() {
-        tableLayout.removeAllViews(); // Limpia cualquier tablero previo
+        tableLayout.removeAllViews();
 
         int[][] board = sudokuGame.getBoard();
 
@@ -172,34 +165,50 @@ public class SudokuGameFragment extends Fragment {
             ));
 
             for (int j = 0; j < boardSize; j++) {
-                EditText cell = new EditText(getContext());
+                TextView cell = new TextView(getContext());
                 TableRow.LayoutParams params = new TableRow.LayoutParams(
+                        0, // Ancho proporcional
                         TableRow.LayoutParams.WRAP_CONTENT,
-                        TableRow.LayoutParams.WRAP_CONTENT
+                        1.0f // Peso igual para distribuir uniformemente
                 );
                 params.setMargins(2, 2, 2, 2);
                 cell.setLayoutParams(params);
-
-                cell.setGravity(View.TEXT_ALIGNMENT_CENTER);
-                cell.setTextSize(16);
+                cell.setGravity(Gravity.CENTER);
+                cell.setTextSize(18);
+                cell.setBackgroundResource(R.drawable.cell_border); // Agrega un borde a las celdas
 
                 if (board[i][j] != 0) {
                     cell.setText(String.valueOf(board[i][j]));
-                    cell.setFocusable(false);
+                    cell.setClickable(false);
+                    cell.setBackgroundColor(Color.LTGRAY);
                 } else {
-                    cell.setHint("-");
+                    cell.setText("");
+                    cell.setClickable(true);
+                    int finalI = i, finalJ = j;
+                    cell.setOnClickListener(v -> {
+                        selectedRow = finalI;
+                        selectedCol = finalJ;
+                        highlightSelectedCell(finalI, finalJ);
+                    });
                 }
-
-                int finalI = i, finalJ = j;
-                cell.setOnClickListener(v -> {
-                    selectedRow = finalI;
-                    selectedCol = finalJ;
-                    Toast.makeText(getContext(), "Celda seleccionada: (" + (finalI + 1) + ", " + (finalJ + 1) + ")", Toast.LENGTH_SHORT).show();
-                });
 
                 row.addView(cell);
             }
             tableLayout.addView(row);
+        }
+    }
+
+    private void highlightSelectedCell(int row, int col) {
+        for (int i = 0; i < tableLayout.getChildCount(); i++) {
+            TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
+            for (int j = 0; j < tableRow.getChildCount(); j++) {
+                TextView cell = (TextView) tableRow.getChildAt(j);
+                if (i == row && j == col) {
+                    cell.setBackgroundColor(Color.YELLOW);
+                } else {
+                    cell.setBackgroundResource(R.drawable.cell_border);
+                }
+            }
         }
     }
 
@@ -213,9 +222,10 @@ public class SudokuGameFragment extends Fragment {
     private void updateCell(int row, int col, int number) {
         TableRow tableRow = (TableRow) tableLayout.getChildAt(row);
         if (tableRow != null) {
-            EditText cell = (EditText) tableRow.getChildAt(col);
+            TextView cell = (TextView) tableRow.getChildAt(col);
             if (cell != null) {
                 cell.setText(String.valueOf(number));
+                cell.setBackgroundColor(Color.WHITE); // Restaura el fondo
             }
         }
     }
