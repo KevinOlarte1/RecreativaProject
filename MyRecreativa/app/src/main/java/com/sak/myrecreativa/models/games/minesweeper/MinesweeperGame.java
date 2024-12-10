@@ -91,6 +91,10 @@ public class MinesweeperGame {
         return boardSize;
     }
 
+    public int getBombCount() {
+        return bombCount;
+    }
+
     public List<int[]> getNeighbors(int i, int j) {
         List<int[]> neighbors = new ArrayList<>();
         for (int y = -1; y <= 1; y++) {
@@ -102,5 +106,17 @@ public class MinesweeperGame {
             }
         }
         return neighbors;
+    }
+
+    public int getMarkedCount() {
+        int count = 0;
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                if (marked[i][j]) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 }

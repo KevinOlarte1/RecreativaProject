@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class TrivialFragment extends Fragment {
     private Button option1;
     private Button option2;
     private Button option3;
+    private List<Button> options;
     private String triviaMode;
     private TextView time;
     private ProgressBar timeBar;
@@ -51,16 +53,18 @@ public class TrivialFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        options = new ArrayList<>();
+
         time = view.findViewById(R.id.time);
         timeBar = view.findViewById(R.id.timerBar);
         img = view.findViewById(R.id.questionImg);
         tvQuestion = view.findViewById(R.id.question);
         option1 = view.findViewById(R.id.option1);
-        option1.setBackgroundColor(Color.BLUE);
+        options.add(option1);
         option2 = view.findViewById(R.id.option2);
-        option2.setBackgroundColor(Color.BLUE);
+        options.add(option2);
         option3 = view.findViewById(R.id.option3);
-        option3.setBackgroundColor(Color.BLUE);
+        options.add(option3);
 
         loadNextQuestion();
     }
@@ -98,7 +102,6 @@ public class TrivialFragment extends Fragment {
     }
 
     private void loadNextQuestion(){
-        if(game.hasQuestions()){
             Question question = game.getNextQuestion();
             tvQuestion.setText(question.getQuestion());
 
@@ -138,17 +141,33 @@ public class TrivialFragment extends Fragment {
                     checkAnswer(option3.getText().toString(), option3);
                 }
             });
-        }
     }
     private void checkAnswer(String answer, Button button){
         boolean isCorrect = game.checkAnswer(answer);
-        if (isCorrect && !time.getText().equals("0")) {
+        if (isCorrect && !time.getText().equals("0") && game.hasQuestions()) {
             button.setBackgroundColor(Color.GREEN);
             Toast.makeText(getContext(), "¡Correcto!", Toast.LENGTH_SHORT).show();
             loadNextQuestion();
         } else{
-            endGame();
+            timerThread.interrupt();
+            Button correctButton = findButtonForAnswer(game.getCorrectAnswer());
+            if (correctButton != null) {
+                correctButton.setBackgroundColor(Color.GREEN);
+            }
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                endGame();
+            }, 4000);
         }
+    }
+
+    private Button findButtonForAnswer(String answer) {
+        for (Button option : options) {
+            if (option.getText().toString().equals(answer)) {
+                return option;
+            }
+        }
+        return null;
     }
     public void timer(int segundos){
         if (timerThread != null && timerThread.isAlive()) {
@@ -185,7 +204,6 @@ public class TrivialFragment extends Fragment {
     private void endGame() {
         boolean isWin;
         isWin = !game.hasQuestions();
-        timerThread.interrupt();
 
         gameEndListener.onGameEnd(game.getScore(), gameName, isWin);
     }
