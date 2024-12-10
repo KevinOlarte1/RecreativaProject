@@ -22,6 +22,7 @@ import com.sak.myrecreativa.interfaces.IOnGameEndListener;
 import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
+import com.sak.myrecreativa.ui.fragments.battleship.BattleshipFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
 import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Memory"));
         gameNames.add(new GameName("Sudoku"));
         gameNames.add(new GameName("Conecta4"));
+        gameNames.add(new GameName("Battleship"));
         return gameNames;
     }
 
@@ -187,6 +189,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if(currentGame.getName().equalsIgnoreCase("conecta4")){
                 f = modeFragment(currentGame);
             }
+            if(currentGame.getName().equalsIgnoreCase("Battleship")){
+                f = modeFragment(currentGame);
+            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -206,6 +211,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("conecta4")){
+                f = modeFragment(currentGame);
+            }
+            if (currentGame.getName().equalsIgnoreCase("Battleship")){
                 f = modeFragment(currentGame);
             }
         }
@@ -251,6 +259,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f = new ConectaCuatroFragment();
             f.setArguments(arg);
             setTitle("Conecta4");
+        }
+        if (gameName.getName().equalsIgnoreCase("Battleship")){
+            f = new BattleshipFragment();
+            f.setArguments(arg);
+            setTitle("Battleship");
         }
         if (f != null){
             getSupportFragmentManager()
