@@ -20,6 +20,10 @@ import java.util.List;
 public class ListadoJuegosFragment extends Fragment {
 
     public interface IOnAttachListenner{
+        /**
+         * Listado con todos los juegos
+         * @return listado de toodos los juegos
+         */
         List<GameName> getGames();
     }
 

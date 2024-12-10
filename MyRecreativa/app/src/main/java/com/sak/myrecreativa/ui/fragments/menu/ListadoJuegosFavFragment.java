@@ -20,6 +20,11 @@ import java.util.List;
 public class ListadoJuegosFavFragment extends Fragment {
 
     public interface IOnAttachListenner{
+
+        /**
+         * Metodo para obtener un listado de los juegos favoriros
+         * @return Lista de juegos
+         */
         List<GameName> getGamesFav();
     }
 

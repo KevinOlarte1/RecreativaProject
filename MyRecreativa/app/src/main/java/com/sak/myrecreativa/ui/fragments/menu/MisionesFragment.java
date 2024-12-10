@@ -19,6 +19,10 @@ import java.util.List;
 public class MisionesFragment extends Fragment {
 
     public interface IOnAttachListenner{
+        /**
+         * Metodo para obtener todos los juegos
+         * @return listado de juegos
+         */
         List<GameName> getGames();
     }
 

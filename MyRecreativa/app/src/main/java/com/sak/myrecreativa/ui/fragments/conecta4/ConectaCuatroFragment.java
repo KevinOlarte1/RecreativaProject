@@ -90,6 +90,12 @@ public class ConectaCuatroFragment extends Fragment {
 
     }
 
+    /**
+     * Pintar el tablero
+     * @param row file afectada
+     * @param col columna afectada
+     * @param player 1 rojo 2 azul
+     */
     public void updateBoard(int row, int col, int player) {
         if (player == 1) {
             buttons[row][col].setBackgroundColor(Color.RED);
@@ -98,6 +104,9 @@ public class ConectaCuatroFragment extends Fragment {
         }
     }
 
+    /**
+     * Metod para formatear los botones al color por default
+     */
     public void resetMap() {
         for (Button[] buttonRow : buttons) {
             for (Button button : buttonRow) {
@@ -107,22 +116,38 @@ public class ConectaCuatroFragment extends Fragment {
         }
     }
 
+    /**
+     * Actualizar un TextLabel con el ganador de la partida
+     * @param player ganador de la partida
+     */
     public void showWinner(int player) {
         gameStatus.setText("Jugador " + player + " gana!");
         finishButton.setVisibility(View.VISIBLE);
         resetButton.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Actualizar un TextLabel con el turno acitual
+     * @param player
+     */
     public void showTurn(int player) {
         gameStatus.setText("Turno del Jugador " + player);
     }
 
+    /**
+     * Metodo para resetear el UI al defecto inicial
+     */
     public void resetUI() {
         finishButton.setVisibility(View.GONE);
         resetButton.setVisibility(View.GONE);
         gameStatus.setText("Turno del Jugador 1");
     }
 
+    /**
+     * Metodo para acabar la partida
+     * @param playerWin jugador que ha ganado 1 o 2
+     * @param score
+     */
     public void endGame(int playerWin, int score){
         Log.i("Puntaje: ", String.valueOf(score)); //TODO: Bien hasta aqui
         boolean win = playerWin == 1? true : false;

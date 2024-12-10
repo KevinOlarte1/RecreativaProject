@@ -21,6 +21,9 @@ public class GameName implements Parcelable {
         this.missions = new ArrayList<>();
     }
 
+    /**
+     * Actualizar las misiones con el puntaje actual
+     */
     public void updateMission(){
         for (Mission m: missions) {
             m.setCurrentPoints((int) maxScore);

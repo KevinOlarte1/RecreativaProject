@@ -319,6 +319,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
+
+
     @Override
     public List<GameName> getGamesFav() {
         List<GameName> fav = new ArrayList<>();
