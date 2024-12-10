@@ -2,231 +2,231 @@
   "questions": [
     {
       "id": 1,
-      "code": "NARUTO",
+      "code": "NARUTO_1",
       "question": "¿Cómo se llama el mejor amigo y rival de Naruto?",
       "options": ["Sasuke", "Kakashi", "Gaara"],
       "correct_answer": "Sasuke"
     },
     {
       "id": 2,
-      "code": "NARUTO",
+      "code": "NARUTO_2",
       "question": "¿Qué animal representa a Naruto?",
       "options": ["Zorro", "Serpiente", "Dragón"],
       "correct_answer": "Zorro"
     },
     {
       "id": 3,
-      "code": "NARUTO",
+      "code": "NARUTO_3",
       "question": "¿Qué técnica usa Naruto para crear clones?",
       "options": ["Kage Bunshin", "Chidori", "Amaterasu"],
       "correct_answer": "Kage Bunshin"
     },
     {
       "id": 4,
-      "code": "ONE_PIECE",
+      "code": "ONE_PIECE_1",
       "question": "¿Qué quiere encontrar Luffy?",
       "options": ["El One Piece", "Un barco", "La espada legendaria"],
       "correct_answer": "El One Piece"
     },
     {
       "id": 5,
-      "code": "ONE_PIECE",
+      "code": "ONE_PIECE_2",
       "question": "¿Cómo se llama el barco de los Sombrero de Paja?",
       "options": ["Going Merry", "Sunny", "Red Force"],
       "correct_answer": "Going Merry"
     },
     {
       "id": 6,
-      "code": "ONE_PIECE",
+      "code": "ONE_PIECE_3",
       "question": "¿Quién es el espadachín del equipo de Luffy?",
       "options": ["Zoro", "Sanji", "Usopp"],
       "correct_answer": "Zoro"
     },
     {
       "id": 7,
-      "code": "DRAGON_BALL",
+      "code": "DRAGON_BALL_1",
       "question": "¿Cuántas Esferas del Dragón existen?",
       "options": ["7", "6", "9"],
       "correct_answer": "7"
     },
     {
       "id": 8,
-      "code": "DRAGON_BALL",
+      "code": "DRAGON_BALL_2",
       "question": "¿Qué transformación alcanza Goku durante su pelea con Freezer?",
       "options": ["Super Saiyajin", "Ultra Instinto", "Kaioken"],
       "correct_answer": "Super Saiyajin"
     },
     {
       "id": 9,
-      "code": "DRAGON_BALL",
+      "code": "DRAGON_BALL_3",
       "question": "¿Cómo se llama el maestro que entrena a Goku?",
       "options": ["Roshi", "Kami", "Kaiosama"],
       "correct_answer": "Roshi"
     },
     {
       "id": 10,
-      "code": "ATTACK_ON_TITAN",
+      "code": "ATTACK_ON_TITAN_1",
       "question": "¿Qué protege el muro de los titanes?",
       "options": ["La humanidad", "El castillo", "Los prisioneros"],
       "correct_answer": "La humanidad"
     },
     {
       "id": 11,
-      "code": "ATTACK_ON_TITAN",
+      "code": "ATTACK_ON_TITAN_2",
       "question": "¿Cómo se llama el protagonista de Attack on Titan?",
       "options": ["Eren", "Armin", "Levi"],
       "correct_answer": "Eren"
     },
     {
       "id": 12,
-      "code": "ATTACK_ON_TITAN",
+      "code": "ATTACK_ON_TITAN_3",
       "question": "¿Qué tipo de titán puede transformarse Eren?",
       "options": ["Titán de Ataque", "Titán Colosal", "Titán Bestia"],
       "correct_answer": "Titán de Ataque"
     },
     {
       "id": 13,
-      "code": "DEMON_SLAYER",
+      "code": "DEMON_SLAYER_1",
       "question": "¿Qué intenta salvar Tanjiro?",
       "options": ["A su hermana", "A su madre", "A su pueblo"],
       "correct_answer": "A su hermana"
     },
     {
       "id": 14,
-      "code": "DEMON_SLAYER",
+      "code": "DEMON_SLAYER_2",
       "question": "¿Cómo se llama la espada que usan los cazadores de demonios?",
       "options": ["Nichirin", "Katana", "Espada solar"],
       "correct_answer": "Nichirin"
     },
     {
       "id": 15,
-      "code": "DEMON_SLAYER",
+      "code": "DEMON_SLAYER_3",
       "question": "¿Qué habilidad especial tiene Nezuko?",
       "options": ["Regeneración", "Control del fuego", "Teletransportación"],
       "correct_answer": "Regeneración"
     },
     {
       "id": 16,
-      "code": "MY_HERO_ACADEMIA",
+      "code": "MY_HERO_ACADEMIA_1",
       "question": "¿Cómo se llama el poder especial que tienen los héroes?",
       "options": ["Quirks", "Habilidades", "Peculiaridades"],
       "correct_answer": "Quirks"
     },
     {
       "id": 17,
-      "code": "MY_HERO_ACADEMIA",
+      "code": "MY_HERO_ACADEMIA_2",
       "question": "¿Qué héroe es conocido como el Símbolo de la Paz?",
       "options": ["All Might", "Endeavor", "Aizawa"],
       "correct_answer": "All Might"
     },
     {
       "id": 18,
-      "code": "MY_HERO_ACADEMIA",
+      "code": "MY_HERO_ACADEMIA_3",
       "question": "¿Cómo se llama el protagonista?",
       "options": ["Izuku Midoriya", "Katsuki Bakugo", "Shoto Todoroki"],
       "correct_answer": "Izuku Midoriya"
     },
     {
       "id": 19,
-      "code": "FULLMETAL_ALCHEMIST",
+      "code": "FULLMETAL_ALCHEMIST_1",
       "question": "¿Cuál es la Ley de Intercambio Equivalente?",
       "options": ["No se puede obtener algo sin dar algo a cambio", "Se pueden crear cosas de la nada", "Todo es posible con alquimia"],
       "correct_answer": "No se puede obtener algo sin dar algo a cambio"
     },
     {
       "id": 20,
-      "code": "FULLMETAL_ALCHEMIST",
+      "code": "FULLMETAL_ALCHEMIST_2",
       "question": "¿Cómo se llaman los hermanos protagonistas?",
       "options": ["Edward y Alphonse", "Roy y Maes", "Winry y Ling"],
       "correct_answer": "Edward y Alphonse"
     },
     {
       "id": 21,
-      "code": "FULLMETAL_ALCHEMIST",
+      "code": "FULLMETAL_ALCHEMIST_3",
       "question": "¿Qué buscan los hermanos Elric?",
       "options": ["La Piedra Filosofal", "El Elixir de Vida", "El Grial"],
       "correct_answer": "La Piedra Filosofal"
     },
     {
       "id": 22,
-      "code": "DEATH_NOTE",
+      "code": "DEATH_NOTE_1",
       "question": "¿Cómo se llama el shinigami que acompaña a Light?",
       "options": ["Ryuk", "Rem", "Gelus"],
       "correct_answer": "Ryuk"
     },
     {
       "id": 23,
-      "code": "DEATH_NOTE",
+      "code": "DEATH_NOTE_2",
       "question": "¿Qué ocurre cuando se escribe un nombre en la Death Note?",
       "options": ["La persona muere", "La persona desaparece", "La persona pierde sus recuerdos"],
       "correct_answer": "La persona muere"
     },
     {
       "id": 24,
-      "code": "DEATH_NOTE",
+      "code": "DEATH_NOTE_3",
       "question": "¿Cómo se llama el detective que persigue a Kira?",
       "options": ["L", "Near", "Mello"],
       "correct_answer": "L"
     },
     {
       "id": 25,
-      "code": "TOKYO_GHOUL",
+      "code": "TOKYO_GHOUL_1",
       "question": "¿Qué se convierte Kaneki después de ser atacado?",
       "options": ["Ghoul", "Vampiro", "Cazador"],
       "correct_answer": "Ghoul"
     },
     {
       "id": 26,
-      "code": "TOKYO_GHOUL",
+      "code": "TOKYO_GHOUL_2",
       "question": "¿Qué comen los ghouls?",
       "options": ["Carne humana", "Almas", "Sangre"],
       "correct_answer": "Carne humana"
     },
     {
       "id": 27,
-      "code": "TOKYO_GHOUL",
+      "code": "TOKYO_GHOUL_3",
       "question": "¿Cómo se llama el café donde trabaja Kaneki?",
       "options": ["Anteiku", "Café Gato", "Cafe Rouge"],
       "correct_answer": "Anteiku"
     },
     {
       "id": 28,
-      "code": "BLEACH",
+      "code": "BLEACH_1",
       "question": "¿Cómo se llama el protagonista de Bleach?",
       "options": ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai"],
       "correct_answer": "Ichigo Kurosaki"
     },
     {
       "id": 29,
-      "code": "BLEACH",
+      "code": "BLEACH_2",
       "question": "¿Qué arma usa Ichigo?",
       "options": ["Zanpakutō", "Espada sagrada", "Lanza divina"],
       "correct_answer": "Zanpakutō"
     },
     {
       "id": 30,
-      "code": "BLEACH",
+      "code": "BLEACH_3",
       "question": "¿Qué organización protege el mundo espiritual?",
       "options": ["Sociedad de Almas", "Clan Kuchiki", "Guardias Espirituales"],
       "correct_answer": "Sociedad de Almas"
     },
     {
       "id": 31,
-      "code": "SAILOR_MOON",
+      "code": "SAILOR_MOON_1",
       "question": "¿Cómo se llama la identidad real de Sailor Moon?",
       "options": ["Usagi Tsukino", "Ami Mizuno", "Rei Hino"],
-      "correct_answer": "Usagi Tsukino"
+        "correct_answer": "Usagi Tsukino"
     },
     {
       "id": 32,
-      "code": "SAILOR_MOON",
+      "code": "SAILOR_MOON_2",
       "question": "¿Qué objeto permite a Usagi transformarse en Sailor Moon?",
       "options": ["Broche lunar", "Cetro mágico", "Colgante estelar"],
       "correct_answer": "Broche lunar"
     },
     {
       "id": 33,
-      "code": "SAILOR_MOON",
+      "code": "SAILOR_MOON_3",
       "question": "¿Qué planeta representa Sailor Mercury?",
       "options": ["Mercurio", "Venus", "Saturno"],
       "correct_answer": "Mercurio"
