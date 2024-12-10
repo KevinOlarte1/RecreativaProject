@@ -30,19 +30,23 @@ import java.util.Collections;
 import java.util.List;
 
 public class TrivialFragment extends Fragment {
-    private TrivialGame game;
+    private TrivialGame gameLogic;
+
     private ImageView img;
     private TextView tvQuestion;
+    private TextView time;
     private Button option1;
     private Button option2;
     private Button option3;
     private List<Button> options;
+
     private String triviaMode;
-    private TextView time;
+    private GameName gameName;
+
     private ProgressBar timeBar;
     private Thread timerThread;
+
     private IOnGameEndListener gameEndListener;
-    private GameName gameName;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,12 +101,15 @@ public class TrivialFragment extends Fragment {
             }
         }
         List<Question> questions = TrivialParser.loadQuestions(context, jsonResource);
-        game = new TrivialGame(questions);
+        gameLogic = new TrivialGame(questions);
         gameEndListener = (IOnGameEndListener)  context;
     }
 
+    /**
+     * Metodo para cargar la siguiente pregunta. Cargando las respuestas, creando los botones, reseteando el temporizador y asignado la imagen.
+     */
     private void loadNextQuestion(){
-            Question question = game.getNextQuestion();
+            Question question = gameLogic.getNextQuestion();
             tvQuestion.setText(question.getQuestion());
 
             List<String> shuffledOptions = new ArrayList<>(question.getOptions());
@@ -119,7 +126,7 @@ public class TrivialFragment extends Fragment {
             Context context = getContext();
             if(context != null){
                 Resources res =context.getResources();
-                int resId = res.getIdentifier(game.getCurrentQuestion().getCode().toLowerCase(), "drawable", context.getPackageName());
+                int resId = res.getIdentifier(gameLogic.getCurrentQuestion().getCode().toLowerCase(), "drawable", context.getPackageName());
                 img.setBackgroundResource(resId);
             }
 
@@ -142,15 +149,21 @@ public class TrivialFragment extends Fragment {
                 }
             });
     }
+
+    /**
+     * Metodo que gestiona la ui a la hora de seleccionar una opcion.
+     * @param answer texto de opcion seleccionada.
+     * @param button opcion seleccionada.
+     */
     private void checkAnswer(String answer, Button button){
-        boolean isCorrect = game.checkAnswer(answer);
-        if (isCorrect && !time.getText().equals("0") && game.hasQuestions()) {
+        boolean isCorrect = gameLogic.checkAnswer(answer);
+        if (isCorrect && !time.getText().equals("0") && gameLogic.hasQuestions()) {
             button.setBackgroundColor(Color.GREEN);
             Toast.makeText(getContext(), "¡Correcto!", Toast.LENGTH_SHORT).show();
             loadNextQuestion();
         } else{
             timerThread.interrupt();
-            Button correctButton = findButtonForAnswer(game.getCorrectAnswer());
+            Button correctButton = findButtonForAnswer(gameLogic.getCorrectAnswer());
             if (correctButton != null) {
                 correctButton.setBackgroundColor(Color.GREEN);
             }
@@ -161,6 +174,11 @@ public class TrivialFragment extends Fragment {
         }
     }
 
+    /**
+     * Metodo para encontrar boton con la respuesta.
+     * @param answer la respuesta a buscar.
+     * @return
+     */
     private Button findButtonForAnswer(String answer) {
         for (Button option : options) {
             if (option.getText().toString().equals(answer)) {
@@ -169,6 +187,11 @@ public class TrivialFragment extends Fragment {
         }
         return null;
     }
+
+    /**
+     * Hilo con cuenta atras.
+     * @param segundos tiempo de la cuenta atras en segundos.
+     */
     public void timer(int segundos){
         if (timerThread != null && timerThread.isAlive()) {
             timerThread.interrupt();
@@ -201,11 +224,14 @@ public class TrivialFragment extends Fragment {
         timerThread.start();
     }
 
+    /**
+     * Fin del juego.
+     */
     private void endGame() {
         boolean isWin;
-        isWin = !game.hasQuestions();
+        isWin = !gameLogic.hasQuestions();
 
-        gameEndListener.onGameEnd(game.getScore(), gameName, isWin);
+        gameEndListener.onGameEnd(gameLogic.getScore(), gameName, isWin);
     }
 }
 

@@ -23,19 +23,20 @@ import com.sak.myrecreativa.models.games.memoryGame.MemoryGame;
 
 
 public class    MemoryGameFragment extends Fragment {
-
     private MemoryGame gameLogic;
+
     private GridLayout gridLayout;
     private Button[] buttons;
     private TextView timer;
-    private int finalTime;
+
+    private GameName gameName;
+    private String mode;
+
     private int numberOfPairs;
     private boolean isProcessing = false;
     private Thread timerThread;
-    private String mode;
-    private Handler handler = new Handler();
+
     private IOnGameEndListener gameEndListener;
-    private GameName gameName;
 
     @Nullable
     @Override
@@ -47,7 +48,6 @@ public class    MemoryGameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         gridLayout = view.findViewById(R.id.gridLayout_memoryGame);
         timer = view.findViewById(R.id.timer_memory_game);
-        finalTime = 0;
         int totalCards = numberOfPairs * 2;
         buttons = new Button[totalCards];
 
@@ -65,6 +65,7 @@ public class    MemoryGameFragment extends Fragment {
             params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             button.setLayoutParams(params);
+            button.setBackgroundResource(android.R.drawable.btn_default);
 
             gridLayout.addView(button);
             buttons[i] = button;
@@ -100,12 +101,18 @@ public class    MemoryGameFragment extends Fragment {
         gameEndListener = (IOnGameEndListener)  context;
     }
 
+    /**
+     * Manejar ui a la hora de seleccionar un boton.
+     * @param view
+     */
     private void onCardClicked(View view) {
-        if (isProcessing) return;
+        if (isProcessing)
+            return;
 
         int position = view.getId();
 
-        if (gameLogic.isMatched(position)) return;
+        if (gameLogic.isMatched(position))
+            return;
 
         Button button = buttons[position];
         int cardValue = gameLogic.getCardAt(position); // Obtén el valor numérico de la carta
@@ -127,6 +134,7 @@ public class    MemoryGameFragment extends Fragment {
             }
         } else {
             isProcessing = true;
+            Handler handler = new Handler();
             handler.postDelayed(() -> {
                 gameLogic.resetSelection();
                 for (Button btn : buttons) {
@@ -139,6 +147,9 @@ public class    MemoryGameFragment extends Fragment {
         }
     }
 
+    /**
+     * Hilo para contar los segundos que pasan de juego.
+     */
     private void timer(){
         if (timerThread != null && timerThread.isAlive()) {
             timerThread.interrupt();
@@ -170,6 +181,11 @@ public class    MemoryGameFragment extends Fragment {
 
     }
 
+    /**
+     * Metodo para asignar un color a cada numero. (Pasar de los valores numericos que usa la logica a visual)
+     * @param number el numero a asignar un color.
+     * @return el color asignado al number.
+     */
     private int getColorForNumber(int number) {
         switch (number) {
             case 1: return Color.RED;
@@ -184,14 +200,16 @@ public class    MemoryGameFragment extends Fragment {
             case 10: return 0xFF800080; // Purple
             case 11: return 0xFF008080; // Teal
             case 12: return 0xFFFFC0CB; // Pink
-            default: return android.R.drawable.btn_default; // Default color
+            default: return android.R.drawable.btn_default;
         }
     }
 
 
-
+    /**
+     * Fin del juego.
+     */
     private void endGame(){
-        finalTime = Integer.valueOf(timer.getText().toString());
+        int finalTime = Integer.valueOf(timer.getText().toString());
         timerThread.interrupt();
         gameEndListener.onGameEnd(gameLogic.calculateScore(mode, finalTime), gameName, gameLogic.isGameOver());
     }
