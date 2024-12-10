@@ -34,29 +34,35 @@
         <!-- Filas del tablero -->
         <!-- Fila 1 -->
         <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
         </TableRow>
 
         <!-- Repite filas 2 a 9 con la misma estructura -->
         <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content">
             <!-- 9 columnas -->
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
-            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="18sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
+            <EditText android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:background="@android:color/white" android:textColor="@android:color/black" android:textSize="10sp" android:inputType="number" />
         </TableRow>
 
         <!-- Repite para las filas 3 a 9 con la misma estructura -->
@@ -84,7 +90,7 @@
             android:hint="Ingresa un número (1-9)"
             android:inputType="number"
             android:gravity="center"
-            android:padding="40dp" />
+            android:padding="5dp" />
 
         <!-- Botón de ayuda -->
         <Button

@@ -91,7 +91,7 @@ public class SudokuGameFragment extends Fragment {
         finishButton = view.findViewById(R.id.finishButton);
 
         // Inicializa el juego con el tamaño del tablero determinado
-        sudokuGame = new SudokuGame(boardSize);
+        sudokuGame = new SudokuGame(boardSize , mode.toLowerCase());
 
         createGameBoard();
 

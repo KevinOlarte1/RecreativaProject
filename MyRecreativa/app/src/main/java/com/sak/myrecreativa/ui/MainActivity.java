@@ -23,6 +23,7 @@ import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.games.conecta4.ConectaCuatro;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
+import com.sak.myrecreativa.ui.fragments.battleship.BattleshipFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
 import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
@@ -149,7 +150,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Trivial"));
         gameNames.add(new GameName("Memory"));
         gameNames.add(new GameName("Sudoku"));
+<<<<<<< HEAD
+        gameNames.add(new GameName("BattleShip"));
+=======
         gameNames.add(new GameName("Conecta4"));
+>>>>>>> b06111817e12e231c179af04f1d7866aa9c7b407
         return gameNames;
     }
 
@@ -191,7 +196,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Sudoku")) {
                 f = modeFragment(currentGame);
             }
+<<<<<<< HEAD
+            if (currentGame.getName().equalsIgnoreCase("BattleShip")) {
+=======
             if(currentGame.getName().equalsIgnoreCase("conecta4")){
+>>>>>>> b06111817e12e231c179af04f1d7866aa9c7b407
                 f = modeFragment(currentGame);
             }
         } else if(position == -2){
@@ -212,7 +221,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Sudoku")){
                 f = modeFragment(currentGame);
             }
+<<<<<<< HEAD
+            if (currentGame.getName().equalsIgnoreCase("BattleShip")){
+=======
             if (currentGame.getName().equalsIgnoreCase("conecta4")){
+>>>>>>> b06111817e12e231c179af04f1d7866aa9c7b407
                 f = modeFragment(currentGame);
             }
         }
@@ -250,14 +263,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             setTitle("Card Memory");
         }
         if (gameName.getName().equalsIgnoreCase("Sudoku")){
-            f = new SudokuGameFragment(); // cambiar el fragment
+            f = new SudokuGameFragment();
             f.setArguments(arg);
             setTitle("Sudoku");
         }
+<<<<<<< HEAD
+        if (gameName.getName().equalsIgnoreCase("BattleShip")){
+            f = new BattleshipFragment(); // cambiar el fragment
+            f.setArguments(arg);
+            setTitle("BattleShip");
+=======
         if (gameName.getName().equalsIgnoreCase("conecta4")){
             f = new ConectaCuatroFragment();
             f.setArguments(arg);
             setTitle("Conecta4");
+>>>>>>> b06111817e12e231c179af04f1d7866aa9c7b407
         }
         if (f != null){
             getSupportFragmentManager()
