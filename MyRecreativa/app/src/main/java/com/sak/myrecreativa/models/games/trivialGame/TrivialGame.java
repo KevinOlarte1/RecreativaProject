@@ -60,5 +60,8 @@ public class TrivialGame {
         }
     }
 
+    public Question getCurrentQuestion() {
+        return currentQuestion;
+    }
 }
 

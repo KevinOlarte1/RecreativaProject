@@ -116,7 +116,7 @@ public class TrivialFragment extends Fragment {
             Context context = getContext();
             if(context != null){
                 Resources res =context.getResources();
-                int resId = res.getIdentifier(gameName.getName().toLowerCase() + "_background", "drawable", context.getPackageName());
+                int resId = res.getIdentifier(game.getCurrentQuestion().getCode().toLowerCase(), "drawable", context.getPackageName());
                 img.setBackgroundResource(resId);
             }
 
@@ -186,7 +186,8 @@ public class TrivialFragment extends Fragment {
         boolean isWin;
         isWin = !game.hasQuestions();
         timerThread.interrupt();
-        gameName.setMaxScore(game.getScore());
+        if (gameName.getMaxScore() < game.getScore())
+            gameName.setMaxScore(game.getScore());
         gameEndListener.onGameEnd(game.getScore(), gameName, isWin);
     }
 }
