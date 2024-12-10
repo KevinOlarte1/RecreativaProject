@@ -3,22 +3,40 @@ package com.sak.myrecreativa.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameName implements Parcelable {
     private final String name;
-    private long maxScore;
+    private int maxScore;
 
     private boolean favorite;
+
+    private List<Mission> missions;
 
     public GameName(String name){
         this.name = name;
         this.maxScore = 0;
         this.favorite = false;
+        this.missions = new ArrayList<>();
     }
 
-    public void setMaxScore(long maxScore) {
+    public void updateMission(){
+        for (Mission m: missions) {
+            m.setCurrentPoints((int) maxScore);
+        }
+    }
+
+    public void setMaxScore(int maxScore) {
         this.maxScore = maxScore;
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
+    }
+
+    public List<Mission> getMissions() {
+        return missions;
     }
 
     public void setFavorite(boolean favorite) {
