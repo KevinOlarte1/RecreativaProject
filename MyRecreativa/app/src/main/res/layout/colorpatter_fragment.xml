@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -22,28 +22,28 @@
         android:gravity="center">
 
         <View
-            android:id="@+id/button_red"
+            android:id="@+id/redButton"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"
             android:background="@android:color/holo_red_dark" />
 
         <View
-            android:id="@+id/button_green"
+            android:id="@+id/greenButton"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"
             android:background="@android:color/holo_green_dark" />
 
         <View
-            android:id="@+id/button_blue"
+            android:id="@+id/blueButton"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"
             android:background="@android:color/holo_blue_dark" />
 
         <View
-            android:id="@+id/button_yellow"
+            android:id="@+id/yellowButton"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"

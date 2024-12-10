@@ -5,65 +5,92 @@ import java.util.List;
 import java.util.Random;
 
 public class ColorPatternGame {
-    private final List<Integer> pattern; // Secuencia de colores
-    private final Random random;
-    private int currentStep;
-    private final int initialPatternLength; // Longitud inicial del patrón
 
-    public ColorPatternGame(int difficulty) {
-        pattern = new ArrayList<>();
-        random = new Random();
-        currentStep = 0;
+    private final List<Integer> sequence;
+    private int userStep;
+    private int score;
+    private boolean userTurn = false;
+    private boolean finish = false;
 
-        // Configura la longitud inicial del patrón según la dificultad
-        switch (difficulty) {
-            case 1: // Fácil
-                initialPatternLength = 3;
-                break;
-            case 2: // Medio
-                initialPatternLength = 5;
-                break;
-            case 3: // Difícil
-                initialPatternLength = 7;
-                break;
-            default:
-                initialPatternLength = 3;
+    public  ColorPatternGame(int dificulty){
+        this.sequence = new ArrayList<>();
+        startGame(dificulty);
+    }
+
+    /**
+     * Metodo para inicializar las variables.
+     */
+    private void startGame(int n) {
+        sequence.clear();
+        userStep = 0;
+        score = 0;
+        addNewStep();
+
+        if(n ==2){
+            for (int i = 0; i < 5; i++) {
+                addNewStep();
+            }
+
         }
-
-        // Genera el patrón inicial
-        for (int i = 0; i < initialPatternLength; i++) {
-            addColorToPattern();
+        else if (n == 3){
+            for (int i = 0; i < 10; i++) {
+                addNewStep();
+            }
         }
     }
 
-    public void addColorToPattern() {
-        int newColor;
-        do {
-            newColor = random.nextInt(4); // 4 colores disponibles
-        } while (!pattern.isEmpty() && newColor == pattern.get(pattern.size() - 1));
-        // Asegura que no se repita el último color
-
-        pattern.add(newColor); // Agrega el nuevo color al patrón
-        currentStep = 0; // Reinicia el paso actual
+    /**
+     * Añadir otro numero random 1-4 para memorizar
+     */
+    public void addNewStep() {
+        Random rnd = new Random();
+        sequence.add(rnd.nextInt(4));
     }
 
+    public void updateScore() {
+    }
 
-    public boolean verifyStep(int color) {
-        if (color == pattern.get(currentStep)) {
-            currentStep++;
-            return currentStep == pattern.size(); // True si completó el patrón
+    /**
+     * Verificar si el num ingresado esta en esa posicion y si es ese
+     * @param colorIndex num a verificar
+     */
+    public  void  checkInput(int colorIndex){
+        if (!userTurn) return;
+
+        if (sequence.get(userStep) == colorIndex){
+            userStep++;
+            if (userStep == sequence.size()){
+                score++;
+                userStep = 0;
+                userTurn = false;
+                addNewStep();
+            }
         }
-        return false; // Falló el patrón
+        else
+            finish = true;
     }
 
-    public List<Integer> getPattern() {
-        return new ArrayList<>(pattern);
+    /**
+     * Saber si el juego a terminado porque el jugador a fallado
+     * @return bollenao verificandolo
+     */
+    public boolean isFinish() {
+        return finish;
     }
 
-    public void resetGame() {
-        pattern.clear();
-        for (int i = 0; i < initialPatternLength; i++) {
-            addColorToPattern();
-        }
+    public boolean isUserTurn() {
+        return userTurn;
+    }
+
+    public void setUserTurn(boolean userTurn) {
+        this.userTurn = userTurn;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public List<Integer> getSequence() {
+        return sequence;
     }
 }
