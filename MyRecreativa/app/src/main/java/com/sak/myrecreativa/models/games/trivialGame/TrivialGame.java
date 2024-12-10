@@ -45,7 +45,7 @@ public class TrivialGame {
             score++;
         }
         unansweredQuestions.remove(currentQuestion);
-        currentQuestion = null;
+        //currentQuestion = null;
     }
 
     public int getScore() {
@@ -62,6 +62,9 @@ public class TrivialGame {
 
     public Question getCurrentQuestion() {
         return currentQuestion;
+    }
+    public String getCorrectAnswer(){
+        return currentQuestion.getCorrectAnswer();
     }
 }
 

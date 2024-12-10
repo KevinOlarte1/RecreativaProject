@@ -1,6 +1,7 @@
 package com.sak.myrecreativa.ui.fragments.memoryGame;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -107,8 +108,9 @@ public class    MemoryGameFragment extends Fragment {
         if (gameLogic.isMatched(position)) return;
 
         Button button = buttons[position];
-        int cardValue = gameLogic.getCardAt(position);
-        button.setText(String.valueOf(cardValue));
+        int cardValue = gameLogic.getCardAt(position); // Obtén el valor numérico de la carta
+        int cardColor = getColorForNumber(cardValue);  // Obtén el color asociado al número
+        button.setBackgroundColor(cardColor);         // Cambia el color del botón
 
         boolean isPair = gameLogic.selectCard(position);
 
@@ -129,13 +131,14 @@ public class    MemoryGameFragment extends Fragment {
                 gameLogic.resetSelection();
                 for (Button btn : buttons) {
                     if (!gameLogic.isMatched(btn.getId())) {
-                        btn.setText("");
+                        btn.setBackgroundResource(android.R.drawable.btn_default);
                     }
                 }
                 isProcessing = false; // Permitir interacción nuevamente
             }, 1000);
         }
     }
+
     private void timer(){
         if (timerThread != null && timerThread.isAlive()) {
             timerThread.interrupt();
@@ -166,6 +169,25 @@ public class    MemoryGameFragment extends Fragment {
         timerThread.start();
 
     }
+
+    private int getColorForNumber(int number) {
+        switch (number) {
+            case 1: return Color.RED;
+            case 2: return Color.BLUE;
+            case 3: return Color.GREEN;
+            case 4: return Color.YELLOW;
+            case 5: return Color.CYAN;
+            case 6: return Color.MAGENTA;
+            case 7: return Color.WHITE;
+            case 8: return Color.DKGRAY;
+            case 9: return 0xFFFFA500; // Orange
+            case 10: return 0xFF800080; // Purple
+            case 11: return 0xFF008080; // Teal
+            case 12: return 0xFFFFC0CB; // Pink
+            default: return android.R.drawable.btn_default; // Default color
+        }
+    }
+
 
 
     private void endGame(){

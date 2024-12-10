@@ -4,17 +4,15 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +28,11 @@ public class MinesweeperFragment extends Fragment {
     private TableLayout tableLayout;
     private ImageButton selectionButton;
     private ImageButton selectBombButton;
+    private TextView bombCountTextView;
+    private ImageView bombCountImg;
+    private TextView timerText;
+    private ImageView timerImg;
+    private Thread timerThread;
     private boolean isMarkMode = false; // Modo inicial: seleccionar casilla
     private String mode;
     private GameName gameName;
@@ -54,6 +57,13 @@ public class MinesweeperFragment extends Fragment {
         scaleImage(selectBombButton);
         scaleImage(selectionButton);
 
+        bombCountTextView = view.findViewById(R.id.tv_bomb_count);
+        bombCountImg = view.findViewById(R.id.bomb_count_img);
+        bombCountImg.setImageResource(R.drawable.bomb);
+
+        timerText = view.findViewById(R.id.tv_timer);
+        timerImg = view.findViewById(R.id.timer_img);
+        timerImg.setImageResource(R.drawable.clock);
 
         selectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +81,8 @@ public class MinesweeperFragment extends Fragment {
         minesweeperGame = new MinesweeperGame(boardSize, numberOfBombs);
         tableLayout = view.findViewById(R.id.table);
         createGameBoard(tableLayout, boardSize);
+        bombCountTextView.setText(String.valueOf(numberOfBombs));
+        timer();
     }
 
     @Override
@@ -162,6 +174,9 @@ public class MinesweeperFragment extends Fragment {
                 button.setImageResource(0);
                 button.setBackgroundColor(Color.GREEN);
             }
+
+            // Actualizar contador de bombas
+            updateBombCount();
         } else {
             // Revelar casilla
             if (minesweeperGame.isBomb(i, j)) {
@@ -182,6 +197,12 @@ public class MinesweeperFragment extends Fragment {
             }
         }
     }
+
+    private void updateBombCount() {
+        int remainingBombs = minesweeperGame.getBombCount() - minesweeperGame.getMarkedCount();
+        bombCountTextView.setText(String.valueOf(remainingBombs));
+    }
+
 
     private void revealArea(int x, int y) {
         if (!minesweeperGame.isValidCell(x, y) || minesweeperGame.isRevealed(x, y) || minesweeperGame.isMarked(x, y)) {
@@ -221,6 +242,37 @@ public class MinesweeperFragment extends Fragment {
         }
     }
 
+    private void timer(){
+        if (timerThread != null && timerThread.isAlive()) {
+            timerThread.interrupt();
+        }
+
+        timerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 1000000; i++){
+                    try {
+                        Thread.sleep(1000);
+                        int finalI = i;
+                        timerText.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                timerText.setText(String.valueOf(finalI));
+                                if (timerText.getText().toString().equals("1000000"))
+                                    endGame();
+                            }
+                        });
+
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                }
+            }
+        });
+        timerThread.start();
+
+    }
+
     private void scaleImage(ImageButton button){
         button.setScaleType(ImageView.ScaleType.FIT_XY);
         button.setBackground(null);
@@ -241,6 +293,7 @@ public class MinesweeperFragment extends Fragment {
         }
     }
     private void endGame() {
+        timerThread.interrupt();
         gameEndListener.onGameEnd(0, gameName, minesweeperGame.isWin());
     }
 }
