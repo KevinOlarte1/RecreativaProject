@@ -37,6 +37,9 @@ public class GameControllerConectaCuatro {
         // Comprobar si hay un ganador
         if (model.checkWin(lastRow, col)) {
             view.showWinner(model.getCurrentPlayer());
+            if (model.getCurrentPlayer() == 1){
+                model.addscore();
+            }
         } else {
             model.switchPlayer();
             view.showTurn(model.getCurrentPlayer());
@@ -45,8 +48,17 @@ public class GameControllerConectaCuatro {
 
 
     public void endGame() {
-        view.endGame(model.getCurrentPlayer(), model.getScore());
+        int score  = model.getScore();
+        model.resetScore();
+        view.endGame(model.getCurrentPlayer(), score);
 
+    }
+
+    public void restartGame() {
+        model.resetGame(); // Reinicia el modelo (tablero vacío)
+        view.resetUI(); // Restablece la interfaz de usuario (turno inicial, botones reiniciados)
+
+        view.resetMap();
     }
 
 }

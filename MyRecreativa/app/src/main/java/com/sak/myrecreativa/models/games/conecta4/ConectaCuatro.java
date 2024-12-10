@@ -73,6 +73,9 @@ public class ConectaCuatro{
         currentPlayer = 1;
     }
 
+    public void resetScore(){
+        this.score = 0;
+    }
     public void addscore(){
         this.score++;
     }

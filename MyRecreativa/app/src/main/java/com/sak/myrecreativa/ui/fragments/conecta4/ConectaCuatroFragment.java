@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ public class ConectaCuatroFragment extends Fragment {
     private Button[][] buttons;
     private TextView gameStatus;
     private Button finishButton;
+
+    private  Button resetButton;
     private final int rows = 6;
     private final int columns = 7;
 
@@ -46,6 +49,7 @@ public class ConectaCuatroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         gameStatus = view.findViewById(R.id.gameStatus);
         finishButton = view.findViewById(R.id.finishButton);
+        resetButton = view.findViewById(R.id.resetButton);
         GridLayout gridLayout = view.findViewById(R.id.gridLayout);
 
         buttons = new Button[rows][columns];
@@ -69,6 +73,7 @@ public class ConectaCuatroFragment extends Fragment {
         }
 
         finishButton.setOnClickListener(v -> controller.endGame());
+        resetButton.setOnClickListener(v -> controller.restartGame());
     }
 
     @Override
@@ -105,6 +110,7 @@ public class ConectaCuatroFragment extends Fragment {
     public void showWinner(int player) {
         gameStatus.setText("Jugador " + player + " gana!");
         finishButton.setVisibility(View.VISIBLE);
+        resetButton.setVisibility(View.VISIBLE);
     }
 
     public void showTurn(int player) {
@@ -113,10 +119,12 @@ public class ConectaCuatroFragment extends Fragment {
 
     public void resetUI() {
         finishButton.setVisibility(View.GONE);
+        resetButton.setVisibility(View.GONE);
         gameStatus.setText("Turno del Jugador 1");
     }
 
     public void endGame(int playerWin, int score){
+        Log.i("Puntaje: ", String.valueOf(score)); //TODO: Bien hasta aqui
         boolean win = playerWin == 1? true : false;
         gameEndListener.onGameEnd(score, gameName, win);
     }
