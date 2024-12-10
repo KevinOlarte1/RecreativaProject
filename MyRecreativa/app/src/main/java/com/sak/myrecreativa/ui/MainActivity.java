@@ -1,12 +1,10 @@
 package com.sak.myrecreativa.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -23,8 +21,10 @@ import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.interfaces.IOnGameEndListener;
 import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
+import com.sak.myrecreativa.models.games.conecta4.ConectaCuatro;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
+import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Trivial"));
         gameNames.add(new GameName("CardMemory"));
         gameNames.add(new GameName("Sudoku"));
+        gameNames.add(new GameName("Conecta4"));
         return gameNames;
     }
 
@@ -190,6 +191,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (currentGame.getName().equalsIgnoreCase("Sudoku")) {
                 f = modeFragment(currentGame);
             }
+            if(currentGame.getName().equalsIgnoreCase("conecta4")){
+                f = modeFragment(currentGame);
+            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -206,6 +210,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Sudoku")){
+                f = modeFragment(currentGame);
+            }
+            if (currentGame.getName().equalsIgnoreCase("conecta4")){
                 f = modeFragment(currentGame);
             }
         }
@@ -246,6 +253,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f = new SudokuGameFragment(); // cambiar el fragment
             f.setArguments(arg);
             setTitle("Sudoku");
+        }
+        if (gameName.getName().equalsIgnoreCase("conecta4")){
+            f = new ConectaCuatroFragment();
+            f.setArguments(arg);
+            setTitle("Conecta4");
         }
         if (f != null){
             getSupportFragmentManager()

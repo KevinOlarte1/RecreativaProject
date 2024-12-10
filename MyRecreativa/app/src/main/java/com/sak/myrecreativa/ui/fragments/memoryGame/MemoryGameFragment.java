@@ -20,7 +20,7 @@ import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.models.games.memoryGame.MemoryGame;
 
 
-public class MemoryGameFragment extends Fragment {
+public class    MemoryGameFragment extends Fragment {
 
     private MemoryGame gameLogic;
     private Button[] buttons;

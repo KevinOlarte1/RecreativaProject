@@ -183,7 +183,8 @@ public class TrivialFragment extends Fragment {
         boolean isWin;
         isWin = !game.hasQuestions();
         timerThread.interrupt();
-        gameName.setMaxScore(game.getScore());
+        if (gameName.getMaxScore() < game.getScore())
+            gameName.setMaxScore(game.getScore());
         gameEndListener.onGameEnd(game.getScore(), gameName, isWin);
     }
 }
