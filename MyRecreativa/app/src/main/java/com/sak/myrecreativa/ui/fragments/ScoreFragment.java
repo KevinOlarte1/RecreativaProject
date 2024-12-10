@@ -22,8 +22,8 @@ import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.models.GameName;
 
 public class ScoreFragment extends Fragment {
-    private String score;
     private GameName name;
+
     private ImageView banner;
     private ImageView img;
     private TextView tvGameName;
@@ -31,7 +31,8 @@ public class ScoreFragment extends Fragment {
     private TextView tvScore;
     private Button playAgainButton;
     private Button exitButton;
-    private ConstraintLayout layout;
+
+    private String score;
     private boolean isWin;
 
     private IOnClickListenner listenner;
@@ -45,7 +46,6 @@ public class ScoreFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        layout = view.findViewById(R.id.scoreLayout);
         banner = view.findViewById(R.id.score_banner);
         tvGameName = view.findViewById(R.id.tvGameNameScore);
         tvScore = view.findViewById(R.id.tvLastGameScore);
