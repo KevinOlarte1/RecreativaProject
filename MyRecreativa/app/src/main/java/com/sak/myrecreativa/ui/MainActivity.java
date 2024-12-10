@@ -21,10 +21,10 @@ import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.interfaces.IOnGameEndListener;
 import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
+import com.sak.myrecreativa.models.Mission;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
 import com.sak.myrecreativa.ui.fragments.battleship.BattleshipFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
-import com.sak.myrecreativa.ui.fragments.colorpatter.ColorPatternFragment;
 import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
@@ -40,7 +40,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
-        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener, ListadoJuegosFavFragment.IOnAttachListenner {
+        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener, ListadoJuegosFavFragment.IOnAttachListenner, MisionesFragment.IOnAttachListenner {
     private DrawerLayout drawer;
     private List<GameName> gameNames;
     private GameName currentGame;
@@ -146,9 +146,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Sudoku"));
         gameNames.add(new GameName("Conecta4"));
         gameNames.add(new GameName("Battleship"));
-        gameNames.add(new GameName("Colorpatter"));
+        for (GameName n: gameNames) {
+            createMission(n);
+        }
         return gameNames;
     }
+
+    public void createMission(GameName name){
+        List<Mission> missions = new ArrayList<>();
+        missions.add(new Mission("Mision 1", 0 , 5));
+        missions.add(new Mission("Mision 2", 0 , 10));
+        missions.add(new Mission("Mision 3", 0 , 15));
+        missions.add(new Mission("Mision 4", 0 , 20));
+        name.setMissions(missions);
+    }
+
 
 
     private GameName getCurrentGame(){
@@ -194,9 +206,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if(currentGame.getName().equalsIgnoreCase("Battleship")){
                 f = modeFragment(currentGame);
             }
-            if(currentGame.getName().equalsIgnoreCase("Colorpatter")){
-                f = modeFragment(currentGame);
-            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -219,9 +228,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Battleship")){
-                f = modeFragment(currentGame);
-            }
-            if (currentGame.getName().equalsIgnoreCase("Colorpatter")){
                 f = modeFragment(currentGame);
             }
         }
@@ -273,11 +279,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f.setArguments(arg);
             setTitle("Battleship");
         }
-        if (gameName.getName().equalsIgnoreCase("Colorpatter")){
-            f = new ColorPatternFragment();
-            f.setArguments(arg);
-            setTitle("Colorpatter");
-        }
         if (f != null){
             getSupportFragmentManager()
                     .beginTransaction()
@@ -290,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onGameEnd(int score, GameName name, boolean isWin) {
         if(score > name.getMaxScore())
             name.setMaxScore(score);
+        name.updateMission();
         Fragment f;
         f = new ScoreFragment();
         Bundle arg = new Bundle();
