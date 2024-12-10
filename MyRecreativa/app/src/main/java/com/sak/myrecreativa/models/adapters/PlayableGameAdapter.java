@@ -2,6 +2,7 @@ package com.sak.myrecreativa.models.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
             favButton = itemView.findViewById(R.id.favButton);
             playButton = itemView.findViewById(R.id.playButton);
             playButton.setOnClickListener(this);
+
             //itemView.setOnClickListener(this);
         }
 
@@ -87,9 +89,27 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
             mainLayout.setBackgroundResource(R.drawable.side_nav_bar);
         }
 
+
         if (game != null){
             tvGameName.setText(game.getName());
             tvMaxScore.setText(String.valueOf(game.getMaxScore()));
+            if(game.isFavorite())
+                favButton.setBackgroundResource(R.drawable.heart_filled);
+            else
+                favButton.setBackgroundResource(R.drawable.heart_outline);
+
+            favButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    game.setFavorite(!game.isFavorite());
+                    if (!game.isFavorite())
+                        favButton.setBackgroundResource(R.drawable.heart_outline);
+                    else
+                        favButton.setBackgroundResource(R.drawable.heart_filled);
+
+                    Log.i("Favorito??", String.valueOf(game.isFavorite()));
+                }
+            });
             //btPlay.setOnClickListener(listenner);
 
         }

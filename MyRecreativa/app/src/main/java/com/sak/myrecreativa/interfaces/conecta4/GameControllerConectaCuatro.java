@@ -37,9 +37,10 @@ public class GameControllerConectaCuatro {
         // Comprobar si hay un ganador
         if (model.checkWin(lastRow, col)) {
             view.showWinner(model.getCurrentPlayer());
-            if (model.getCurrentPlayer() == 1){
+            if (model.getCurrentPlayer() == 1)
                 model.addscore();
-            }
+            else
+                model.resetScore();
         } else {
             model.switchPlayer();
             view.showTurn(model.getCurrentPlayer());

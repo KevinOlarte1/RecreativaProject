@@ -21,13 +21,12 @@ import com.sak.myrecreativa.interfaces.IOnClickListenner;
 import com.sak.myrecreativa.interfaces.IOnGameEndListener;
 import com.sak.myrecreativa.interfaces.IOnGameModeSelectedListener;
 import com.sak.myrecreativa.models.GameName;
-import com.sak.myrecreativa.models.games.conecta4.ConectaCuatro;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
 import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
-import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosBloqueadosFragment;
+import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFavFragment;
 import com.sak.myrecreativa.ui.fragments.menu.ListadoJuegosFragment;
 import com.sak.myrecreativa.ui.fragments.menu.MisionesFragment;
 import com.sak.myrecreativa.ui.fragments.ScoreFragment;
@@ -35,10 +34,11 @@ import com.sak.myrecreativa.ui.fragments.sudoku.SudokuGameFragment;
 import com.sak.myrecreativa.ui.fragments.trivialGame.TrivialFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
-        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener {
+        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener, ListadoJuegosFavFragment.IOnAttachListenner {
     private DrawerLayout drawer;
     private List<GameName> gameNames;
     private GameName currentGame;
@@ -107,13 +107,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.fcvMain, f)
                     .commit();
             setTitle(R.string.misiones);
-        } else if (id == R.id.nav_game_blocked) {
-            f = new ListadoJuegosBloqueadosFragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fcvMain, f)
-                    .commit();
-            setTitle(R.string.blocked);
         } else if (id == R.id.nav_allGame){
             f = new ListadoJuegosFragment();
             getSupportFragmentManager()
@@ -122,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .commit();
             setTitle(R.string.allGame);
         }else if (id == R.id.nav_favoritos){
-            f = new ListadoJuegosFragment();
+            f = new ListadoJuegosFavFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fcvMain, f)
@@ -285,4 +278,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
+    @Override
+    public List<GameName> getGamesFav() {
+        List<GameName> fav = new ArrayList<>();
+        for (GameName gameName: gameNames) {
+            if (gameName.isFavorite())
+                fav.add(gameName);
+
+        }
+        return fav;
+    }
 }

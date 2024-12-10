@@ -16,11 +16,6 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/allGame"/>
 
-        <item
-            android:id="@+id/nav_game_blocked"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/blocked"/>
-
 
         <item
             android:id="@+id/nav_misiones"

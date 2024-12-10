@@ -9,20 +9,20 @@ public class GameName implements Parcelable {
     private final String name;
     private long maxScore;
 
-    private boolean blocked;
+    private boolean favorite;
 
     public GameName(String name){
         this.name = name;
         this.maxScore = 0;
-        this.blocked = true;
+        this.favorite = false;
     }
 
     public void setMaxScore(long maxScore) {
         this.maxScore = maxScore;
     }
 
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public long getMaxScore() {
@@ -33,8 +33,8 @@ public class GameName implements Parcelable {
         return name;
     }
 
-    public boolean isBlocked() {
-        return blocked;
+    public boolean isFavorite() {
+        return favorite;
     }
 
     // Parcelable implementation
