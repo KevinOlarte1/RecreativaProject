@@ -17,6 +17,9 @@ public class SudokuGame {
      * @param boardSize Tamaño del tablero de Sudoku (debe ser un cuadrado perfecto, e.g., 9).
      */
     public SudokuGame(int boardSize, String difficulty) {
+        if (Math.sqrt(boardSize) % 1 != 0) {
+            throw new IllegalArgumentException("El tamaño del tablero debe ser un cuadrado perfecto.");
+        }
         this.boardSize = boardSize;
         this.subGridSize = (int) Math.sqrt(boardSize);
         this.board = new int[boardSize][boardSize];
@@ -38,7 +41,6 @@ public class SudokuGame {
 
     /**
      * Elimina números del tablero de Sudoku según la dificultad seleccionada.
-     *
      * El número de celdas a eliminar depende del nivel de dificultad:
      * - Fácil: 25% de las celdas.
      * - Media: 50% de las celdas.
@@ -47,20 +49,19 @@ public class SudokuGame {
     private void removeNumbers() {
         Random random = new Random();
 
-        // Determinar número de celdas a eliminar según la dificultad
         int cellsToRemove;
         switch (difficulty.toLowerCase()) {
             case "easy":
-                cellsToRemove = boardSize * boardSize / 4; // Elimina el 25% de las celdas
+                cellsToRemove = boardSize * boardSize / 4;
                 break;
             case "medium":
-                cellsToRemove = boardSize * boardSize / 2; // Elimina el 50% de las celdas
+                cellsToRemove = boardSize * boardSize / 2;
                 break;
             case "hard":
-                cellsToRemove = (int) (boardSize * boardSize * 0.75); // Elimina el 75% de las celdas
+                cellsToRemove = boardSize * boardSize / 2; // Reduce la cantidad para evitar problemas
                 break;
             default:
-                cellsToRemove = boardSize * boardSize / 2; // Por defecto, nivel medio
+                cellsToRemove = boardSize * boardSize / 2;
         }
 
         while (cellsToRemove > 0) {
@@ -117,22 +118,13 @@ public class SudokuGame {
             return true;
         }
 
-        if (row < subGridSize) {
-            if (col < subGridSize) {
-                col = subGridSize;
-            }
-        } else if (row < boardSize - subGridSize) {
-            if (col == (row / subGridSize) * subGridSize) {
-                col += subGridSize;
-            }
-        } else {
-            if (col == boardSize - subGridSize) {
-                row++;
-                col = 0;
-                if (row >= boardSize) {
-                    return true;
-                }
-            }
+        if (row < subGridSize && col < subGridSize) {
+            col = subGridSize;
+        } else if (row < boardSize - subGridSize && col == (row / subGridSize) * subGridSize) {
+            col += subGridSize;
+        } else if (row >= boardSize - subGridSize && col == boardSize - subGridSize) {
+            row++;
+            col = 0;
         }
 
         for (int num = 1; num <= boardSize; num++) {

@@ -37,9 +37,16 @@ public class ColorPatternGame {
     }
 
     public void addColorToPattern() {
-        pattern.add(random.nextInt(4)); // 4 colores disponibles
+        int newColor;
+        do {
+            newColor = random.nextInt(4); // 4 colores disponibles
+        } while (!pattern.isEmpty() && newColor == pattern.get(pattern.size() - 1));
+        // Asegura que no se repita el último color
+
+        pattern.add(newColor); // Agrega el nuevo color al patrón
         currentStep = 0; // Reinicia el paso actual
     }
+
 
     public boolean verifyStep(int color) {
         if (color == pattern.get(currentStep)) {

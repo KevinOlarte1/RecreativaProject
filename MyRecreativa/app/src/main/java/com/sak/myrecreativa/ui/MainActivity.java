@@ -24,6 +24,7 @@ import com.sak.myrecreativa.models.GameName;
 import com.sak.myrecreativa.ui.fragments.ModeFragment;
 import com.sak.myrecreativa.ui.fragments.battleship.BattleshipFragment;
 import com.sak.myrecreativa.ui.fragments.buscaminasGame.MinesweeperFragment;
+import com.sak.myrecreativa.ui.fragments.colorpatter.ColorPatternFragment;
 import com.sak.myrecreativa.ui.fragments.conecta4.ConectaCuatroFragment;
 import com.sak.myrecreativa.ui.fragments.memoryGame.MemoryGameFragment;
 import com.sak.myrecreativa.ui.fragments.menu.AjustesFragment;
@@ -145,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Sudoku"));
         gameNames.add(new GameName("Conecta4"));
         gameNames.add(new GameName("Battleship"));
+        gameNames.add(new GameName("Colorpatter"));
         return gameNames;
     }
 
@@ -192,6 +194,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if(currentGame.getName().equalsIgnoreCase("Battleship")){
                 f = modeFragment(currentGame);
             }
+            if(currentGame.getName().equalsIgnoreCase("Colorpatter")){
+                f = modeFragment(currentGame);
+            }
         } else if(position == -2){
             f = new ListadoJuegosFragment();
             setTitle("MyRecreativa");
@@ -214,6 +219,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f = modeFragment(currentGame);
             }
             if (currentGame.getName().equalsIgnoreCase("Battleship")){
+                f = modeFragment(currentGame);
+            }
+            if (currentGame.getName().equalsIgnoreCase("Colorpatter")){
                 f = modeFragment(currentGame);
             }
         }
@@ -264,6 +272,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             f = new BattleshipFragment();
             f.setArguments(arg);
             setTitle("Battleship");
+        }
+        if (gameName.getName().equalsIgnoreCase("Colorpatter")){
+            f = new ColorPatternFragment();
+            f.setArguments(arg);
+            setTitle("Colorpatter");
         }
         if (f != null){
             getSupportFragmentManager()
