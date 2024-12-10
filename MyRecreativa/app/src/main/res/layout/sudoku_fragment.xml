@@ -45,13 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Botón para ingresar número -->
-        <Button
-            android:id="@+id/btn_ingresar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ingresar Número" />
-
         <!-- Campo para ingresar el número -->
         <EditText
             android:id="@+id/numberInput"
@@ -60,6 +53,14 @@
             android:inputType="number"
             android:hint="Num"
             android:gravity="center" />
+
+        <!-- Botón para ingresar el número -->
+        <Button
+            android:id="@+id/btn_ingresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Ingresar" />
 
         <!-- Botón para verificar si el Sudoku está resuelto -->
         <Button

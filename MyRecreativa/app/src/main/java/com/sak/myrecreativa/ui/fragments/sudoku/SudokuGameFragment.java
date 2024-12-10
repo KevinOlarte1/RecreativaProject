@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -51,15 +50,16 @@ public class SudokuGameFragment extends Fragment {
             mode = "medium";
         }
 
+        // Configuración del tamaño del tablero basado en el modo de juego
         switch (mode.toLowerCase()) {
             case "easy":
-                boardSize = 6;
+                boardSize = 4; // Cambiado a 4x4 para asegurar un cuadrado perfecto
                 break;
             case "medium":
-                boardSize = 9;
+                boardSize = 9; // 9x9 para el modo medio
                 break;
             case "hard":
-                boardSize = 12; // Valida que el tamaño sea soportado
+                boardSize = 16; // 16x16 para el modo difícil
                 break;
             default:
                 boardSize = 9;
@@ -68,10 +68,11 @@ public class SudokuGameFragment extends Fragment {
         try {
             sudokuGame = new SudokuGame(boardSize, mode.toLowerCase());
         } catch (IllegalArgumentException e) {
-            Toast.makeText(context, "El tamaño del tablero no es válido.", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            Toast.makeText(context, "Error al configurar el tablero: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            requireActivity().finish();
         }
     }
+
 
     /**
      * Crea la vista del fragmento inflando el diseño del tablero de Sudoku.
@@ -167,15 +168,15 @@ public class SudokuGameFragment extends Fragment {
             for (int j = 0; j < boardSize; j++) {
                 TextView cell = new TextView(getContext());
                 TableRow.LayoutParams params = new TableRow.LayoutParams(
-                        0, // Ancho proporcional
+                        0,
                         TableRow.LayoutParams.WRAP_CONTENT,
-                        1.0f // Peso igual para distribuir uniformemente
+                        1.0f
                 );
                 params.setMargins(2, 2, 2, 2);
                 cell.setLayoutParams(params);
                 cell.setGravity(Gravity.CENTER);
-                cell.setTextSize(18);
-                cell.setBackgroundResource(R.drawable.cell_border); // Agrega un borde a las celdas
+                cell.setTextSize(16); // Ajusta el tamaño del texto para tableros más grandes
+                cell.setBackgroundResource(R.drawable.cell_border);
 
                 if (board[i][j] != 0) {
                     cell.setText(String.valueOf(board[i][j]));

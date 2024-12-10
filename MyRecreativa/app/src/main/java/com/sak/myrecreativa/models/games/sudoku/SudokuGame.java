@@ -20,11 +20,13 @@ public class SudokuGame {
         if (Math.sqrt(boardSize) % 1 != 0) {
             throw new IllegalArgumentException("El tamaño del tablero debe ser un cuadrado perfecto.");
         }
+
         this.boardSize = boardSize;
         this.subGridSize = (int) Math.sqrt(boardSize);
         this.board = new int[boardSize][boardSize];
         this.solution = new int[boardSize][boardSize];
         this.difficulty = difficulty;
+
         generateBoard();
     }
 
@@ -52,13 +54,13 @@ public class SudokuGame {
         int cellsToRemove;
         switch (difficulty.toLowerCase()) {
             case "easy":
-                cellsToRemove = boardSize * boardSize / 4;
+                cellsToRemove = boardSize * boardSize / 4; // Elimina el 25% de las celdas
                 break;
             case "medium":
-                cellsToRemove = boardSize * boardSize / 2;
+                cellsToRemove = boardSize * boardSize / 2; // Elimina el 50% de las celdas
                 break;
             case "hard":
-                cellsToRemove = boardSize * boardSize / 2; // Reduce la cantidad para evitar problemas
+                cellsToRemove = (int) (boardSize * boardSize * 0.6); // Ajusta para evitar estados no válidos
                 break;
             default:
                 cellsToRemove = boardSize * boardSize / 2;
