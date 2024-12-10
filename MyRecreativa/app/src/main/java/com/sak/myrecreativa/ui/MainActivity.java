@@ -269,6 +269,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onGameEnd(int score, GameName name, boolean isWin) {
+        if(score > name.getMaxScore())
+            name.setMaxScore(score);
         Fragment f;
         f = new ScoreFragment();
         Bundle arg = new Bundle();
