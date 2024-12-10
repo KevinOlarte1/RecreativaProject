@@ -64,7 +64,6 @@ public class SudokuGameFragment extends Fragment {
 
     /**
      * Crea la vista del fragmento inflando el diseño del tablero de Sudoku.
-     *
      * @param inflater Inflador para las vistas.
      * @param container Contenedor del fragmento.
      * @param savedInstanceState Estado previo del fragmento, si existe.
@@ -77,7 +76,6 @@ public class SudokuGameFragment extends Fragment {
 
     /**
      * Configura las vistas y los botones después de que la vista ha sido creada.
-     *
      * @param view Vista raíz del fragmento.
      * @param savedInstanceState Estado previo del fragmento, si existe.
      */
@@ -91,7 +89,7 @@ public class SudokuGameFragment extends Fragment {
         finishButton = view.findViewById(R.id.finishButton);
 
         // Inicializa el juego con el tamaño del tablero determinado
-        sudokuGame = new SudokuGame(boardSize);
+        sudokuGame = new SudokuGame(boardSize , mode.toLowerCase());
 
         createGameBoard();
 
