@@ -40,7 +40,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ListadoJuegosFragment.IOnAttachListenner,
-        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener, ListadoJuegosFavFragment.IOnAttachListenner, MisionesFragment.IOnAttachListenner{
+        IOnClickListenner, IOnGameModeSelectedListener, IOnGameEndListener, ListadoJuegosFavFragment.IOnAttachListenner, MisionesFragment.IOnAttachListenner {
     private DrawerLayout drawer;
     private List<GameName> gameNames;
     private GameName currentGame;
@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public List<GameName> getGames() {
         return gameNames;
     }
-
     public List<GameName> createGames() {
         //! indica el orden de los juegos.
         gameNames = new ArrayList<>();
@@ -148,19 +147,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gameNames.add(new GameName("Conecta4"));
         gameNames.add(new GameName("Battleship"));
         for (GameName n: gameNames) {
-            generateMissions(n);
+            createMission(n);
         }
         return gameNames;
     }
 
-    private void generateMissions(GameName name){
-        List<Mission> m = new ArrayList<>();
-        m.add(new Mission("Mision 1 ", 0 , 5));
-        m.add(new Mission("Mision 2 ", 0 , 10));
-        m.add(new Mission("Mision 3 ", 0 , 15));
-        m.add(new Mission("Mision 4 ", 0 , 20));
-        name.setMissions(m);
+    public void createMission(GameName name){
+        List<Mission> missions = new ArrayList<>();
+        missions.add(new Mission("Mision 1", 0 , 5));
+        missions.add(new Mission("Mision 2", 0 , 10));
+        missions.add(new Mission("Mision 3", 0 , 15));
+        missions.add(new Mission("Mision 4", 0 , 20));
+        name.setMissions(missions);
     }
+
 
 
     private GameName getCurrentGame(){
