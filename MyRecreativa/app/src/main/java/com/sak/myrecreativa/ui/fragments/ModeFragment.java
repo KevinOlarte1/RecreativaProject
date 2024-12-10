@@ -26,10 +26,12 @@ public class ModeFragment extends Fragment {
     private Button mode2;
     private Button mode3;
     private Button play;
+
     private String selectedMode;
-    private IOnGameModeSelectedListener listener;
     private GameName gameName;
     private String[] modes;
+
+    private IOnGameModeSelectedListener listener;
 
     @Nullable
     @Override
@@ -102,6 +104,11 @@ public class ModeFragment extends Fragment {
         }
         listener = (IOnGameModeSelectedListener) context;
     }
+
+    /**
+     * Metodo para gestionar los botones de modos
+     * @param mode modo seleccionado.
+     */
     private void selectMode(String mode){
         mode1.setBackgroundColor(Color.BLUE);
         mode2.setBackgroundColor(Color.BLUE);
