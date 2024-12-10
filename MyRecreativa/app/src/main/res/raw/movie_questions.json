@@ -404,7 +404,7 @@
     },
     {
       "id": 55,
-      "code": "SPIDER_MAN_1",
+      "code": "SPIDERMAN_1",
       "question": "¿Qué le dice el tío Ben a Peter Parker antes de morir?",
       "options": [
         "Un gran poder conlleva una gran responsabilidad",
@@ -415,14 +415,14 @@
     },
     {
       "id": 56,
-      "code": "SPIDER_MAN_2",
+      "code": "SPIDERMAN_2",
       "question": "¿Cómo se llama el villano en Spider-Man 2?",
       "options": ["Doctor Octopus", "Duende Verde", "Venom"],
       "correct_answer": "Doctor Octopus"
     },
     {
       "id": 57,
-      "code": "SPIDER_MAN_3",
+      "code": "SPIDERMAN_3",
       "question": "¿Quién interpreta a Spider-Man en la trilogía de Sam Raimi?",
       "options": ["Tobey Maguire", "Andrew Garfield", "Tom Holland"],
       "correct_answer": "Tobey Maguire"
