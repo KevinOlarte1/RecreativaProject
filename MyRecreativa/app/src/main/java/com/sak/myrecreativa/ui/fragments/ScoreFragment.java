@@ -24,9 +24,10 @@ import com.sak.myrecreativa.models.GameName;
 public class ScoreFragment extends Fragment {
     private String score;
     private GameName name;
+    private ImageView banner;
     private ImageView img;
     private TextView tvGameName;
-    private TextView tvGameStatus;
+    private ImageView isWinImg;
     private TextView tvScore;
     private Button playAgainButton;
     private Button exitButton;
@@ -45,19 +46,18 @@ public class ScoreFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         layout = view.findViewById(R.id.scoreLayout);
+        banner = view.findViewById(R.id.score_banner);
         tvGameName = view.findViewById(R.id.tvGameNameScore);
-        tvGameStatus = view.findViewById(R.id.tvGameStatus);
         tvScore = view.findViewById(R.id.tvLastGameScore);
         playAgainButton = view.findViewById(R.id.playAgainButton);
         exitButton = view.findViewById(R.id.exitButton);
+        isWinImg = view.findViewById(R.id.isWin_img);
 
         tvGameName.setText(name.getName());
         if (isWin){
-            tvGameStatus.setText("YOU WIN");
-            tvGameStatus.setTextColor(Color.GREEN);
+            isWinImg.setImageResource(R.drawable.win);
         }else{
-            tvGameStatus.setText("GAME OVER");
-            tvGameStatus.setTextColor(Color.RED);
+            isWinImg.setImageResource(R.drawable.lose);
         }
         tvScore.setText("Score: " + score);
         tvScore.setTextColor(Color.BLUE);
@@ -66,8 +66,8 @@ public class ScoreFragment extends Fragment {
 
         Context context = view.getContext();
         Resources res =context.getResources();
-        int resId = res.getIdentifier(name.getName().toLowerCase() + "_background", "drawable", context.getPackageName());
-        layout.setBackgroundResource(resId);
+        int resId = res.getIdentifier(name.getName().toLowerCase(), "drawable", context.getPackageName());
+        banner.setImageResource(resId);
 
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
