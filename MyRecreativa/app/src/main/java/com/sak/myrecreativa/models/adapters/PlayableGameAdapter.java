@@ -70,6 +70,7 @@ public class PlayableGameAdapter extends RecyclerView.Adapter<PlayableGameAdapte
             mainLayout = itemView.findViewById(R.id.mainLayout);
             favButton = itemView.findViewById(R.id.favButton);
             playButton = itemView.findViewById(R.id.playButton);
+            playButton.setText("Play");
             playButton.setOnClickListener(this);
 
             //itemView.setOnClickListener(this);
